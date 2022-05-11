@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/Lesson Files/Lesson 7/Scenes/L7_GameScene.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
