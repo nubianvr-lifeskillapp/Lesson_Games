@@ -119,6 +119,8 @@ jobs:
 
 
   publish-s3-artifact-folder:
+    needs: buildWebGL
+    name: Push Build Artifacts to S3 Container
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
