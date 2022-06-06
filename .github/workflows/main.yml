@@ -124,13 +124,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set AWS Credentials
-      - uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v1
         with: 
           aws_access_key_id: ${{ secrets.S3_BUILD_ARTIFACTS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.S3_BUILD_ARTIFACTS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
       - name: Unzip WebGL contents 
-        uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v2
         with: 
           name: build-WebGL.zip
         uses: montudor/action-zip@1
