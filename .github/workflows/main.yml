@@ -123,13 +123,6 @@ jobs:
     name: Push Build Artifacts to S3 Container
     runs-on: ubuntu-latest
     steps:
-      - name: Set AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with: 
-          aws_access_key_id: ${{ secrets.S3_BUILD_ARTIFACTS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.S3_BUILD_ARTIFACTS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
-
       - name: Unzip WebGL contents 
         uses: actions/download-artifact@v2
         with: 
@@ -139,5 +132,12 @@ jobs:
         with: 
           args: unzip -qq build-WebGl.zip -d build-WebGl
 
-      - name: Copy to S3 Server
-        run: aws s3 sync ./build-WebGl/. s3://lsa-games
+      - name: Set AWS Credentials
+        uses: medlypharmacy/s3-artifacts-action@master
+        with: 
+          aws_access_key_id: ${{ secrets.S3_BUILD_ARTIFACTS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.S3_BUILD_ARTIFACTS_SECRET_ACCESS_KEY }}
+          source_path: './build-WebGl'
+
+      # - name: Copy to S3 Server
+      #   run: aws s3 sync ./build-WebGl/. s3://lsa-games
