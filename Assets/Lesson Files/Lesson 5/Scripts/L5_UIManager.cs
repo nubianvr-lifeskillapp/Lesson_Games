@@ -70,10 +70,10 @@ public class L5_UIManager : MonoBehaviour
 
     public void ShowResultsMenu(bool condition)
     {
-        QuestionsAskedText.text = "Number Of Questions Asked : " + GameManager.gameManager.noOfQuestions;
-        QuestionsAnsweredText.text = "Number Of Questions Answered : " + GameManager.gameManager.noOfQuestionsAnswered;
-        CorrectAnswersText.text = "Correct Answers : " + GameManager.gameManager.correctAnswers;
-        WrongAnswersText.text = "Wrong Answers : " + (GameManager.gameManager.wrongAnswers + (GameManager.gameManager.noOfQuestions - GameManager.gameManager.noOfQuestionsAnswered));
         ResultsMenuUI.gameObject.SetActive(condition);
+        QuestionsAskedText.text = "Number Of Questions Asked : " + L5_GameManager.gameManager.noOfQuestions;
+        QuestionsAnsweredText.text = "Number Of Questions Answered : " + L5_GameManager.gameManager.noOfQuestionsAnswered;
+        CorrectAnswersText.text = "Correct Answers : " + L5_GameManager.gameManager.correctAnswers;
+        WrongAnswersText.text = "Wrong Answers : " + (L5_GameManager.gameManager.wrongAnswers + (L5_GameManager.gameManager.noOfQuestions - L5_GameManager.gameManager.noOfQuestionsAnswered));
     }
 }

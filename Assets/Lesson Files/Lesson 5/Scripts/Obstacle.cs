@@ -11,20 +11,20 @@ public class Obstacle : MonoBehaviour
     [SerializeField]
     private TimeManager timeManager;
     [SerializeField]
-    private UIManager uIManager;
+    private L5_UIManager uIManager;
     [SerializeField]
     private PlayerController player;
 
     [SerializeField]
     private bool canMove = true;
-
+   
     // Start is called before the first frame update
     void Start()
     {
         timeManager = FindObjectOfType<TimeManager>();
        if(timeManager)
             print("Obstacle Found: Time Manager");
-        uIManager = FindObjectOfType<UIManager>();
+        uIManager = FindObjectOfType<L5_UIManager>();
         if(uIManager)
             print("Obstacle Found: UI Manager");
         player = FindObjectOfType<PlayerController>();
@@ -51,7 +51,7 @@ public class Obstacle : MonoBehaviour
             {
                 player.AddDamage();
                 timeManager.bCanScaleUp = true;
-                GameManager.gameManager.MoveToNextQuestion();
+                L5_GameManager.gameManager.MoveToNextQuestion();
                 uIManager.ShowQuestionUI(false);
             }
         }
@@ -73,8 +73,9 @@ public class Obstacle : MonoBehaviour
                 player.AddDamage();
                 print("Damage to player");
                 timeManager.bCanScaleUp = true;
-                GameManager.gameManager.MoveToNextQuestion();
+                //L5_GameManager.gameManager.MoveToNextQuestion();
                 uIManager.ShowQuestionUI(false);
+                Destroy(gameObject);
             }
         }
     }

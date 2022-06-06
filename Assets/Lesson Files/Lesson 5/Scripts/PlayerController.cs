@@ -12,8 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool isGrounded = true;
     [SerializeField]
-    private int playerLife = 2;
+    private int playerLife = 3;
     public bool playerIsDead = false;
+    [SerializeField]
+    private SpriteRenderer bag;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +80,15 @@ public class PlayerController : MonoBehaviour
         {
             playerLife = 0;
             playerIsDead = true;
-            GameManager.gameManager.OnLevelFinshed();
+            L5_GameManager.gameManager.OnLevelFinshed();
+        }
+        else if(playerLife == 1)
+        {
+            bag.color = Color.red;
+        }
+        else if (playerLife == 2)
+        {
+            bag.color = Color.yellow;
         }
     }
 }

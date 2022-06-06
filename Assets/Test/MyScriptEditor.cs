@@ -1,4 +1,3 @@
-/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,4 +32,3 @@ public class MyScriptEditor : Editor
         EditorGUILayout.EndFadeGroup();
     }
 }
-*/

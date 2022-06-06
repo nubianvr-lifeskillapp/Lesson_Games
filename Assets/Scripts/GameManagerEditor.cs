@@ -1,8 +1,8 @@
-/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.AnimatedValues;
 
 [CustomEditor(typeof(GameManager))]
 public class GameManagerEditor : Editor
@@ -14,4 +14,3 @@ public class GameManagerEditor : Editor
         //myScript.m_ShowExtraFields.valueChanged.AddListener(Repaint);
     }
 }
-*/

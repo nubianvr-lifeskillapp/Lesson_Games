@@ -14,7 +14,7 @@ public class TriggerPoint : MonoBehaviour
     //Reference to the time manager in the scene...
     public TimeManager timeManager;
     //Reference to the user interface manager in the scene...
-    public UIManager uIManager;
+    public L5_UIManager uIManager;
 
 
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class TriggerPoint : MonoBehaviour
         timeManager = FindObjectOfType<TimeManager>();
         if (timeManager)
             print("Trigger Found: Time Manager");
-        uIManager = FindObjectOfType<UIManager>();
+        uIManager = FindObjectOfType<L5_UIManager>();
         if (uIManager)
             print("Trigger Found: UI Manager");
 

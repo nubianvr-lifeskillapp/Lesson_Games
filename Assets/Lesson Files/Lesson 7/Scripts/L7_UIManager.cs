@@ -12,6 +12,10 @@ public class L7_UIManager : MonoBehaviour
     private TMP_Text coinText;
     [SerializeField]
     private RectTransform gameOverLayout;
+    [SerializeField]
+    private TMP_Text countdownText;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,9 @@ public class L7_UIManager : MonoBehaviour
     {
         button.transform.parent.parent.gameObject.SetActive(false);
         L7_GameManager.gameManager.IncreaseNoOfPopupsClosed();
+        ///
+        L7_GameManager.gameManager.popupLayoutIndex++;
+        L7_GameManager.gameManager.DisplayNextPopupLayout(L7_GameManager.gameManager.popupLayoutIndex++);
     }
 
     public void ShowGameOverLayout()
@@ -43,5 +50,11 @@ public class L7_UIManager : MonoBehaviour
         {
             gameOverLayout.gameObject.SetActive(true);
         }
+    }
+    public void UpdateTimerText(string text)
+    {
+        if (!countdownText)
+            return;
+        countdownText.text = text;
     }
 }

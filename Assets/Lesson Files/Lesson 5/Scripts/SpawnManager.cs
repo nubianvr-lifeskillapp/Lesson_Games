@@ -8,7 +8,8 @@ public class SpawnManager : MonoBehaviour
     [Header("Main Properties")]
     [SerializeField]
     private GameObject obstacle;
-    private GameObject existingObstacle;
+    [HideInInspector]
+    public GameObject existingObstacle;
 
     [SerializeField]
     private float yPosition = 1.0f;
@@ -18,29 +19,44 @@ public class SpawnManager : MonoBehaviour
     {
         //existingObstacle = FindObjectOfType<Obstacle>();
         existingObstacle = Instantiate(obstacle, new Vector3(25.0f, yPosition, 0.0f), new Quaternion());
-        //TriggerPoint triggerPoint = existingObstacle.GetComponentInChildren<TriggerPoint>();
-        //triggerPoint.timeManager = FindObjectOfType<TimeManager>();
-        //triggerPoint.uIManager = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        SpawnObstacle();
+    }
+
+    public void SpawnObstacle()
+    {
         if (!existingObstacle)
+        {
+            if (!L5_GameManager.gameManager.isLevelFinished)
+            {
+                existingObstacle = Instantiate(obstacle, new Vector3(25.0f, yPosition, 0.0f), new Quaternion());
+            }
             return;
+        }
+            
 
         if (existingObstacle.transform.position.x <= -25.0f)
         {
             Debug.Log("Obstacle is at destroy point...");
             GameObject.Destroy(existingObstacle);
-            if(!GameManager.gameManager.isLevelFinished)
+            if (!L5_GameManager.gameManager.isLevelFinished)
             {
                 existingObstacle = Instantiate(obstacle, new Vector3(25.0f, yPosition, 0.0f), new Quaternion());
-                //TriggerPoint triggerPoint = existingObstacle.GetComponentInChildren<TriggerPoint>();
-                //triggerPoint.timeManager = FindObjectOfType<TimeManager>();
-                //triggerPoint.uIManager = FindObjectOfType<UIManager>();
             }
-               
         }
+        ////////////
+        //else if (existingObstacle == null)
+        //{
+        //    if (!L5_GameManager.gameManager.isLevelFinished)
+        //    {
+        //        existingObstacle = Instantiate(obstacle, new Vector3(25.0f, yPosition, 0.0f), new Quaternion());
+        //    }
+        //}
+
     }
 }
+
