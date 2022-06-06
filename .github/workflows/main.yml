@@ -133,7 +133,7 @@ jobs:
         uses: actions/download-artifact@v2
         with: 
           name: build-WebGL.zip
-      - uses: montudor/action-zip@1
+        uses: montudor/action-zip@1
         with: 
           args: unzip -qq build-WebGl.zip -d build-WebGl
       - name: Copy to S3 Server
