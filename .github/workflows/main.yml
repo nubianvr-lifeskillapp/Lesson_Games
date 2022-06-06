@@ -123,14 +123,18 @@ jobs:
     name: Push Build Artifacts to S3 Container
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Upload to S3 artifact folder
-        uses: actions/download-artifact@v2
-        with:
+      - name: Set AWS Credentials
+      - uses: aws-actions/configure-aws-credentials@v1
+        with: 
           aws_access_key_id: ${{ secrets.S3_BUILD_ARTIFACTS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.S3_BUILD_ARTIFACTS_SECRET_ACCESS_KEY }}
-          aws_s3_bucket_name: ${{ secrets.S3_BUCKET_NAME }}
-          source_path: './lessongames/'
-          destination_path: "/"
-          exclude_repo_from_destination_path: true
-          resource_type: "DIRECTORY"  
+          aws-region: eu-central-1
+      - name: Unzip WebGL contents 
+        uses: actions/download-artifact@v2
+        with: 
+          name: build-WebGL.zip
+      - uses: montudor/action-zip@1
+        with: 
+          args: unzip -qq build-WebGl.zip -d build-WebGl
+      - name: Copy to S3 Server
+        run: aws s3 sync ./build-WebGl/. s3://lsa-games
