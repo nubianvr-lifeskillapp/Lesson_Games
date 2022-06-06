@@ -116,3 +116,19 @@ jobs:
         with:
           branch: gh-pages
           folder: build/WebGL
+
+
+  publish-s3-artifact-folder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Upload to S3 artifact folder
+        uses: actions/download-artifact@v2
+        with:
+          aws_access_key_id: ${{ secrets.S3_BUILD_ARTIFACTS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.S3_BUILD_ARTIFACTS_SECRET_ACCESS_KEY }}
+          aws_s3_bucket_name: ${{ secrets.S3_BUCKET_NAME }}
+          source_path: './lessongames'
+          destination_path: "/"
+          exclude_repo_from_destination_path: true
+          resource_type: "DIRECTORY"  
