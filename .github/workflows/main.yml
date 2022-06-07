@@ -136,4 +136,4 @@ jobs:
           path: build   
 
       - name: Copy to S3 Server
-        run: aws s3 sync ./build-WebGl/. s3://lsa-games
+        run: aws s3 sync ./home/runner/work/Lesson_Games/Lesson_Games/build s3://lsa-games
