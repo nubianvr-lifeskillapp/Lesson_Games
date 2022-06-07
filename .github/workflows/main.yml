@@ -126,8 +126,8 @@ jobs:
       - name: Set AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with: 
-          aws_access_key_id: ${{ secrets.S3_BUILD_ARTIFACTS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.S3_BUILD_ARTIFACTS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.S3_BUILD_ARTIFACTS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.S3_BUILD_ARTIFACTS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
 
       - uses: actions/download-artifact@v2
