@@ -10,12 +10,16 @@ public class L1_GameManager : MonoBehaviour
 {
     //Properties...
   
+    public InputField inputField;
+    public TMP_Text errorText;
     [SerializeField]
-    private InputField inputField;
+    private TMP_Text usernameText;
     [SerializeField]
-    private TMP_Text errorText;
+    private TMP_Text endUsernameText;
     [SerializeField]
     private L1_UIManager uIManager;
+    [SerializeField]
+    private Button qB_ContinueButton;
 
     [Header("Question Properties")]
     [SerializeField]
@@ -28,6 +32,7 @@ public class L1_GameManager : MonoBehaviour
     public int wrongAnswers = 0;
     public bool isLevelFinished = false;
     public static L1_GameManager gameManager;
+    public int maxUsernameLength = 6;
     private void Awake()
     {
         if (gameManager == null)
@@ -46,8 +51,7 @@ public class L1_GameManager : MonoBehaviour
     void Start()
     {
         //
-        uIManager.ShowInputUI(true);
-        uIManager.ShowQuestionUI(false, 0.0f);
+
         errorText.gameObject.SetActive(false);
         //Set question on scene start...
         uIManager.SetQuestionElements(allQuestions[questionIndex]);
@@ -64,14 +68,28 @@ public class L1_GameManager : MonoBehaviour
 
     public void OnEnterUsername()
     {
-        if(inputField.text.Length < 4)
+        if(inputField.text.Length < maxUsernameLength)
         {
             errorText.gameObject.SetActive(true);
             //Debug.Log("Input text not up to 6 characters...");
         }
         else
         {
-            DisableInputUI();
+           if(isLevelFinished)
+            {
+                if (usernameText)
+                    endUsernameText.text = "@" + inputField.text;
+                DisableInputUI();
+                uIManager.SetUIActive(uIManager.endUI);
+
+            }
+            else
+            {
+                if (usernameText)
+                    usernameText.text = "@" + inputField.text;
+                DisableInputUI();
+                uIManager.SetUIActive(uIManager.proceedUI);
+            }
         }
     }
 
@@ -80,7 +98,7 @@ public class L1_GameManager : MonoBehaviour
         //Disable input UI...
         uIManager.ShowInputUI(false);
         //Show questions UI...
-        uIManager.ShowQuestionUI(true, 0.0f);
+        //uIManager.ShowQuestionUI(true, 0.0f);
     }
 
     public void CheckSelection(bool condition)
@@ -127,15 +145,25 @@ public class L1_GameManager : MonoBehaviour
         }
     }
     
-    IEnumerator ShowResultsMenu(bool condition)
-    {
-        yield return new WaitForSeconds(3.0f);
-        uIManager.ShowResultsMenu(condition);
-    }
+    //IEnumerator ShowResultsMenu(bool condition)
+    //{
+    //    yield return new WaitForSeconds(3.0f);
+    //    uIManager.ShowResultsMenu(condition);
+    //}
 
     public void OnLevelFinshed()
     {
-        isLevelFinished = true;
-        StartCoroutine(ShowResultsMenu(true));
+        //isLevelFinished = true;
+        uIManager.questionText.gameObject.SetActive(false);
+        uIManager.FalseAnswerButton.gameObject.SetActive(false);
+        uIManager.TrueAnswerButton.gameObject.SetActive(false);
+        uIManager.questionTextBackground.gameObject.SetActive(false);
+        qB_ContinueButton.gameObject.SetActive(true);
+        //StartCoroutine(ShowResultsMenu(true));
+    }
+
+    public void SetLevelFinished(bool condition)
+    {
+        isLevelFinished = condition;
     }
 }

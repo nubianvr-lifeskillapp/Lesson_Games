@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class KeyboardScript : MonoBehaviour
 {
     public InputField TextField;
-    public GameObject RusLayoutSml, RusLayoutBig, EngLayoutSml, EngLayoutBig, SymbLayout;
+    public RectTransform EngLayoutSml, EngLayoutBig, SymbLayout;
+    /*RusLayoutSml, RusLayoutBig,*/
 
     public void alphabetFunction(string alphabet)
     {
@@ -20,16 +21,16 @@ public class KeyboardScript : MonoBehaviour
 
     public void CloseAllLayouts()
     {
-        RusLayoutSml.SetActive(false);
-        RusLayoutBig.SetActive(false);
-        EngLayoutSml.SetActive(false);
-        EngLayoutBig.SetActive(false);
-        SymbLayout.SetActive(false);
+        //RusLayoutSml.SetActive(false);
+        //RusLayoutBig.SetActive(false);
+        EngLayoutSml.gameObject.SetActive(false);
+        EngLayoutBig.gameObject.SetActive(false);
+        SymbLayout.gameObject.SetActive(false);
     }
 
-    public void ShowLayout(GameObject SetLayout)
+    public void ShowLayout(RectTransform SetLayout)
     {
         CloseAllLayouts();
-        SetLayout.SetActive(true);
+        SetLayout.gameObject.SetActive(true);
     }
 }

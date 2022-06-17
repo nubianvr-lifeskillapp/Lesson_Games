@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
   isClickTrue: 0
-  textQuestion: What year was I born?
-  trueAnswerText: 1995
-  falseAnswerText: 2001
+  textQuestion: 'Should you include your age or date of birth in your username?  '
+  trueAnswerText: Yes
+  falseAnswerText: No

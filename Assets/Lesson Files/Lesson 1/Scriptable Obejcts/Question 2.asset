@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Question 2
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
-  isClickTrue: 1
-  textQuestion: What is my name?
-  trueAnswerText: Chisom
-  falseAnswerText: Jack
+  isClickTrue: 0
+  textQuestion: ' What about just your first name?  '
+  trueAnswerText: Yes
+  falseAnswerText: No

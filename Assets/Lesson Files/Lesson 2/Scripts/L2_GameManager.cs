@@ -80,4 +80,11 @@ public class L2_GameManager : MonoBehaviour
         middleground.setImages = questionSetImages[questionSetIndex];
         foreground.setImages = questionSetImages[questionSetIndex];
     }
+
+    public void DisableBaseCarouselScript(BaseCarouselScript script)
+    {
+        script.enabled = false;
+        Debug.Log("Base Carousel Script Disabled...");
+    }
+
 }

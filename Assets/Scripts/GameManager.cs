@@ -6,12 +6,23 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //Properties...
+    public static GameManager gameManager;
+
     // Start is called before the first frame update
     void Awake()
     {
+        if (gameManager == null || gameManager != this)
+        {
+            gameManager = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
-   
     private void Start()
     {
         
@@ -21,5 +32,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void LoadScene(int buildIndex)
+    {
+        SceneManager.LoadScene(buildIndex);
     }
 }

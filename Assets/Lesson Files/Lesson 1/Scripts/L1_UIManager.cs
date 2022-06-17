@@ -11,14 +11,26 @@ public class L1_UIManager : MonoBehaviour
     [SerializeField]
     private RectTransform inputUI;
     [SerializeField]
-    private Transform questionBoxUI;
+    private RectTransform questionBoxUI;
     [SerializeField]
-    private Transform ResultsMenuUI;
+    private RectTransform ResultsMenuUI;
     [SerializeField]
-    private Image point;
+    private RectTransform introUI;
+    public RectTransform proceedUI;
+    [SerializeField]
+    private RectTransform videoUI;
+    [SerializeField]
+    private RectTransform againUI;
+    [SerializeField]
+    public RectTransform endUI;
+    [SerializeField]
+    private RectTransform indicator;
+    [SerializeField]
+    private RectTransform point;
     [SerializeField]
     private float pointParentWidth;
 
+    public RectTransform questionTextBackground;
     public TMP_Text questionText;
     public TMP_Text trueAnswerText;
     public TMP_Text falseAnswerText;
@@ -35,13 +47,18 @@ public class L1_UIManager : MonoBehaviour
     {
         //ShowQuestionUI(false);
         //ShowResultsMenu(false);
+        introUI.gameObject.SetActive(true);
+        ShowInputUI(false);
+        ShowQuestionUI(false, 0.0f);
         AffirmationText.gameObject.SetActive(false);
+        //point.gameObject.SetActive(false);
+        indicator.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //IncrementPointLocation();
     }
 
     public void SetQuestionElements(Questions question)
@@ -62,13 +79,17 @@ public class L1_UIManager : MonoBehaviour
     }
     private IEnumerator SetQuestionUIActive(bool condition, float time)
     {
+        //point.gameObject.SetActive(true);
+        indicator.gameObject.SetActive(true);
         yield return new WaitForSeconds(time);
         if (questionBoxUI)
             questionBoxUI.gameObject.SetActive(condition);
     }
     public void ShowInputUI(bool condition)
     {
-        if(inputUI)
+        L1_GameManager.gameManager.errorText.gameObject.SetActive(false);
+        L1_GameManager.gameManager.inputField.text = "";
+        if (inputUI)
             inputUI.gameObject.SetActive(condition);
     }
 
@@ -90,16 +111,30 @@ public class L1_UIManager : MonoBehaviour
     {
         if (!point)
             return;
-        point.rectTransform.anchoredPosition += new Vector2(pointParentWidth / L1_GameManager.gameManager.noOfQuestions, 0);
+        point.anchoredPosition += new Vector2(pointParentWidth / L1_GameManager.gameManager.noOfQuestions, 0);
+        //point.rectTransform.anchoredPosition = Vector2.Lerp(point.rectTransform.anchoredPosition, new Vector2(pointParentWidth / L1_GameManager.gameManager.noOfQuestions, 0), 1.0f);
     }
 
-    public void ShowResultsMenu(bool condition)
+    //public void ShowResultsMenu(bool condition)
+    //{
+    //    ShowQuestionUI(false, 0.0f);
+    //    ResultsMenuUI.gameObject.SetActive(condition);
+    //    QuestionsAskedText.text = "Number Of Questions Asked : " + L1_GameManager.gameManager.noOfQuestions;
+    //    QuestionsAnsweredText.text = "Number Of Questions Answered : " + L1_GameManager.gameManager.noOfQuestionsAnswered;
+    //    CorrectAnswersText.text = "Correct Answers : " + L1_GameManager.gameManager.correctAnswers;
+    //    WrongAnswersText.text = "Wrong Answers : " + (L1_GameManager.gameManager.wrongAnswers + (L1_GameManager.gameManager.noOfQuestions - L1_GameManager.gameManager.noOfQuestionsAnswered));
+    //}
+
+    public void SetUIActive(RectTransform uI)
     {
-        ShowQuestionUI(false, 0.0f);
-        ResultsMenuUI.gameObject.SetActive(condition);
-        QuestionsAskedText.text = "Number Of Questions Asked : " + L1_GameManager.gameManager.noOfQuestions;
-        QuestionsAnsweredText.text = "Number Of Questions Answered : " + L1_GameManager.gameManager.noOfQuestionsAnswered;
-        CorrectAnswersText.text = "Correct Answers : " + L1_GameManager.gameManager.correctAnswers;
-        WrongAnswersText.text = "Wrong Answers : " + (L1_GameManager.gameManager.wrongAnswers + (L1_GameManager.gameManager.noOfQuestions - L1_GameManager.gameManager.noOfQuestionsAnswered));
+        introUI.gameObject.SetActive(false);
+        ResultsMenuUI.gameObject.SetActive(false);
+        questionBoxUI.gameObject.SetActive(false);
+        proceedUI.gameObject.SetActive(false);
+        videoUI.gameObject.SetActive(false);
+        endUI.gameObject.SetActive(false);
+        againUI.gameObject.SetActive(false);
+
+        uI.gameObject.SetActive(true);
     }
 }

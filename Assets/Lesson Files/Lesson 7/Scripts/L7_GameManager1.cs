@@ -7,6 +7,8 @@ using TMPro;
 public class L7_GameManager1 : MonoBehaviour
 {
     //Properties...
+    [SerializeField]
+    private L7_UIManager1 uImanager;
     private int totalCoins;
     [SerializeField]
     private RectTransform[] popups;
@@ -66,6 +68,8 @@ public class L7_GameManager1 : MonoBehaviour
         {
             //Game Over...
             isGameOver = true;
+            uImanager.gameplayUI.gameObject.SetActive(false);
+            uImanager.gameOverUI.gameObject.SetActive(true);
             //Set Countdown Timer To Zero...
             countdownTimer = 0;
             //Display Session Stats/Results...

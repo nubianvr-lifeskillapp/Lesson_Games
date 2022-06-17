@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class L7_UIManager1 : MonoBehaviour
 {
-  
+    public RectTransform gameplayUI;
+    public RectTransform gameOverUI;
+
     // Start is called before the first frame update
     void Start()
     {

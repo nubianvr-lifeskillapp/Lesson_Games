@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
   isClickTrue: 0
-  textQuestion: Did you use your birth year?
+  textQuestion: 'Should you use your full name as your username?  '
   trueAnswerText: Yes
   falseAnswerText: No
