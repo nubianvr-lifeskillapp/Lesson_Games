@@ -9,11 +9,11 @@ public class L2_GameManager : MonoBehaviour
     private SetObject_S[] questionSetImages;
     private static int questionSetIndex = 0;
     [SerializeField]
-    private BaseCarouselScript background;
+    private L2_BaseCarouselScript background;
     [SerializeField]
-    private BaseCarouselScript middleground;
+    private L2_BaseCarouselScript middleground;
     [SerializeField]
-    private BaseCarouselScript foreground;
+    private L2_BaseCarouselScript foreground;
 
     [HideInInspector]
     public int totalPoints = 0;
@@ -56,7 +56,7 @@ public class L2_GameManager : MonoBehaviour
 
     public void SelectImage(RectTransform image)
     {
-        BaseCarouselScript temp = image.GetComponent<BaseCarouselScript>();
+        L2_BaseCarouselScript temp = image.GetComponent<L2_BaseCarouselScript>();
         if (temp)
         {
             totalPoints += temp.GetImagePoint();
@@ -81,7 +81,7 @@ public class L2_GameManager : MonoBehaviour
         foreground.setImages = questionSetImages[questionSetIndex];
     }
 
-    public void DisableBaseCarouselScript(BaseCarouselScript script)
+    public void DisableBaseCarouselScript(L2_BaseCarouselScript script)
     {
         script.enabled = false;
         Debug.Log("Base Carousel Script Disabled...");

@@ -5,11 +5,13 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class L1_GameManager : MonoBehaviour
 {
-    //Properties...
-  
+    [DllImport("__Internal")]
+    private static extern void sendUsername(string username);
+
     public InputField inputField;
     public TMP_Text errorText;
     [SerializeField]
@@ -44,9 +46,7 @@ public class L1_GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        //DontDestroyOnLoad(gameObject);
     }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +68,8 @@ public class L1_GameManager : MonoBehaviour
 
     public void OnEnterUsername()
     {
-        if(inputField.text.Length < maxUsernameLength)
+        string username = inputField.text;
+        if (inputField.text.Length < maxUsernameLength)
         {
             errorText.gameObject.SetActive(true);
             //Debug.Log("Input text not up to 6 characters...");
@@ -78,15 +79,17 @@ public class L1_GameManager : MonoBehaviour
            if(isLevelFinished)
             {
                 if (usernameText)
-                    endUsernameText.text = "@" + inputField.text;
+                    endUsernameText.text = "@" + username;
                 DisableInputUI();
                 uIManager.SetUIActive(uIManager.endUI);
-
+#if UNITY_WEBGL == true && UNITY_EDITOR == false
+    sendUsername(username);
+#endif
             }
             else
             {
                 if (usernameText)
-                    usernameText.text = "@" + inputField.text;
+                    usernameText.text = "@" + username;
                 DisableInputUI();
                 uIManager.SetUIActive(uIManager.proceedUI);
             }
@@ -97,8 +100,6 @@ public class L1_GameManager : MonoBehaviour
     {
         //Disable input UI...
         uIManager.ShowInputUI(false);
-        //Show questions UI...
-        //uIManager.ShowQuestionUI(true, 0.0f);
     }
 
     public void CheckSelection(bool condition)
@@ -144,12 +145,6 @@ public class L1_GameManager : MonoBehaviour
             OnLevelFinshed();
         }
     }
-    
-    //IEnumerator ShowResultsMenu(bool condition)
-    //{
-    //    yield return new WaitForSeconds(3.0f);
-    //    uIManager.ShowResultsMenu(condition);
-    //}
 
     public void OnLevelFinshed()
     {

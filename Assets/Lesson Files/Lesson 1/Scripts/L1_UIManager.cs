@@ -112,18 +112,8 @@ public class L1_UIManager : MonoBehaviour
         if (!point)
             return;
         point.anchoredPosition += new Vector2(pointParentWidth / L1_GameManager.gameManager.noOfQuestions, 0);
-        //point.rectTransform.anchoredPosition = Vector2.Lerp(point.rectTransform.anchoredPosition, new Vector2(pointParentWidth / L1_GameManager.gameManager.noOfQuestions, 0), 1.0f);
     }
 
-    //public void ShowResultsMenu(bool condition)
-    //{
-    //    ShowQuestionUI(false, 0.0f);
-    //    ResultsMenuUI.gameObject.SetActive(condition);
-    //    QuestionsAskedText.text = "Number Of Questions Asked : " + L1_GameManager.gameManager.noOfQuestions;
-    //    QuestionsAnsweredText.text = "Number Of Questions Answered : " + L1_GameManager.gameManager.noOfQuestionsAnswered;
-    //    CorrectAnswersText.text = "Correct Answers : " + L1_GameManager.gameManager.correctAnswers;
-    //    WrongAnswersText.text = "Wrong Answers : " + (L1_GameManager.gameManager.wrongAnswers + (L1_GameManager.gameManager.noOfQuestions - L1_GameManager.gameManager.noOfQuestionsAnswered));
-    //}
 
     public void SetUIActive(RectTransform uI)
     {

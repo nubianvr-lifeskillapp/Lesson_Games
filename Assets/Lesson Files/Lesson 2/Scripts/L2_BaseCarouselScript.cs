@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-public class BaseCarouselScript : MonoBehaviour
-{
+public class L2_BaseCarouselScript : MonoBehaviour{
     /// <summary>
     /// Used to select the respective image for the gameobject this script is attached to...
     /// For background, the groundNumber would be 0...
@@ -74,11 +73,14 @@ public class BaseCarouselScript : MonoBehaviour
         }
 
         //Play descriptive sound of first image object...
-        SoundManager.soundManager.PlayDescriptiveSound(currentImageObjects[currentIndex]);
+        //SoundManager.soundManager.PlayDescriptiveSound(currentImageObjects[currentIndex]);
+
     }
     
     private void SetImageObjects()
     {
+        if (!setImages)
+            return;
         //Set Images/Sprites for the images objects parented by the gameobject this script is attached to based on the set ground number...
         switch (groundNumber)
         {
@@ -192,7 +194,7 @@ public class BaseCarouselScript : MonoBehaviour
                     lerpPosition = (image_width + image_gap) * currentIndex;
 
                     //Play sounds...
-                    PlaySounds();
+                    //PlaySounds();
                 }
             }
             else
@@ -217,7 +219,7 @@ public class BaseCarouselScript : MonoBehaviour
                     lerpPosition = (image_width + image_gap) * currentIndex;
 
                     //Play sounds...
-                    PlaySounds();
+                    //PlaySounds();
                    
                 }
             }
@@ -229,12 +231,12 @@ public class BaseCarouselScript : MonoBehaviour
         dragAmount = 0;
     }
 
-    private void PlaySounds()
-    {
-        SoundManager.soundManager.PlaySFX("Swipe");
-        SoundManager.soundManager.PlayDescriptiveSound(currentImageObjects[currentIndex]);
-        //SoundManager.soundManager.PlayReactionSound();
-    }
+    //private void PlaySounds()
+    //{
+    //    SoundManager.soundManager.PlaySFX("Swipe");
+    //    SoundManager.soundManager.PlayDescriptiveSound(currentImageObjects[currentIndex]);
+    //    //SoundManager.soundManager.PlayReactionSound();
+    //}
     #endregion
 
 

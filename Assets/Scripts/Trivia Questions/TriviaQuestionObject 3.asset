@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f3c38b74d6aefb4ebf35d05f6d7fff0, type: 3}
-  m_Name: TriviaQuestionObject
+  m_Name: TriviaQuestionObject 3
   m_EditorClassIdentifier: 
-  question: What is my name?
+  question: Which among the following is the fastest car in the world?
   answers:
-  - Chisom
-  - Jack
-  - Henry
-  - Chuks
-  correctAnswerIndex: 0
+  - Koenigsegg Agera R
+  - 9ff GT9-R
+  - SSC Ultimate Aero
+  - Hennessey Venom GT
+  correctAnswerIndex: 3

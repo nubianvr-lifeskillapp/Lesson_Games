@@ -29,9 +29,7 @@ public class TriviaSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //questionObjects.answers[questionIndex];
         noOfQuestions = questionObjects.Length;
-        //answerTexts = new TMP_Text[noOfQuestions];
         SetUIElements();
     }
 
@@ -42,6 +40,7 @@ public class TriviaSystem : MonoBehaviour
     }
     private void SetUIElements()
     {
+        commentaryText.gameObject.SetActive(false);
         questionText.text = questionObjects[questionIndex].question;
         for (int i = 0; i < answerTexts.Length; i++)
         {
@@ -57,11 +56,22 @@ public class TriviaSystem : MonoBehaviour
         {
             Debug.Log("Correct Answer!!!");
             commentaryText.text = "Correct!";
+            noOfCorrectAnswers++;
         }
         else
         {
             Debug.Log("Incorrect Answer!!!");
             commentaryText.text = "Incorrect!";
+            noOfWrongAnswers++;
         }
+
+
+
+        //MoveToNextQuestion...
+        if(questionIndex < questionObjects.Length-1)
+            questionIndex++;
+        else
+            questionIndex = 0;
+        Invoke(nameof(SetUIElements), 1.0f);
     }
 }

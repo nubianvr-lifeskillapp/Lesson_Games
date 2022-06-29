@@ -184,7 +184,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 195054750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b7401992177934faee88119526ff0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 862a86133a22042408c6271e5ad34d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundNumber: 2
@@ -193,9 +193,9 @@ MonoBehaviour:
   - {fileID: 2043858585}
   - {fileID: 937683182}
   setImages: {fileID: 0}
-  view_window: {fileID: 1788040034}
-  image_gap: 1000
-  swipeThrustHold: 50
+  view_window: {fileID: 195054751}
+  image_gap: 500
+  swipeThrustHold: 150
   currentIndex: 0
   audioSource: {fileID: 0}
 --- !u!1 &199770484
@@ -685,18 +685,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 482752592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b7401992177934faee88119526ff0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 862a86133a22042408c6271e5ad34d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundNumber: 0
   images:
-  - {fileID: 840073914}
   - {fileID: 274871781}
   - {fileID: 1985783547}
+  - {fileID: 840073914}
   setImages: {fileID: 0}
-  view_window: {fileID: 274871780}
-  image_gap: 1000
-  swipeThrustHold: 50
+  view_window: {fileID: 482752593}
+  image_gap: 500
+  swipeThrustHold: 150
   currentIndex: 0
   audioSource: {fileID: 0}
 --- !u!1 &568173600
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 754104452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b7401992177934faee88119526ff0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 862a86133a22042408c6271e5ad34d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundNumber: 1
@@ -1224,9 +1224,9 @@ MonoBehaviour:
   - {fileID: 858390826}
   - {fileID: 1370361214}
   setImages: {fileID: 0}
-  view_window: {fileID: 2018697165}
-  image_gap: 1000
-  swipeThrustHold: 50
+  view_window: {fileID: 754104453}
+  image_gap: 500
+  swipeThrustHold: 150
   currentIndex: 0
   audioSource: {fileID: 0}
 --- !u!1 &819123722
