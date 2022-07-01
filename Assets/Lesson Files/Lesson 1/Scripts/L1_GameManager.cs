@@ -35,6 +35,7 @@ public class L1_GameManager : MonoBehaviour
     public bool isLevelFinished = false;
     public static L1_GameManager gameManager;
     public int maxUsernameLength = 6;
+    private string username;
     private void Awake()
     {
         if (gameManager == null)
@@ -68,7 +69,7 @@ public class L1_GameManager : MonoBehaviour
 
     public void OnEnterUsername()
     {
-        string username = inputField.text;
+        username = inputField.text;
         if (inputField.text.Length < maxUsernameLength)
         {
             errorText.gameObject.SetActive(true);
@@ -77,22 +78,20 @@ public class L1_GameManager : MonoBehaviour
         else
         {
            if(isLevelFinished)
-            {
-                if (usernameText)
-                    endUsernameText.text = "@" + username;
-                DisableInputUI();
-                uIManager.SetUIActive(uIManager.endUI);
-#if UNITY_WEBGL == true && UNITY_EDITOR == false
-    sendUsername(username);
-#endif
-            }
-            else
-            {
-                if (usernameText)
-                    usernameText.text = "@" + username;
-                DisableInputUI();
-                uIManager.SetUIActive(uIManager.proceedUI);
-            }
+           {
+               if (usernameText)
+                   endUsernameText.text = "@" + username;
+               DisableInputUI();
+               uIManager.SetUIActive(uIManager.endUI);
+                runSendUsername();
+           }
+           else
+           {
+               if (usernameText)
+                   usernameText.text = "@" + username;
+               DisableInputUI();
+               uIManager.SetUIActive(uIManager.proceedUI);
+           }
         }
     }
 
@@ -100,6 +99,14 @@ public class L1_GameManager : MonoBehaviour
     {
         //Disable input UI...
         uIManager.ShowInputUI(false);
+    }
+
+    private void runSendUsername ()
+    {
+#if UNITY_WEBGL == true && UNITY_EDITOR == false
+    sendUsername(username);
+    Debug.Log("Username Sent");          
+#endif
     }
 
     public void CheckSelection(bool condition)
