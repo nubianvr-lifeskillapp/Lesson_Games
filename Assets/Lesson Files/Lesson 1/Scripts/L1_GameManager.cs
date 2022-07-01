@@ -103,9 +103,10 @@ public class L1_GameManager : MonoBehaviour
 
     private void runSendUsername ()
     {
+        Debug.Log("Username Sent");   
 #if UNITY_WEBGL == true && UNITY_EDITOR == false
     sendUsername(username);
-    Debug.Log("Username Sent");          
+           
 #endif
     }
 
