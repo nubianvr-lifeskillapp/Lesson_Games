@@ -41,6 +41,8 @@ public class L1_UIManager : MonoBehaviour
     public TMP_Text QuestionsAnsweredText;
     public TMP_Text CorrectAnswersText;
     public TMP_Text WrongAnswersText;
+    [SerializeField]
+    public GameObject gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -87,8 +89,8 @@ public class L1_UIManager : MonoBehaviour
     }
     public void ShowInputUI(bool condition)
     {
-        L1_GameManager.gameManager.errorText.gameObject.SetActive(false);
-        L1_GameManager.gameManager.inputField.text = "";
+        //L1_GameManager.gameManager.errorText.gameObject.SetActive(false);
+        gameManager.gameObject.GetComponent<L1_GameManager>().inputField.text = "";
         if (inputUI)
             inputUI.gameObject.SetActive(condition);
     }
@@ -111,7 +113,7 @@ public class L1_UIManager : MonoBehaviour
     {
         if (!point)
             return;
-        point.anchoredPosition += new Vector2(pointParentWidth / L1_GameManager.gameManager.noOfQuestions, 0);
+        point.anchoredPosition += new Vector2(pointParentWidth / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions, 0);
     }
 
 

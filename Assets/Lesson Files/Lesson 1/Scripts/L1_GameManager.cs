@@ -5,12 +5,9 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement;
-using System.Runtime.InteropServices;
 
 public class L1_GameManager : MonoBehaviour
 {
-    [DllImport("__Internal")]
-    private static extern void sendUsername(string username);
 
     public InputField inputField;
     public TMP_Text errorText;
@@ -33,21 +30,18 @@ public class L1_GameManager : MonoBehaviour
     public int correctAnswers = 0;
     public int wrongAnswers = 0;
     public bool isLevelFinished = false;
-    public static L1_GameManager gameManager;
+    //public static L1_GameManager gameManager;
     public int maxUsernameLength = 6;
     private string username;
+    
+    
+    //Awake Method
     private void Awake()
     {
-        if (gameManager == null)
-        {
-            gameManager = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+       
     }
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -104,10 +98,7 @@ public class L1_GameManager : MonoBehaviour
     private void runSendUsername ()
     {
         Debug.Log("Username Sent");   
-#if UNITY_WEBGL == true && UNITY_EDITOR == false
-    sendUsername(username);
-           
-#endif
+
     }
 
     public void CheckSelection(bool condition)
@@ -169,4 +160,5 @@ public class L1_GameManager : MonoBehaviour
     {
         isLevelFinished = condition;
     }
+    
 }

@@ -32,16 +32,7 @@ public class L5_GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (gameManager == null)
-        {
-            gameManager = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        //DontDestroyOnLoad(gameObject);
+
     }
     // Start is called before the first frame update
     void Start()
@@ -112,5 +103,6 @@ public class L5_GameManager : MonoBehaviour
         isLevelFinished = true;
         StartCoroutine(ShowResultsMenu(true));
     }
+    
 }
 

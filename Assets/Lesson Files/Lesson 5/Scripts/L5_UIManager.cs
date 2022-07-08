@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,14 @@ public class L5_UIManager : MonoBehaviour
     public TMP_Text QuestionsAnsweredText;
     public TMP_Text CorrectAnswersText;
     public TMP_Text WrongAnswersText;
+
+    public GameObject levelManager;
+    public L5_GameManager levelManagerScript;
+
+    private void Awake()
+    {
+        levelManagerScript = levelManager.GetComponent<L5_GameManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -71,9 +80,9 @@ public class L5_UIManager : MonoBehaviour
     public void ShowResultsMenu(bool condition)
     {
         ResultsMenuUI.gameObject.SetActive(condition);
-        QuestionsAskedText.text = "Number Of Questions Asked : " + L5_GameManager.gameManager.noOfQuestions;
-        QuestionsAnsweredText.text = "Number Of Questions Answered : " + L5_GameManager.gameManager.noOfQuestionsAnswered;
-        CorrectAnswersText.text = "Correct Answers : " + L5_GameManager.gameManager.correctAnswers;
-        WrongAnswersText.text = "Wrong Answers : " + (L5_GameManager.gameManager.wrongAnswers + (L5_GameManager.gameManager.noOfQuestions - L5_GameManager.gameManager.noOfQuestionsAnswered));
+        QuestionsAskedText.text = "Number Of Questions Asked : " + levelManagerScript.noOfQuestions;
+        QuestionsAnsweredText.text = "Number Of Questions Answered : " + levelManagerScript.noOfQuestionsAnswered;
+        CorrectAnswersText.text = "Correct Answers : " + levelManagerScript.correctAnswers;
+        WrongAnswersText.text = "Wrong Answers : " + (levelManagerScript.wrongAnswers + (levelManagerScript.noOfQuestions - levelManagerScript.noOfQuestionsAnswered));
     }
 }

@@ -51,9 +51,9 @@ public class L2_UIManager : MonoBehaviour
             scoreText.text = "SCORE: " + L2_GameManager.gameManager.totalPoints;
             scoreText.gameObject.SetActive(true);
 
-#if UNITY_WEBGL == true && UNITY_EDITOR == false
-    printPoints ( L2_GameManager.gameManager.totalPoints);
-#endif
+// #if UNITY_WEBGL == true && UNITY_EDITOR == false
+//     printPoints ( L2_GameManager.gameManager.totalPoints);
+// #endif
         }
         SetAffirmativeText();
     }

@@ -13,6 +13,15 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField]
     private float yPosition = 1.0f;
+    
+    public GameObject levelManager;
+    private L5_GameManager levelManagerScript;
+
+    private void Awake()
+    {
+        levelManagerScript = levelManager.GetComponent<L5_GameManager>();
+    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +40,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (!existingObstacle)
         {
-            if (!L5_GameManager.gameManager.isLevelFinished)
+            if (!levelManagerScript.isLevelFinished)
             {
                 existingObstacle = Instantiate(obstacle, new Vector3(25.0f, yPosition, 0.0f), new Quaternion());
             }
@@ -43,7 +52,7 @@ public class SpawnManager : MonoBehaviour
         {
             Debug.Log("Obstacle is at destroy point...");
             GameObject.Destroy(existingObstacle);
-            if (!L5_GameManager.gameManager.isLevelFinished)
+            if (!levelManagerScript.isLevelFinished)
             {
                 existingObstacle = Instantiate(obstacle, new Vector3(25.0f, yPosition, 0.0f), new Quaternion());
             }
