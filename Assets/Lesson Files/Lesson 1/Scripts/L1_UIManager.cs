@@ -49,7 +49,7 @@ public class L1_UIManager : MonoBehaviour
     {
         //ShowQuestionUI(false);
         //ShowResultsMenu(false);
-        introUI.gameObject.SetActive(true);
+        //introUI.gameObject.SetActive(true);
         ShowInputUI(false);
         ShowQuestionUI(false, 0.0f);
         AffirmationText.gameObject.SetActive(false);
