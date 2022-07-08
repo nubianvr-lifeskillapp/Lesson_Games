@@ -53,5 +53,6 @@ public class OverallGameManager : MonoBehaviour
     public void LoadScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
+        Debug.Log ($"Loading Scene: {sceneIndex}");
     }
 }
