@@ -8,5 +8,9 @@ mergeInto(LibraryManager.library, {
    sendLevelComplete: function(sceneIndex)
    {
       window.dispatchReactUnityEvent("sendLevelComplete", sceneIndex);
+   },
+   loadLevel: function()
+   {
+      window.dispatchReactUnityEvent("loadLevel")
    }
 });

@@ -14,6 +14,8 @@ public class OverallGameManager : MonoBehaviour
     
     private static extern void sendLevelComplete(int sceneIndex);
 
+    private static extern void loadLevel();
+
     private void Awake()
     {
         if (overallGameManager == null)
@@ -26,6 +28,11 @@ public class OverallGameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+#if UNITY_WEBGL == true && UNITY_EDITOR == false
+    loadLevel();
+           
+#endif
     }
 
     // Start is called before the first frame update
