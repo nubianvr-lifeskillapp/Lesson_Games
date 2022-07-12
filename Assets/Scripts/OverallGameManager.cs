@@ -31,7 +31,7 @@ public class OverallGameManager : MonoBehaviour
         
 #if UNITY_WEBGL == true && UNITY_EDITOR == false
     loadLevel();
-           
+    Debug.Log ("Level Load Sent");
 #endif
     }
 
