@@ -29,6 +29,8 @@ public class OverallGameManager : MonoBehaviour
             Destroy(gameObject);
         }
         
+        Debug.Log ("Level Load Sent");
+        
 #if UNITY_WEBGL == true && UNITY_EDITOR == false
     loadLevel();
     Debug.Log ("Level Load Sent");
