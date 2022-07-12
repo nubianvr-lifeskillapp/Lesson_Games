@@ -11,9 +11,9 @@ public class OverallGameManager : MonoBehaviour
     public static OverallGameManager overallGameManager;
     
     [DllImport("__Internal")]
-    
     private static extern void sendLevelComplete(int sceneIndex);
-
+    
+    [DllImport("__Internal")]
     private static extern void loadLevel();
 
     private void Awake()
