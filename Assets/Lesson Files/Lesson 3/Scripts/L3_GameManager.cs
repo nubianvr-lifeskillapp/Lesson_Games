@@ -112,6 +112,12 @@ public class L3_GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         isReloaded = true;
     }
+
+    public void LoadNextScene(int scene)
+    {
+        OverallGameManager.overallGameManager.LoadNextScene(scene);
+    }
+
     public void Replay()
     {
         if(totalScore < 50)

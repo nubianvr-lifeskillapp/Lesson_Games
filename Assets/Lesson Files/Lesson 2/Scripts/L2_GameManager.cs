@@ -64,6 +64,11 @@ public class L2_GameManager : MonoBehaviour
         }
     }
 
+    public void LoadNextScene(int scene)
+    {
+        OverallGameManager.overallGameManager.LoadNextScene(scene);
+    }
+
     public void ReloadScene(int buildIndex)
     {
         MoveToNextSequence();

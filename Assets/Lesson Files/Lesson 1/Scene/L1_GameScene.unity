@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 407232261}
   - component: {fileID: 407232263}
   - component: {fileID: 407232264}
+  - component: {fileID: 407232265}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -826,7 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 285.3385, y: -120.74478}
+  scrollPos: {x: 311.05286, y: -330.74457}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -838,9 +839,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 407232230}
+  - {fileID: 407232242}
   selectedCommands:
-  - {fileID: 407232264}
+  - {fileID: 407232265}
   variables:
   - {fileID: 407232208}
   - {fileID: 407232206}
@@ -2300,6 +2301,7 @@ MonoBehaviour:
   - {fileID: 407232252}
   - {fileID: 407232250}
   - {fileID: 407232249}
+  - {fileID: 407232265}
   - {fileID: 407232247}
   - {fileID: 407232248}
   suppressAllAutoSelections: 0
@@ -2444,8 +2446,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 58
   indentLevel: 0
-  storyText: 'That is a good looking username, I hope you used all the tips and tricks
-    we gave you to create this username in order to be safe when you are online. '
+  storyText: That is a good looking username, I hope you used all the tips and tricks
+    we gave you to create this username.
   description: 
   character: {fileID: 1830667337}
   portrait: {fileID: 21300000, guid: f5bbf1ac77822d143910ccd5caf4ea6a, type: 3}
@@ -2808,6 +2810,33 @@ MonoBehaviour:
     booleanRef: {fileID: 0}
     booleanVal: 0
   targetGameObjectOLD: {fileID: 0}
+--- !u!114 &407232265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407232191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 72
+  indentLevel: 0
+  storyText: 'You have now taken the first steps to keeping yourself safe online. '
+  description: 
+  character: {fileID: 1830667337}
+  portrait: {fileID: 21300000, guid: f5bbf1ac77822d143910ccd5caf4ea6a, type: 3}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &409303744
 GameObject:
   m_ObjectHideFlags: 0
