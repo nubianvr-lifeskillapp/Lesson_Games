@@ -28,9 +28,7 @@ public class OverallGameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        Debug.Log ("Level Load Sent");
-        
+
     }
 
     // Start is called before the first frame update
