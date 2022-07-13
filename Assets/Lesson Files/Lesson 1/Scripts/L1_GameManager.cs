@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Reflection.Emit;
+using Fungus;
 using UnityEngine.SceneManagement;
 
 public class L1_GameManager : MonoBehaviour
@@ -33,7 +35,8 @@ public class L1_GameManager : MonoBehaviour
     //public static L1_GameManager gameManager;
     public int maxUsernameLength = 6;
     private string username;
-    
+    public Flowchart flowchart;
+    private int playerPoints;
     
     //Awake Method
     private void Awake()
@@ -53,6 +56,7 @@ public class L1_GameManager : MonoBehaviour
         questionCount = allQuestions.Length;
         noOfQuestions = allQuestions.Length;
         Debug.Log("No of Questions: " + noOfQuestions);
+        playerPoints = 0;
     }
 
     // Update is called once per frame
@@ -64,27 +68,32 @@ public class L1_GameManager : MonoBehaviour
     public void OnEnterUsername()
     {
         username = inputField.text;
-        if (inputField.text.Length < maxUsernameLength)
+
+
+        if (username.Length < maxUsernameLength)
         {
             errorText.gameObject.SetActive(true);
             //Debug.Log("Input text not up to 6 characters...");
         }
         else
         {
+          
            if(isLevelFinished)
            {
                if (usernameText)
                    endUsernameText.text = "@" + username;
                DisableInputUI();
-               uIManager.SetUIActive(uIManager.endUI);
-                runSendUsername();
+               flowchart.ExecuteBlock("End UI");
+               //uIManager.SetUIActive(uIManager.endUI);
+               
            }
            else
            {
                if (usernameText)
                    usernameText.text = "@" + username;
                DisableInputUI();
-               uIManager.SetUIActive(uIManager.proceedUI);
+               flowchart.ExecuteBlock("Input UI Block");
+               //uIManager.SetUIActive(uIManager.proceedUI);
            }
         }
     }
@@ -109,20 +118,26 @@ public class L1_GameManager : MonoBehaviour
         //If it is the right selection...
         if (allQuestions[questionIndex].isClickTrue == condition)
         {
+            flowchart.ExecuteBlock("Fade Question Out");
             uIManager.ShowAffirmationText("Correct!");
             uIManager.IncrementPointLocation();
             
             correctAnswers++;
+            playerPoints += 25;
             Debug.Log("Correct");
         }
 
         //If it is the wrong selection....
         else
         {
+            flowchart.ExecuteBlock("Fade Question Out");
             uIManager.ShowAffirmationText("Incorrect!");
+            
             wrongAnswers++;
             Debug.Log("Incorrect");
         }
+
+        flowchart.SetIntegerVariable("PlayerPoints", playerPoints );
         MoveToNextQuestion();
     }
     public void MoveToNextQuestion()
@@ -135,25 +150,38 @@ public class L1_GameManager : MonoBehaviour
             questionIndex++;
             uIManager.ShowQuestionUI(false, 0.0f);
             uIManager.ShowQuestionUI(true, 1.0f);
+            flowchart.ExecuteBlock("Fade Question In");
             uIManager.SetQuestionElements(allQuestions[questionIndex]);
         }
 
         //Reset to first question index...
         else
         {
+            flowchart.ExecuteBlock("Fade Question In");
             OnLevelFinshed();
         }
     }
 
     public void OnLevelFinshed()
     {
-        //isLevelFinished = true;
+        isLevelFinished = true;
+        questionIndex = 0;
         uIManager.questionText.gameObject.SetActive(false);
         uIManager.FalseAnswerButton.gameObject.SetActive(false);
         uIManager.TrueAnswerButton.gameObject.SetActive(false);
         uIManager.questionTextBackground.gameObject.SetActive(false);
         qB_ContinueButton.gameObject.SetActive(true);
         //StartCoroutine(ShowResultsMenu(true));
+    }
+
+    public void ReloadScene()
+    {
+        OverallGameManager.overallGameManager.ReloadScene();
+    }
+
+    public void LoadNextScene(int scene)
+    {
+        OverallGameManager.overallGameManager.LoadNextScene(scene);
     }
 
     public void SetLevelFinished(bool condition)

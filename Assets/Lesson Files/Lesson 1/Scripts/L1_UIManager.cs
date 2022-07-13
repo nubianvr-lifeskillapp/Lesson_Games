@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class L1_UIManager : MonoBehaviour
 {
@@ -113,7 +114,8 @@ public class L1_UIManager : MonoBehaviour
     {
         if (!point)
             return;
-        point.anchoredPosition += new Vector2(pointParentWidth / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions, 0);
+        //point.anchoredPosition += new Vector2(pointParentWidth / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions, 0);
+        point.transform.DOMoveX((point.transform.position.x-60)+pointParentWidth / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions,1f, false);
     }
 
 

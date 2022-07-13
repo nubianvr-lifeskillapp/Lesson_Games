@@ -31,10 +31,6 @@ public class OverallGameManager : MonoBehaviour
         
         Debug.Log ("Level Load Sent");
         
-#if UNITY_WEBGL == true && UNITY_EDITOR == false
-    loadLevel();
-    Debug.Log ("Level Load Sent");
-#endif
     }
 
     // Start is called before the first frame update
@@ -42,7 +38,14 @@ public class OverallGameManager : MonoBehaviour
     {
         
     }
-    
+
+    public void GetSceneToLoad()
+    {
+#if UNITY_WEBGL == true && UNITY_EDITOR == false
+    loadLevel();
+    Debug.Log ("Level Load Sent");
+#endif
+    }
 
     // Update is called once per frame
     void Update()
@@ -57,6 +60,11 @@ public class OverallGameManager : MonoBehaviour
     sendLevelComplete(buildIndex);
            
 #endif
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadScene(int sceneIndex)

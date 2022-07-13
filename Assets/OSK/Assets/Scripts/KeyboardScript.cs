@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,10 +10,50 @@ public class KeyboardScript : MonoBehaviour
     public RectTransform EngLayoutSml, EngLayoutBig, SymbLayout;
     /*RusLayoutSml, RusLayoutBig,*/
 
+
+    private void Start()
+    {
+        
+    }
+
+    private void OnEnable()
+    {
+        TextField.onValueChanged.AddListener(delegate { ValueChangeCheck();  });
+    }
+
     public void alphabetFunction(string alphabet)
     {
         TextField.text=TextField.text + alphabet;
     }
+
+    public void ValueChangeCheck()
+    {
+        if (!SymbLayout.gameObject.activeSelf)
+        {
+             if (TextField.text.Length > 0)
+             {
+                 ShowLayout(EngLayoutSml);
+             }
+             else
+             {
+                 ShowLayout(EngLayoutBig);
+             }
+        }
+    }
+
+    public void SwapToLetterKeys()
+    {
+        if (TextField.text.Length > 0)
+        {
+            ShowLayout(EngLayoutSml);
+        }
+        else
+        {
+            ShowLayout(EngLayoutBig);
+        }
+    }
+
+
 
     public void BackSpace()
     {
@@ -32,5 +73,10 @@ public class KeyboardScript : MonoBehaviour
     {
         CloseAllLayouts();
         SetLayout.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        TextField.onValueChanged.RemoveAllListeners();
     }
 }
