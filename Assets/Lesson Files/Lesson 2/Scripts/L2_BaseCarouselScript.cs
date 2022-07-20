@@ -44,8 +44,8 @@ public class L2_BaseCarouselScript : MonoBehaviour{
     // The index of the current image on display...
     [HideInInspector]
     public int currentIndex;
-    
-    private CanvasGroup canvas;
+    [HideInInspector]
+    public CanvasGroup canvas;
 
     [SerializeField]
     private AudioSource audioSource;

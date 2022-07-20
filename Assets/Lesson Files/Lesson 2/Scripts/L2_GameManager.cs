@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,8 +18,11 @@ public class L2_GameManager : MonoBehaviour
 
     [HideInInspector]
     public int totalPoints = 0;
-
+    
+    public Flowchart flowchart;
     public static L2_GameManager gameManager;
+
+    private L2_BaseCarouselScript[] scripts;
     //public SoundManager soundManager;
 
     // Start is called before the first frame update
@@ -45,7 +49,7 @@ public class L2_GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        scripts = new L2_BaseCarouselScript[3] {background,middleground,foreground};
     }
 
     // Update is called once per frame
@@ -60,6 +64,7 @@ public class L2_GameManager : MonoBehaviour
         if (temp)
         {
             totalPoints += temp.GetImagePoint();
+            flowchart.SetIntegerVariable("pictureScore", totalPoints);
             Debug.Log(totalPoints);
         }
     }
@@ -69,10 +74,15 @@ public class L2_GameManager : MonoBehaviour
         OverallGameManager.overallGameManager.LoadNextScene(scene);
     }
 
-    public void ReloadScene(int buildIndex)
+    public void TryAgainBlock()
     {
-        MoveToNextSequence();
-        SceneManager.LoadScene(buildIndex);
+        EnbaleBaseCarouselScript();
+        flowchart.ExecuteBlock("Try Creating A ProfPic Again");
+    }
+
+    public void ReloadScene()
+    {
+        OverallGameManager.overallGameManager.ReloadScene();
     }
 
     public void MoveToNextSequence()
@@ -86,11 +96,27 @@ public class L2_GameManager : MonoBehaviour
         foreground.setImages = questionSetImages[questionSetIndex];
     }
 
+    public void StartCheckScoreBlock()
+    {
+        flowchart.ExecuteBlock("Check Score");
+    }
+
     public void DisableBaseCarouselScript(L2_BaseCarouselScript script)
     {
         script.enabled = false;
         Debug.Log("Base Carousel Script Disabled...");
     }
-    
+
+    public void EnbaleBaseCarouselScript()
+    {
+        totalPoints = 0;
+        for (int i = 0; i < scripts.Length; i++)
+        {
+            scripts[i].enabled = true;
+            scripts[i].GoToIndex(0);
+            scripts[i].canvas.interactable = true;
+        }
+    }
+
 
 }
