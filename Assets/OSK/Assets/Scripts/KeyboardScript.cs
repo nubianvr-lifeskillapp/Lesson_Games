@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class KeyboardScript : MonoBehaviour
 {
     public InputField TextField;
     public RectTransform EngLayoutSml, EngLayoutBig, SymbLayout;
+
+    public GameObject localGameManager;
     /*RusLayoutSml, RusLayoutBig,*/
 
 
@@ -28,6 +31,7 @@ public class KeyboardScript : MonoBehaviour
 
     public void ValueChangeCheck()
     {
+        ExecuteEvents.Execute<ICustomMessengerScript>(localGameManager, null, (x, y) => x.SetErrorMessageInactive());
         if (!SymbLayout.gameObject.activeSelf)
         {
              if (TextField.text.Length > 0)

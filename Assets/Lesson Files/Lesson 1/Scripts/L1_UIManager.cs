@@ -27,9 +27,9 @@ public class L1_UIManager : MonoBehaviour
     [SerializeField]
     private RectTransform indicator;
     [SerializeField]
-    private RectTransform point;
+    private GameObject point;
     [SerializeField]
-    private float pointParentWidth;
+    private float pointRotation;
 
     public RectTransform questionTextBackground;
     public TMP_Text questionText;
@@ -53,7 +53,7 @@ public class L1_UIManager : MonoBehaviour
         //introUI.gameObject.SetActive(true);
         ShowInputUI(false);
         ShowQuestionUI(false, 0.0f);
-        AffirmationText.gameObject.SetActive(false);
+        //AffirmationText.gameObject.SetActive(false);
         //point.gameObject.SetActive(false);
         indicator.gameObject.SetActive(false);
     }
@@ -98,16 +98,15 @@ public class L1_UIManager : MonoBehaviour
 
     public void ShowAffirmationText(string text)
     {
-        //Set object active(Visible on screen)...
-        AffirmationText.gameObject.SetActive(true);
+  
         //Set text...
-        AffirmationText.text = text;
+        //AffirmationText.text = text;
         //Hide AffirmationText after 2.0s...
         Invoke(nameof(HideAffirmationText), 2.0f);
     }
     private void HideAffirmationText()
     {
-        AffirmationText.gameObject.SetActive(false);
+        //AffirmationText.gameObject.SetActive(false);
     }
 
     public void IncrementPointLocation()
@@ -115,7 +114,9 @@ public class L1_UIManager : MonoBehaviour
         if (!point)
             return;
         //point.anchoredPosition += new Vector2(pointParentWidth / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions, 0);
-        point.transform.DOMoveX((point.transform.position.x-60)+pointParentWidth / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions,1f, false);
+        //point.transform.DOMoveX((point.transform.position.x-60)+pointRotation / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions,1f, false);
+        point.transform.DORotate(
+            new Vector3(0,0,-68) + point.transform.rotation.eulerAngles, 1f, RotateMode.Fast);
     }
 
 

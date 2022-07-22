@@ -8,7 +8,7 @@ using System.Reflection.Emit;
 using Fungus;
 using UnityEngine.SceneManagement;
 
-public class L1_GameManager : MonoBehaviour
+public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
 {
 
     public InputField inputField;
@@ -28,9 +28,9 @@ public class L1_GameManager : MonoBehaviour
     public int noOfQuestions = 0;
     private static int questionIndex = 0;
     private int questionCount = 0;
-    public int noOfQuestionsAnswered = 0;
-    public int correctAnswers = 0;
-    public int wrongAnswers = 0;
+    private int noOfQuestionsAnswered = 0;
+    private int correctAnswers = 0;
+    private int wrongAnswers = 0;
     public bool isLevelFinished = false;
     //public static L1_GameManager gameManager;
     public int maxUsernameLength = 6;
@@ -48,8 +48,6 @@ public class L1_GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //
-
         errorText.gameObject.SetActive(false);
         //Set question on scene start...
         uIManager.SetQuestionElements(allQuestions[questionIndex]);
@@ -119,7 +117,7 @@ public class L1_GameManager : MonoBehaviour
         if (allQuestions[questionIndex].isClickTrue == condition)
         {
             flowchart.ExecuteBlock("Fade Question Out");
-            uIManager.ShowAffirmationText("Correct!");
+            //uIManager.ShowAffirmationText("Correct!");
             uIManager.IncrementPointLocation();
             
             correctAnswers++;
@@ -131,7 +129,7 @@ public class L1_GameManager : MonoBehaviour
         else
         {
             flowchart.ExecuteBlock("Fade Question Out");
-            uIManager.ShowAffirmationText("Incorrect!");
+            //uIManager.ShowAffirmationText("Incorrect!");
             
             wrongAnswers++;
             Debug.Log("Incorrect");
@@ -188,5 +186,14 @@ public class L1_GameManager : MonoBehaviour
     {
         isLevelFinished = condition;
     }
-    
+
+    public void SetErrorMessageInactive()
+    {
+        errorText.gameObject.SetActive(false);
+    }
+
+    public void FinishedPlayingVideo()
+    {
+        flowchart.ExecuteBlock("Continue After Video");
+    }
 }

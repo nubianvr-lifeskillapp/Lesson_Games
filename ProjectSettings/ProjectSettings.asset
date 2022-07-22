@@ -554,7 +554,7 @@ PlayerSettings:
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Default
+  webGLTemplate: PROJECT:2020_21
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 0
@@ -562,7 +562,8 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 1
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: NEXPLAYER_SIMPLE_SAMPLE;NEXPLAYER_FULL_FEAT_SAMPLE
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
