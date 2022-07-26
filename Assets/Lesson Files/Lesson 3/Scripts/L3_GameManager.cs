@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using Fungus;
 using UnityEngine.SceneManagement;
 
 public class L3_GameManager : MonoBehaviour
@@ -22,10 +23,12 @@ public class L3_GameManager : MonoBehaviour
     public  L_Dialog dialogUI;
     public L_Dialog replayDialogUI;
     public L_Dialog endDialogUI;
-    public static bool isReloaded = false;
+    public bool remakePassword = false;
 
     [SerializeField]
     public GameObject endScreenUI;
+
+    public Flowchart flowchart;
 
     // Start is called before the first frame update
     void Start()
@@ -40,13 +43,7 @@ public class L3_GameManager : MonoBehaviour
                 uIManager.optionButtons[i].transform.GetComponentInChildren<TextMeshProUGUI>().text = optionObjects[i].optionText;
             }
         }
-        if (isReloaded == true)
-        {
-            replayDialogUI.ShowDialog();
-            Debug.Log("Showing Replay Dialog");
-            EnableButtonsActive(false);
-            EnableButtonsInteractable(false);
-        }
+        
     }
 
     // Update is called once per frame
@@ -62,7 +59,9 @@ public class L3_GameManager : MonoBehaviour
         uIManager.canSelect = false;
         uIManager.IncrementProgressBar(optionObjects[index].optionPoints);
         uIManager.optionButtons[index].interactable = false;
-        totalScore += (optionObjects[index].optionPoints * 100);
+        totalScore += (optionObjects[index].optionPoints);
+        if (totalScore < 0)
+            totalScore = 0;
         selectedAnswersCount++;
         Debug.Log("Selected Answers:  " + selectedAnswersCount);
         Debug.Log("Total Score:  " + totalScore);
@@ -70,27 +69,49 @@ public class L3_GameManager : MonoBehaviour
         if (!(selectedAnswersCount < expectedSelectedAnswers))
         {
             //EnableButtons(false, true);
-            EnableButtonsInteractable(false);
-            StartCoroutine(nameof(LevelFinished));
+            //EnableButtonsInteractable(false);
+            //StartCoroutine(nameof(LevelFinished));
+            if (!remakePassword)
+            {
+                flowchart.ExecuteBlock("Lesson 3 SegueToVideoView");
+                flowchart.SetFloatVariable("lockStrength", totalScore);
+            }
+            else
+
+            {
+                StartCoroutine(Delay(1));
+                
+                flowchart.SetFloatVariable("lockStrength", totalScore);
+                
+                flowchart.ExecuteBlock("CheckPasswordStrength");
+                
+            }
+
+            
         }
     }
-    private IEnumerator LevelFinished()
-    {
-        yield return new WaitForSeconds(1.0f);
-        //EnableButtons(false, false);
-        EnableButtonsActive(false);
-        //Tween in message...
-        if(!isReloaded)
-            dialogUI.ShowDialog();
-        else
-        {
-            if(totalScore >= 50)
-                endDialogUI.SetMessage("Wow, your password strength is high, very nice. You definetley made use of all the tips you learnt. Remember a strong password helps to keep all your private info safe from prying eyes.");
-            else
-                endDialogUI.SetMessage("Your password strength is low, maybe try again, try and use the tips we just learnt about. Remember a strong password helps to keep all your private info safe from prying eyes.");
 
-            endDialogUI.ShowDialog();
-        }
+    public void RecreatePassword()
+    {
+        flowchart.ExecuteBlock("CreatePasswordAgain");
+        ResetGameView();
+    }
+
+    public void RetryLesson()
+    {
+        OverallGameManager.overallGameManager.ReloadScene();
+    }
+    
+
+    public void ResetGameView()
+    {
+        uIManager.progressBar.value = 0;
+        uIManager.ResetGameplayView();
+        flowchart.SetFloatVariable("lockStrength", 0);
+        remakePassword = true;
+        totalScore = 0;
+        selectedAnswersCount = 0;
+        EnableButtonsInteractable(true);
     }
 
     public void EnableButtonsInteractable(bool interactable)
@@ -107,27 +128,16 @@ public class L3_GameManager : MonoBehaviour
             button.gameObject.SetActive(active);
         }
     }
-    public void ResetScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        isReloaded = true;
-    }
-
     public void LoadNextScene(int scene)
     {
         OverallGameManager.overallGameManager.LoadNextScene(scene);
     }
 
-    public void Replay()
+    IEnumerator Delay(float delayTime)
     {
-        if(totalScore < 50)
-        {
-            ResetScene();
-        }
-        else
-        {
-            endScreenUI.SetActive(true);
-        }
+        yield return new WaitForSeconds(delayTime);
     }
+
+
 }
 

@@ -46,32 +46,65 @@ public class L3_UIManager : MonoBehaviour
     public void IncrementProgressBar(float value)
     {
         float currentProgressBarValue = progressBar.value;
-        Tween tween = progressBar.DOValue(currentProgressBarValue + value, 0.5f);
-        Invoke(nameof(SetLockState), 0.6f);
+        progressBar.DOValue(currentProgressBarValue + value, 0.5f);
+        StartCoroutine(value > 0 ? SetLockState(true, 0.6f) : SetLockState(false, 0.6f));
+        
+        
     }
 
-    private void SetLockState()
+    IEnumerator SetLockState(bool addoperator, float delayTime)
     {
+        yield return new WaitForSeconds(delayTime);
         print("Progress Bar Value: " + progressBar.value);
-        if (progressBar.value >= 0.25f)
+        switch (progressBar.value)
         {
-            lockHandle.rectTransform.DOAnchorPosY(190, 0.5f);
+            case 0f:
+                progressBar.fillRect.GetComponent<Image>().DOColor(new Color(255/255,18/255,0/255,150),0.75f);
+                lockHandle.rectTransform.DOAnchorPosY(addoperator ? 190 : 300, 0.5f);
+                break;
+            case 0.25f:
+                if (addoperator)
+                {
+                    lockHandle.rectTransform.DOAnchorPosY( 190, 0.5f);
+                    progressBar.fillRect.GetComponent<Image>().DOColor(new Color(255/255,18/255,0/255,150),0.75f);
+                }
+                else
+                {
+                    fingerprint.rectTransform.DOSizeDelta(new Vector2(0, 0), 0.5f);
+                    progressBar.fillRect.GetComponent<Image>().DOColor(new Color(255/255,18/255,0/255,150),0.75f);
+                }
+                break;
+            case 0.50f:
+                if (addoperator)
+                {
+                    fingerprint.gameObject.SetActive(true);
+                    fingerprint.rectTransform.DOSizeDelta(new Vector2(200, 200), 0.5f);
+                    progressBar.fillRect.GetComponent<Image>().DOColor( new Color(255/255,255/255,0/255,150),0.75f);
+                }
+                else
+                {
+                    fingerprint.sprite = fingerprintStates[2];
+                    progressBar.fillRect.GetComponent<Image>().DOColor( new Color(255/255,255/255,0/255,150),0.75f);
+                }
+                break;
+            case 0.75f:
+                progressBar.fillRect.GetComponent<Image>().DOColor(new Color(55/255,255/255,0/255,150),0.75f);
+                fingerprint.sprite = fingerprintStates[0];
+                break;
+            case 1.0f:
+                fingerprint.sprite = fingerprintStates[1];
+                break;
         }
-        if (progressBar.value >= 0.5f)
-        {
-            fingerprint.gameObject.SetActive(true);
-            Tween tween = fingerprint.rectTransform.DOSizeDelta(new Vector2(190, 200), 0.5f);
-        }
-        if (progressBar.value >= 0.75f)
-        {
-            fingerprint.sprite = fingerprintStates[0]; 
-            
-        }
-        if (progressBar.value >= 1.0f)
-        {
-            fingerprint.sprite = fingerprintStates[1];
-        }
+        
         canSelect = true;
+       
+    }
+
+    public void ResetGameplayView()
+    {
+        lockHandle.rectTransform.DOAnchorPosY( 300, 0.5f);
+        fingerprint.sprite = fingerprintStates[2];
+        fingerprint.rectTransform.DOSizeDelta(new Vector2(0, 0), 0f);
     }
 
 }

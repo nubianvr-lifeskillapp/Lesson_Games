@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Option 7
   m_EditorClassIdentifier: 
   optionText: Common Nicknames
-  optionPoints: 0
+  optionPoints: -0.25

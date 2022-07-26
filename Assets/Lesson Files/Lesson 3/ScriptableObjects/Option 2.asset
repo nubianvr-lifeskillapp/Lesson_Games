@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Option 2
   m_EditorClassIdentifier: 
   optionText: Surname
-  optionPoints: 0
+  optionPoints: -0.25

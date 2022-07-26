@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Option 4
   m_EditorClassIdentifier: 
   optionText: Phone Number
-  optionPoints: 0
+  optionPoints: -0.25
