@@ -1090,6 +1090,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145460670}
   m_CullTransparentMesh: 1
+--- !u!1 &155294590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4221923063614398827, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+  m_PrefabInstance: {fileID: 1679827291}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &200513011
 GameObject:
   m_ObjectHideFlags: 0
@@ -6134,6 +6139,7 @@ GameObject:
   - component: {fileID: 1592768697}
   - component: {fileID: 1592768699}
   - component: {fileID: 1592768698}
+  - component: {fileID: 1592768700}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -6299,7 +6305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -623.0923, y: 1.455822}
+  scrollPos: {x: -356.01984, y: 139.26076}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -6311,9 +6317,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1592768691}
+  - {fileID: 1592768673}
   selectedCommands:
-  - {fileID: 1592768698}
+  - {fileID: 1592768700}
   variables:
   - {fileID: 1592768677}
   description: 
@@ -6708,7 +6714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 321.10318
+    x: 322.3227
     y: 64.794266
     width: 219.51216
     height: 40
@@ -6726,6 +6732,7 @@ MonoBehaviour:
   - {fileID: 1592768668}
   - {fileID: 1592768674}
   - {fileID: 1592768667}
+  - {fileID: 1592768700}
   suppressAllAutoSelections: 0
 --- !u!114 &1592768674
 MonoBehaviour:
@@ -7570,6 +7577,23 @@ MonoBehaviour:
     booleanRef: {fileID: 0}
     booleanVal: 1
   targetGameObjectOLD: {fileID: 0}
+--- !u!114 &1592768700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592768649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a200dbd67304446a3019434503338a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 48
+  indentLevel: 0
+  targetObject: {fileID: 155294590}
+  methodName: PlayVideo
+  delay: 0
 --- !u!1 &1595313231
 GameObject:
   m_ObjectHideFlags: 0
@@ -8141,6 +8165,14 @@ PrefabInstance:
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_Loop
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: m_AutoStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: m_forceFileFormat
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_events.m_PersistentCalls.m_Calls.Array.size

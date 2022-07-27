@@ -55,7 +55,7 @@ public class L1_UIManager : MonoBehaviour
         ShowQuestionUI(false, 0.0f);
         //AffirmationText.gameObject.SetActive(false);
         //point.gameObject.SetActive(false);
-        indicator.gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -83,7 +83,6 @@ public class L1_UIManager : MonoBehaviour
     private IEnumerator SetQuestionUIActive(bool condition, float time)
     {
         //point.gameObject.SetActive(true);
-        indicator.gameObject.SetActive(true);
         yield return new WaitForSeconds(time);
         if (questionBoxUI)
             questionBoxUI.gameObject.SetActive(condition);

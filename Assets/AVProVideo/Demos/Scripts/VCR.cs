@@ -67,6 +67,11 @@ namespace RenderHeads.Media.AVProVideo.Demos
 			}
 		}
 
+		public void PlayVideo()
+		{
+			_mediaPlayer.Play();
+		}
+
 		public void OnOpenVideoFile()
  		{
 	        LoadingPlayer.OpenVideoFromFile(_location, LoadingPlayer.m_VideoPath, _AutoStartToggle.isOn);
