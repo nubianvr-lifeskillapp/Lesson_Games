@@ -20,22 +20,10 @@ public class Player : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        //if (horizontalInput != 0.0f || verticalInput != 0.0f)
-        //{
-        //    //transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
-        //    transform.Translate(new Vector3(horizontalInput * speed * Time.deltaTime, verticalInput * speed * Time.deltaTime, 0.0f));
-        //}
         if (horizontalInput != 0.0f || verticalInput != 0.0f)
         {
-            //rb.simulated = true;
             rb.AddForce(new Vector2(horizontalInput * speed * Time.deltaTime, verticalInput * speed * Time.deltaTime));
-            //rb.AddForce(new Vector3(horizontalInput * speed * Time.deltaTime, 0.0f, 0.0f));
-            //rb.AddForce(new Vector3(0.0f, verticalInput * speed * Time.deltaTime, 0.0f));
         }
-        //else
-        //{
-        //    rb.simulated = false;
-        //}
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

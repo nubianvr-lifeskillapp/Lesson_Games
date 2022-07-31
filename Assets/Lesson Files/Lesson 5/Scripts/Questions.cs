@@ -13,4 +13,6 @@ public class Questions : ScriptableObject
     public string textQuestion;
     public string trueAnswerText;
     public string falseAnswerText;
+    public string trueCommentaryStatement;
+    public string falseCommentaryStatement;
 }
