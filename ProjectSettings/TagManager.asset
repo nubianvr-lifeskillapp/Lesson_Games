@@ -3,14 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< Updated upstream
-  - Cube1
-  - Cube2
-  - Cube3
-=======
-  - Object
->>>>>>> Stashed changes
+  tags: []
   layers:
   - Default
   - TransparentFX
