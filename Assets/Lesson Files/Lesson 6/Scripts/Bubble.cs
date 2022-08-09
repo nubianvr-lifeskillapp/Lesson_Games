@@ -11,7 +11,15 @@ public class Bubble : MonoBehaviour
     
     private new RectTransform transform;
     [HideInInspector]
-    public float upValue = -200.0f;
+    public float upValue = -50.0f;
+
+    public Sprite SenderBubble;
+
+    public Sprite ReceiverBubble;
+
+    public TMP_Text message;
+
+    public HorizontalLayoutGroup HorizontalLayout;
 
     // Start is called before the first frame update
     void Start()

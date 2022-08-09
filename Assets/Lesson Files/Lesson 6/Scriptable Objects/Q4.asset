@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
   isClickTrue: 0
-  textQuestion: 'Are you a student? What school do you attend? '
+  textQuestion: Are you a student?  What school do you attend?"
   trueAnswerText: I attend Maximoff High School.
   falseAnswerText: I'm not comfortable sharing this with you.
   trueCommentaryStatement: 

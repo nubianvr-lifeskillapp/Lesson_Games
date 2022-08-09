@@ -30,9 +30,11 @@ public class L6_GameManager : MonoBehaviour
     [SerializeField]
     private Button dontShareButton;
 
+    private bool messageFromSender = true;
+
     //NB: These variables must be set before using the SetSendMessage function....
     Vector2 setPosition = Vector2.zero;
-    string question = "";
+    string question = "Hello \n. Test";
 
     //NB: This variable must be set before using ActivateShareButtos function...
     bool showButtons = false;
@@ -53,10 +55,24 @@ public class L6_GameManager : MonoBehaviour
     private void SetSendMessage()
     {
         bubbles.Add(Instantiate<Bubble>(bubble, parentTransform));
-        TMP_Text messageText = bubbles[bubbleIndex].transform.GetChild(0).GetComponent<TMP_Text>();
-        messageText.text = question;
+        TMP_Text messageText = bubbles[bubbleIndex].message;
+       
+        // if (messageFromSender)
+        // {
+        //     bubbles[bubbleIndex].GetComponent<Image>().sprite = bubble.SenderBubble;
+        //     messageText.color = Color.white;
+        // }
+        // else
+        // {
+        //     bubbles[bubbleIndex].GetComponent<Image>().sprite = bubble.ReceiverBubble;
+        //     messageText.color = Color.black;
+        // }
+        
+        //messageText.text = question;
         bubbles[bubbleIndex].GetComponent<RectTransform>().anchoredPosition = setPosition;
+        StartCoroutine(DialogText(0.05f, messageText));
         bubbleIndex++;
+        
     }
 
     private void ActivateShareButtons()
@@ -64,12 +80,22 @@ public class L6_GameManager : MonoBehaviour
         shareButton.gameObject.SetActive(showButtons);
         dontShareButton.gameObject.SetActive(showButtons);
     }
+    
+    private IEnumerator DialogText(float timePerChar, TMP_Text messageBox)
+    {
+        foreach (char c in question)
+        {
+            //Debug.Log(c);
+            yield return new WaitForSeconds(timePerChar);
+            messageBox.text += c;
+        }
+    }
 
     private void MoveAllBubbles()
     {
         foreach (Bubble bubbleRef in bubbles)
         {
-            bubbleRef.upValue += 200.0f;
+            bubbleRef.upValue += 100.0f;
             bubbleRef.MoveBubbleUp(bubbleRef.upValue);
         }
     }
@@ -79,7 +105,7 @@ public class L6_GameManager : MonoBehaviour
         // Deactivate Buttons...
         showButtons = false;
         ActivateShareButtons();
-
+        messageFromSender = false;
         MoveAllBubbles();
 
         // User response logic...
@@ -107,6 +133,7 @@ public class L6_GameManager : MonoBehaviour
 
         if(questionIndex < questions.Length)
         {
+            messageFromSender = true;
             // Move bubble up...
             Invoke(nameof(MoveAllBubbles), 3.0f);
 
