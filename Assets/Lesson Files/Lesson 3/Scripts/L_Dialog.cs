@@ -41,15 +41,15 @@ public class L_Dialog : MonoBehaviour
         else
             gameObject.GetComponent<RectTransform>().DOLocalMove(dialogEndPosition, tweenTime);
 
-        StartCoroutine(DialogText(timePerChar));
+        StartCoroutine(DialogText(timePerChar, messageText));
     }
-    private IEnumerator DialogText(float timePerChar)
+    private IEnumerator DialogText(float timePerChar, TMP_Text messageBox)
     {
         foreach (char c in message)
         {
             //Debug.Log(c);
             yield return new WaitForSeconds(timePerChar);
-            messageText.text += c;
+            messageBox.text += c;
         }
         button.interactable = true;
     }

@@ -28,6 +28,9 @@ public class L4_UIManager : MonoBehaviour
     private Image overlay;
     [SerializeField]
     private Image background;
+
+    private int socialFeedPoints;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -54,15 +57,20 @@ public class L4_UIManager : MonoBehaviour
         currentPostFrameDefaultSize = image.rectTransform.sizeDelta;
         image.rectTransform.DOSizeDelta(currentPostFrameAlteredSize, tweenTime);
         image.rectTransform.DOAnchorPos(currentPostFrameAlteredPosition, tweenTime);
-        Invoke(nameof(ShowPostLayout), tweenTime);
+        StartCoroutine(ShowPostLayout(image, tweenTime));
+        //Invoke(nameof(ShowPostLayout), tweenTime);
     }
 
-    private void ShowPostLayout()
+    IEnumerator ShowPostLayout(Image image,float delayTime)
     {
+        yield return new WaitForSeconds(delayTime);
+        image.gameObject.SetActive(false);
         postLayouts[postIndex].gameObject.SetActive(true);
         background.gameObject.SetActive(true);
         overlay.gameObject.SetActive(true);
+        
     }
+   
 
     private void HidePostLayout()
     {
@@ -74,8 +82,14 @@ public class L4_UIManager : MonoBehaviour
     public void SelectPost(L4_BaseCarouselScript script)
     {
         //To be changed to sprite...
-        postFrames[postIndex].GetComponent<Image>().color = script.images[script.currentIndex].color;
+        var postImage = postFrames[postIndex].GetComponent<Image>();
+        var postLayout  = postLayouts[postIndex].GetComponent<PostLayoutImages>();
+        var postLayoutImage = postLayout.images[script.currentIndex].gameObject.GetComponent<ImagePointClass>();
+        postImage.color = script.images[script.currentIndex].color; //Remember to change this to sprites when the images are ready. 
+        postImage.gameObject.SetActive(true);
         HidePostLayout();
+        socialFeedPoints += postLayoutImage.imageScore;
+        print("Current Social Feed Score: " + socialFeedPoints);
         //Disable "EventTrigger" component on current post frame...
         postFrames[postIndex].GetComponent<EventTrigger>().enabled = false;
         postFrames[postIndex].DOSizeDelta(currentPostFrameDefaultSize, tweenTime);

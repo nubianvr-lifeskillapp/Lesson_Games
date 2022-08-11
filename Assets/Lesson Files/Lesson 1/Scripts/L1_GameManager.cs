@@ -117,7 +117,7 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
         if (allQuestions[questionIndex].isClickTrue == condition)
         {
             flowchart.ExecuteBlock("Fade Question Out");
-            //uIManager.ShowAffirmationText("Correct!");
+            uIManager.ShowAffirmationText("Correct!");
             uIManager.IncrementPointLocation();
             
             correctAnswers++;
@@ -129,7 +129,7 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
         else
         {
             flowchart.ExecuteBlock("Fade Question Out");
-            //uIManager.ShowAffirmationText("Incorrect!");
+            uIManager.ShowAffirmationText("Incorrect!");
             
             wrongAnswers++;
             Debug.Log("Incorrect");
@@ -195,5 +195,10 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
     public void FinishedPlayingVideo()
     {
         flowchart.ExecuteBlock("Continue After Video");
+    }
+
+    public void IntroVideoPlayEnded()
+    {
+        flowchart.ExecuteBlock("After Intro Video Game Started");
     }
 }
