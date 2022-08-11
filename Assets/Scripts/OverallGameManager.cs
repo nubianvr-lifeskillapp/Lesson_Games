@@ -54,10 +54,10 @@ public class OverallGameManager : MonoBehaviour
     public void LoadNextScene(int buildIndex)
     {
         SceneManager.LoadScene(buildIndex);
-#if UNITY_WEBGL == true && UNITY_EDITOR == false
-    sendLevelComplete(buildIndex);
-           
-#endif
+// #if UNITY_WEBGL == true && UNITY_EDITOR == false
+//     sendLevelComplete(buildIndex);
+//            
+// #endif
     }
 
     public void ReloadScene()
