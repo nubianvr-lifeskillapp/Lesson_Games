@@ -334,6 +334,10 @@ PrefabInstance:
       value: https://lsa-games.s3.eu-central-1.amazonaws.com/LessonVideos/Game+introduction.mp4
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: _optionsWebGL.overridePath
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_events.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
