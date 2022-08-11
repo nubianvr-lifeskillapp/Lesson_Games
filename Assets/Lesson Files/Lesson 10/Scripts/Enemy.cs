@@ -6,56 +6,22 @@ using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField]
-    private NavMeshAgent agent;
-    [HideInInspector]
-    public Vector3 SpawnPos;
-    [HideInInspector]
-    public Vector3 EndPos;
-    //private Vector3 currentDestination;
-    [SerializeField]
-    private Transform waypoint;
-    //private Vector3 defaultPosition;
-    public bool canLerp = false;
-    public float movementSpeed = 1f;
-   
-    // Start is called before the first frame update
-    void Start()
+    private L10_GameManager gameManager;
+    private Spawner spawner;
+    private void Start()
     {
-        //defaultPosition = gameObject.transform.position;
-        //Debug.Log(defaultPosition);
-        agent = GetComponent<NavMeshAgent>();
-       
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-
-        //MoveToLocation(EndPos);
+        gameManager = GameObject.FindObjectOfType<L10_GameManager>();
+        spawner = GameObject.FindObjectOfType<Spawner>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(transform.position.Equals(EndPos))
+       if(collision.CompareTag("Player"))
         {
-            Debug.Log("At end pos");
-            MoveToLocation(SpawnPos);
+            Debug.Log("Player Entered");
+            spawner.isEnemyPresent = false;
+            gameManager.score++;
+            Debug.Log("Score Points: " + gameManager.score);
+            Destroy(gameObject);
         }
-        else if(transform.position.Equals(SpawnPos))
-        {
-            MoveToLocation(EndPos);
-            Debug.Log("At spawn pos");
-        }
-        if (canLerp)
-        {
-            MoveToLocation(EndPos);
-        }
-    }
-
-    public void MoveToLocation(Vector3 destination)
-    {
-        //currentDestination = destination;
-        //agent.SetDestination(destination);
-        transform.position = Vector3.Lerp(transform.position, destination, 0.5f * Time.deltaTime);
-        //transform.DOMove(destination, 3.0f);
     }
 }

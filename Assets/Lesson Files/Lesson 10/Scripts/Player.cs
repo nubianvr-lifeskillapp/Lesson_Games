@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float speed = 10.0f;
     private Rigidbody2D rb;
-    private bool isColliding = false;
+    //private bool isColliding = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,16 +24,5 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(new Vector2(horizontalInput * speed * Time.deltaTime, verticalInput * speed * Time.deltaTime));
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Hit");
-        isColliding = true;
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        Debug.Log("Exit!");
-        isColliding = false;
     }
 }
