@@ -338,6 +338,10 @@ PrefabInstance:
       value: https://lsa-games.s3.eu-central-1.amazonaws.com/LessonVideos/Game+introduction.mp4
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: _pauseMediaOnAppPause
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_events.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1228,7 +1232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 189.01883, y: 48.364193}
+  scrollPos: {x: 209.75055, y: 188.60817}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 753
@@ -1240,9 +1244,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 407232230}
-  selectedCommands:
-  - {fileID: 407232264}
+  - {fileID: 407232274}
+  selectedCommands: []
   variables:
   - {fileID: 407232208}
   - {fileID: 407232206}
