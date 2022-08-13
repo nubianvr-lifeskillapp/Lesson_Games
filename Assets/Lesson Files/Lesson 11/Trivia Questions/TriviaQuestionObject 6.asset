@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f3c38b74d6aefb4ebf35d05f6d7fff0, type: 3}
-  m_Name: TriviaQuestionObject 4
+  m_Name: TriviaQuestionObject 6
   m_EditorClassIdentifier: 
-  question: What kinds of online content should we try our best to avoid?
+  question: What kind of links should you try not to click on
   answers:
-  - Educational Content that benefits you
-  - 'Violent, Harmful and Fake Content '
-  - Child Friendly Entertaining Videos
+  - "Links from people / places you don\u2019t know that promise you a chance to
+    win something or share fascinating information with you  "
+  - 'Links from well known places that offer you a chance to win something or share
+    fascinating information with you '
   correctAnswerIndex: 1
-  points: 5000
+  points: 15000

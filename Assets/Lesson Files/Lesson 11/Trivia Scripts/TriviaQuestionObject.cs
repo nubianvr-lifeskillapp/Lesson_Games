@@ -9,4 +9,5 @@ public class TriviaQuestionObject : ScriptableObject
     public string question;
     public string[] answers;
     public int correctAnswerIndex;
+    public int points;
 }

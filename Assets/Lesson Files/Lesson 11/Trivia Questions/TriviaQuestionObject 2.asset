@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3c38b74d6aefb4ebf35d05f6d7fff0, type: 3}
   m_Name: TriviaQuestionObject 2
   m_EditorClassIdentifier: 
-  question: Which company has the highest net worth?
+  question: 'What is the securest password you can create to prevent hackers from
+    figuring it out '
   answers:
-  - Microsoft
-  - Apple
-  - Meta
-  - Google
-  correctAnswerIndex: 1
+  - 'A password that includes the name of the site you are on '
+  - 'A password that is your full name '
+  - 'A password that includes a combination of upper and lowercase letters, numbers
+    and symbols '
+  correctAnswerIndex: 2
+  points: 1000

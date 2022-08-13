@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f3c38b74d6aefb4ebf35d05f6d7fff0, type: 3}
-  m_Name: TriviaQuestionObject 0
+  m_Name: TriviaQuestionObject 5
   m_EditorClassIdentifier: 
-  question: 'What are the safest kinds of online usernames to use in order to be
-    safe? '
+  question: 'What kinds of information should we not share with people we do not
+    know online? '
   answers:
-  - 'A username that has your full name '
-  - 'A username that includes your date of birth '
-  - 'A username that uses a nickname '
-  correctAnswerIndex: 2
-  points: 100
+  - 'Greetings such as good morning '
+  - 'Private information such as where we live, our full name, where we go to school '
+  correctAnswerIndex: 1
+  points: 10000

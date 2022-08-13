@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3c38b74d6aefb4ebf35d05f6d7fff0, type: 3}
   m_Name: TriviaQuestionObject 3
   m_EditorClassIdentifier: 
-  question: Which among the following is the fastest car in the world?
+  question: 'What kind of advice would you give to yourself when considering what
+    to post online?  '
   answers:
-  - Koenigsegg Agera R
-  - 9ff GT9-R
-  - SSC Ultimate Aero
-  - Hennessey Venom GT
-  correctAnswerIndex: 3
+  - 'It does not matter if what you want to post has private information strangers
+    should not know '
+  - "You don\u2019t have to consider if someone will be insulted by this post.  "
+  - 'If it reveals private information strangers should not know, if it is mean or
+    rude and if it is violent and will make others uncomfortable, I should not post
+    it '
+  correctAnswerIndex: 2
+  points: 2000

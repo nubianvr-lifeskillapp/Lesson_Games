@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3c38b74d6aefb4ebf35d05f6d7fff0, type: 3}
   m_Name: TriviaQuestionObject 1
   m_EditorClassIdentifier: 
-  question: Who is the richest man in the world?
+  question: 'What are the safest kinds of profile pictures to upload in order to
+    be safe and remain cool? '
   answers:
-  - Jeff Bezos
-  - Melinda Gates
-  - Elon Musk
-  - Tupac
+  - 'A profile picture that shows your whole self and even your house number '
+  - 'A profile picture that shows your whole family '
+  - 'A cool avatar  '
   correctAnswerIndex: 2
+  points: 500

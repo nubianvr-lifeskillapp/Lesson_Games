@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f3c38b74d6aefb4ebf35d05f6d7fff0, type: 3}
-  m_Name: TriviaQuestionObject 0
+  m_Name: TriviaQuestionObject 8
   m_EditorClassIdentifier: 
-  question: 'What are the safest kinds of online usernames to use in order to be
-    safe? '
+  question: What should we do if we are getting cyberbullied?
   answers:
-  - 'A username that has your full name '
-  - 'A username that includes your date of birth '
-  - 'A username that uses a nickname '
-  correctAnswerIndex: 2
-  points: 100
+  - 'Report the bully because you are strong and defending yourself  / someone you
+    know '
+  - "Don\u2019t report the bully because if we do we are snitches "
+  correctAnswerIndex: 0
+  points: 25000

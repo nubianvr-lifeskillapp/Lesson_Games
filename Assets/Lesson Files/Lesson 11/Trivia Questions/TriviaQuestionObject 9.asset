@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f3c38b74d6aefb4ebf35d05f6d7fff0, type: 3}
-  m_Name: TriviaQuestionObject 0
+  m_Name: TriviaQuestionObject 9
   m_EditorClassIdentifier: 
-  question: 'What are the safest kinds of online usernames to use in order to be
-    safe? '
+  question: 'If our computers are getting attacked by viruses what can we download
+    to destroy these viruses? '
   answers:
-  - 'A username that has your full name '
-  - 'A username that includes your date of birth '
-  - 'A username that uses a nickname '
-  correctAnswerIndex: 2
-  points: 100
+  - Malware
+  - 'Antivirus '
+  - 'Aftervirus  '
+  correctAnswerIndex: 1
+  points: 30000
