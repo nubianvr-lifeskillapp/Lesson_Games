@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class L6_GameManager : MonoBehaviour
@@ -15,11 +16,14 @@ public class L6_GameManager : MonoBehaviour
     private Vector2 senderSpawnLocation;
     [SerializeField]
     private Vector2 userSpawnLocation;
-    [SerializeField]
-    private RectTransform parentTransform;
+    [FormerlySerializedAs("parentTransform")] [SerializeField]
+    private RectTransform leftParentTransform;
 
-    [SerializeField]
-    private Bubble bubble;
+    [FormerlySerializedAs("bubble")] [SerializeField]
+    private Bubble strangerBubble;
+
+    public ScrollRect ScrollRect;
+    [SerializeField] private Bubble playerBubble;
     private List<Bubble> bubbles = new List<Bubble>();
     private int bubbleIndex = 0;
 
@@ -54,25 +58,39 @@ public class L6_GameManager : MonoBehaviour
 
     private void SetSendMessage()
     {
-        bubbles.Add(Instantiate<Bubble>(bubble, parentTransform));
-        TMP_Text messageText = bubbles[bubbleIndex].message;
-       
-        // if (messageFromSender)
-        // {
-        //     bubbles[bubbleIndex].GetComponent<Image>().sprite = bubble.SenderBubble;
-        //     messageText.color = Color.white;
-        // }
-        // else
-        // {
-        //     bubbles[bubbleIndex].GetComponent<Image>().sprite = bubble.ReceiverBubble;
-        //     messageText.color = Color.black;
-        // }
+        if (messageFromSender)
+        {
+            bubbles.Add(Instantiate<Bubble>(strangerBubble, leftParentTransform));
+            TMP_Text messageText = bubbles[bubbleIndex].message;
+            bubbles[bubbleIndex].CanvasGroup.DOFade(1, 0.75f);
+            StartCoroutine(DialogText(0.05f, messageText));
+            bubbleIndex++;
+        }
+        else
+        {
+            bubbles.Add(Instantiate<Bubble>(playerBubble, leftParentTransform));
+            TMP_Text messageText = bubbles[bubbleIndex].message;
+            bubbles[bubbleIndex].CanvasGroup.DOFade(1, 0.75f);
+            StartCoroutine(DialogText(0.05f, messageText));
+            bubbleIndex++;
+        }
         
-        //messageText.text = question;
-        bubbles[bubbleIndex].GetComponent<RectTransform>().anchoredPosition = setPosition;
-        StartCoroutine(DialogText(0.05f, messageText));
-        bubbleIndex++;
-        
+        AddContentViewHeight();
+        ScrollToBottom(ScrollRect);
+    }
+
+    private void AddContentViewHeight()
+    {
+        if (leftParentTransform.transform.childCount > 3)
+        {
+            var height = leftParentTransform.rect.height;
+            leftParentTransform.sizeDelta = new Vector2(0, height + 150);
+        }
+    }
+    
+    public void ScrollToBottom(ScrollRect scrollRect)
+    {
+        scrollRect.normalizedPosition = new Vector2(0, 0);
     }
 
     private void ActivateShareButtons()
@@ -106,7 +124,7 @@ public class L6_GameManager : MonoBehaviour
         showButtons = false;
         ActivateShareButtons();
         messageFromSender = false;
-        MoveAllBubbles();
+        //MoveAllBubbles();
 
         // User response logic...
         if (condition == true)
@@ -135,7 +153,7 @@ public class L6_GameManager : MonoBehaviour
         {
             messageFromSender = true;
             // Move bubble up...
-            Invoke(nameof(MoveAllBubbles), 3.0f);
+            //Invoke(nameof(MoveAllBubbles), 3.0f);
 
             // Sender sends...
             setPosition = senderSpawnLocation;

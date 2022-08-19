@@ -20,3 +20,6 @@ MonoBehaviour:
   falseAnswerText: No I don't want to do that.
   trueCommentaryStatement: 
   falseCommentaryStatement: 
+  senderName: Evelyn Boso
+  senderProfileImage: {fileID: 21300000, guid: 85fb1ec4b40f2d0408bbd6ddd4170194, type: 3}
+  userProfileImage: {fileID: 21300000, guid: 97f69a3d4046bea4c9418d8e83bced9e, type: 3}

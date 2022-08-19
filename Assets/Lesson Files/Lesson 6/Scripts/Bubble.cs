@@ -12,20 +12,20 @@ public class Bubble : MonoBehaviour
     private new RectTransform transform;
     [HideInInspector]
     public float upValue = -50.0f;
-
-    public Sprite SenderBubble;
-
-    public Sprite ReceiverBubble;
-
+    
     public TMP_Text message;
 
-    public HorizontalLayoutGroup HorizontalLayout;
+    public TMP_Text userName;
+
+    public Image userProfileImage;
+
+    public CanvasGroup CanvasGroup;
 
     // Start is called before the first frame update
     void Start()
     {
         transform = gameObject.GetComponent<RectTransform>();
-        MoveBubbleUp(upValue);
+        //MoveBubbleUp(upValue);
     }
 
     public void MoveBubbleUp(float value)

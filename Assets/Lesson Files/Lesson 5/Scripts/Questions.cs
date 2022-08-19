@@ -15,4 +15,8 @@ public class Questions : ScriptableObject
     public string falseAnswerText;
     public string trueCommentaryStatement;
     public string falseCommentaryStatement;
+    public string senderName;
+    public Sprite senderProfileImage;
+    public Sprite userProfileImage;
+
 }
