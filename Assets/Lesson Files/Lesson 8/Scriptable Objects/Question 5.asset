@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Question 5
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
-  isClickTrue: 0
+  isClickTrue: 1
   textQuestion: Do you consent to this application using your camera and having access
     to your gallery.
   trueAnswerText: Yes

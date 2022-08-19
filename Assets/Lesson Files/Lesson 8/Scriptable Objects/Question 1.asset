@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Question 1
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
-  isClickTrue: 0
+  isClickTrue: 1
   textQuestion: Do you agree that we have the right to access your account and read
     your personal information as and when we want.
   trueAnswerText: Yes

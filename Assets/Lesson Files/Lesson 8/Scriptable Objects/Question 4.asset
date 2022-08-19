@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Question 4
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
-  isClickTrue: 0
+  isClickTrue: 1
   textQuestion: 'Do you agree to grant this app permission to all media stored on
     your device. '
   trueAnswerText: Yes
