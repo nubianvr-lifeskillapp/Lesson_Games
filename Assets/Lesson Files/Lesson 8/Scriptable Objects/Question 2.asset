@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ae0b10ca4cbe5045b957832690afbda, type: 3}
-  m_Name: Question1
+  m_Name: Question 2
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
   isClickTrue: 0
-  textQuestion: Is this the term and condition that allows your computer to listen
-    to you?
+  textQuestion: 'Do you acknowledge and consent to the website collecting your IP
+    address, and selling your whereabouts to third party companies for advertising. '
   trueAnswerText: Yes
   falseAnswerText: No
   trueCommentaryStatement: Correct! This term allows your computer to listen to you.
