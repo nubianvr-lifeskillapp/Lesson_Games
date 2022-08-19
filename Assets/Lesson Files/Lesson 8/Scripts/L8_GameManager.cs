@@ -87,5 +87,9 @@ public class L8_GameManager : MonoBehaviour
         falseButton.gameObject.SetActive(false);
         if (commentaryBox)
             commentaryBox.gameObject.SetActive(true);
+        if (noOfQuestionsAnswered >= questionObjects.Length)
+        {
+
+        }
     }
 }
