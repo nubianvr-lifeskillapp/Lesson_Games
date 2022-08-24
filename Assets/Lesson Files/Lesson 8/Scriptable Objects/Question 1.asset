@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
   isClickTrue: 1
-  textQuestion: Do you agree that we have the right to access your account and read
+  questionText: You agree that we have the right to access your account and read
     your personal information as and when we want.
   trueAnswerText: Yes
   falseAnswerText: No
@@ -25,3 +25,5 @@ MonoBehaviour:
     to listen to you. This condition talks about allowing your computer to fix your
     timer every 10 minutes. It is a very safe condition and does not infringe on
     your privacy.
+  senderName: 
+  senderProfileImage: {fileID: 0}

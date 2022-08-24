@@ -12,7 +12,6 @@ public class Patrol : MonoBehaviour
     private int nextSpotIndex;
     private bool swapDirection = false;
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +23,13 @@ public class Patrol : MonoBehaviour
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, moveSpots[nextSpotIndex].position, speed * Time.deltaTime);
-        if(Vector2.Distance(transform.position, moveSpots[nextSpotIndex].position) < 0.2f)
+        if (Vector2.Distance(transform.position, moveSpots[nextSpotIndex].position) < 0.01f)
         {
-            if(waitTime <= 0)
+            if (waitTime <= 0)
             {
-                if(!swapDirection) //If swap is false...
+                if (!swapDirection) //If swap is false...
                 {
-                    if (nextSpotIndex == moveSpots.Count-1)
+                    if (nextSpotIndex == moveSpots.Count - 1)
                         swapDirection = true;
                     else
                         nextSpotIndex++;
@@ -42,7 +41,7 @@ public class Patrol : MonoBehaviour
                     else
                         nextSpotIndex--;
                 }
-                Debug.Log("Next Spot Index: " + nextSpotIndex);
+                //Debug.Log("Next Spot Index: " + nextSpotIndex);
                 waitTime = startWaitTime;
             }
             else

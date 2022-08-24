@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
   isClickTrue: 1
-  textQuestion: Do you agree to let this website sell your personal information such
+  questionText: You agree to let this website sell your personal information such
     as email and phone number to third parties.
   trueAnswerText: Yes
   falseAnswerText: No
@@ -25,3 +25,5 @@ MonoBehaviour:
     to listen to you. This condition talks about allowing your computer to fix your
     timer every 10 minutes. It is a very safe condition and does not infringe on
     your privacy.
+  senderName: 
+  senderProfileImage: {fileID: 0}

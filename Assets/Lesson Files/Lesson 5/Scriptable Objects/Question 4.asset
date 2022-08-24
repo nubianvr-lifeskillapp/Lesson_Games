@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae0b10ca4cbe5045b957832690afbda, type: 3}
   m_Name: Question 4
   m_EditorClassIdentifier: 
+  questionImage: {fileID: 0}
   isClickTrue: 1
-  textQuestion: What is my favourite color?
+  questionText: What's my favourite color?
   trueAnswerText: Black
   falseAnswerText: Violet
+  trueCommentaryStatement: 
+  falseCommentaryStatement: 
+  senderName: 
+  senderProfileImage: {fileID: 0}

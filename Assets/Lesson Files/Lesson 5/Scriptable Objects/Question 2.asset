@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae0b10ca4cbe5045b957832690afbda, type: 3}
   m_Name: Question 2
   m_EditorClassIdentifier: 
+  questionImage: {fileID: 0}
   isClickTrue: 0
-  textQuestion: What is the name of my school?
+  questionText: What school do I attend?
   trueAnswerText: OUI
   falseAnswerText: OAU
+  trueCommentaryStatement: 
+  falseCommentaryStatement: 
+  senderName: 
+  senderProfileImage: {fileID: 0}

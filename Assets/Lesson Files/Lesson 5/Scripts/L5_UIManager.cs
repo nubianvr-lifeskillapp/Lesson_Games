@@ -13,7 +13,7 @@ public class L5_UIManager : MonoBehaviour
     private Transform questionBoxUI;
     [SerializeField]
     private Transform ResultsMenuUI;
-   
+
     public TMP_Text questionText;
     public TMP_Text trueAnswerText;
     public TMP_Text falseAnswerText;
@@ -43,14 +43,14 @@ public class L5_UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SetQuizElements(Questions question)
     {
         if (questionText && trueAnswerText && falseAnswerText)
         {
-            questionText.text = question.textQuestion;
+            questionText.text = question.questionText;
             trueAnswerText.text = question.trueAnswerText;
             falseAnswerText.text = question.falseAnswerText;
         }
@@ -58,8 +58,8 @@ public class L5_UIManager : MonoBehaviour
 
     public void ShowQuestionUI(bool condition)
     {
-        if(questionBoxUI)
-           questionBoxUI.gameObject.SetActive(condition);
+        if (questionBoxUI)
+            questionBoxUI.gameObject.SetActive(condition);
     }
 
     public void ShowAffirmationText(string text)

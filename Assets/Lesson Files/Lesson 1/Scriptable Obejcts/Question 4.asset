@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
   isClickTrue: 0
-  textQuestion: 'Should you include your age or date of birth in your username?  '
+  questionText: 'Should you include your age or date of birth in your username? '
   trueAnswerText: Yes
   falseAnswerText: No
+  trueCommentaryStatement: 
+  falseCommentaryStatement: 
+  senderName: 
+  senderProfileImage: {fileID: 0}

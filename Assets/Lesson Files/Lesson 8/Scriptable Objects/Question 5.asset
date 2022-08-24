@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
   isClickTrue: 1
-  textQuestion: Do you consent to this application using your camera and having access
-    to your gallery.
+  questionText: 'You agree to grant this app permission to all media stored on your
+    device. '
   trueAnswerText: Yes
   falseAnswerText: No
   trueCommentaryStatement: Correct! This term allows your computer to listen to you.
@@ -25,3 +25,5 @@ MonoBehaviour:
     to listen to you. This condition talks about allowing your computer to fix your
     timer every 10 minutes. It is a very safe condition and does not infringe on
     your privacy.
+  senderName: 
+  senderProfileImage: {fileID: 0}

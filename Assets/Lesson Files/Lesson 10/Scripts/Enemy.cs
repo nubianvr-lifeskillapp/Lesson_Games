@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using DG.Tweening;
+
 
 public class Enemy : MonoBehaviour
 {
@@ -15,13 +14,11 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             Debug.Log("Player Entered");
-            spawner.isEnemyPresent = false;
-            gameManager.score++;
-            Debug.Log("Score Points: " + gameManager.score);
             Destroy(gameObject);
+            gameManager.AddToScore(10);
         }
     }
 }

@@ -16,10 +16,12 @@ public class L6_GameManager : MonoBehaviour
     private Vector2 senderSpawnLocation;
     [SerializeField]
     private Vector2 userSpawnLocation;
-    [FormerlySerializedAs("parentTransform")] [SerializeField]
+    [FormerlySerializedAs("parentTransform")]
+    [SerializeField]
     private RectTransform leftParentTransform;
 
-    [FormerlySerializedAs("bubble")] [SerializeField]
+    [FormerlySerializedAs("bubble")]
+    [SerializeField]
     private Bubble strangerBubble;
 
     public ScrollRect ScrollRect;
@@ -48,7 +50,7 @@ public class L6_GameManager : MonoBehaviour
     {
         //Sender sends...
         setPosition = senderSpawnLocation;
-        question = questions[questionIndex].textQuestion;
+        question = questions[questionIndex].questionText;
         SetSendMessage();
 
         //Activate Buttons...
@@ -74,7 +76,7 @@ public class L6_GameManager : MonoBehaviour
             StartCoroutine(DialogText(0.05f, messageText));
             bubbleIndex++;
         }
-        
+
         AddContentViewHeight();
         ScrollToBottom(ScrollRect);
     }
@@ -87,7 +89,7 @@ public class L6_GameManager : MonoBehaviour
             leftParentTransform.sizeDelta = new Vector2(0, height + 150);
         }
     }
-    
+
     public void ScrollToBottom(ScrollRect scrollRect)
     {
         scrollRect.normalizedPosition = new Vector2(0, 0);
@@ -98,7 +100,7 @@ public class L6_GameManager : MonoBehaviour
         shareButton.gameObject.SetActive(showButtons);
         dontShareButton.gameObject.SetActive(showButtons);
     }
-    
+
     private IEnumerator DialogText(float timePerChar, TMP_Text messageBox)
     {
         foreach (char c in question)
@@ -149,7 +151,7 @@ public class L6_GameManager : MonoBehaviour
         // Move to next question object...
         questionIndex++;
 
-        if(questionIndex < questions.Length)
+        if (questionIndex < questions.Length)
         {
             messageFromSender = true;
             // Move bubble up...
@@ -157,7 +159,7 @@ public class L6_GameManager : MonoBehaviour
 
             // Sender sends...
             setPosition = senderSpawnLocation;
-            question = questions[questionIndex].textQuestion;
+            question = questions[questionIndex].questionText;
             Invoke(nameof(SetSendMessage), 3.0f);
 
             // Activate Buttons...

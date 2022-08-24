@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
   isClickTrue: 0
-  textQuestion: 'Should you use your full name as your username?  '
+  questionText: Should you use your full name as your username?
   trueAnswerText: Yes
   falseAnswerText: No
+  trueCommentaryStatement: 
+  falseCommentaryStatement: 
+  senderName: 
+  senderProfileImage: {fileID: 0}

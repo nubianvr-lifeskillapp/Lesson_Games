@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
   isClickTrue: 0
-  textQuestion: 'What about the initials of your full name?  '
+  questionText: What about the initials of your full name?
   trueAnswerText: Yes
   falseAnswerText: No
+  trueCommentaryStatement: 
+  falseCommentaryStatement: 
+  senderName: 
+  senderProfileImage: {fileID: 0}

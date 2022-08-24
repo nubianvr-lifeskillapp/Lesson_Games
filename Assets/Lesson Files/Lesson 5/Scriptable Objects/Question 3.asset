@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae0b10ca4cbe5045b957832690afbda, type: 3}
   m_Name: Question 3
   m_EditorClassIdentifier: 
+  questionImage: {fileID: 0}
   isClickTrue: 0
-  textQuestion: How many sisters do I have?
+  questionText: How many sisters do i have?
   trueAnswerText: 2
   falseAnswerText: 3
+  trueCommentaryStatement: 
+  falseCommentaryStatement: 
+  senderName: 
+  senderProfileImage: {fileID: 0}

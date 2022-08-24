@@ -10,29 +10,19 @@ public class L9_GameManager : MonoBehaviour
     [SerializeField]
     private Questions[] questionObjects;
     int questionIndex = 0;
-    public int noOfQuestions = 0;
-    private int questionCount = 0;
-    public int noOfQuestionsAnswered = 0;
     public int correctAnswers = 0;
     public int wrongAnswers = 0;
-    public bool isLevelFinished = false;
+    // Question Image is Post Image...
+    // Question Text is SenderCommentText...
 
-   
     [SerializeField]
-    private RectTransform questionBoxUI;
+    private Image postImage;
     [SerializeField]
-    private RectTransform commentaryBox;
+    private Image senderProfileImage;
     [SerializeField]
-    private TMP_Text questionText;
+    private TMP_Text senderCommentText;
     [SerializeField]
-    private TMP_Text commentaryText;
-    [SerializeField]
-    private Image questionImage;
-    [SerializeField]
-    private Button trueButton;
-    [SerializeField]
-    private Button falseButton;
-
+    private TMP_Text senderUsernameText;
 
 
 
@@ -50,24 +40,27 @@ public class L9_GameManager : MonoBehaviour
 
     public void SetQuestionBox()
     {
-        questionText.text = questionObjects[questionIndex].textQuestion;
-        questionImage.sprite = questionObjects[questionIndex].questionImage;
+        postImage.sprite = questionObjects[questionIndex].questionImage;
+        senderProfileImage.sprite = questionObjects[questionIndex].senderProfileImage;
+        senderCommentText.text = questionObjects[questionIndex].questionText;
+        senderUsernameText.text = questionObjects[questionIndex].senderName;
     }
 
     public void CheckSelection(bool condition)
     {
 
-       
+
         if (condition == questionObjects[questionIndex].isClickTrue)
         {
             //Execute true statement...
             correctAnswers++;
-           
+            Debug.Log("Correct!");
         }
         else
         {
             //Execute false statement...
             wrongAnswers++;
+            Debug.Log("Incorrect!");
         }
 
         // Increment Question Index...

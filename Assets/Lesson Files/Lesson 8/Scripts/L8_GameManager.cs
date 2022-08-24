@@ -50,19 +50,19 @@ public class L8_GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SetQuestionBox(int index)
     {
         currentQuestion = questionObjects[index];
-        if(questionImage)
+        if (questionImage)
             questionImage.sprite = currentQuestion.questionImage;
-        if(questionText)
-            questionText.text = currentQuestion.textQuestion;
-        if(clueboardUI)
+        if (questionText)
+            questionText.text = currentQuestion.questionText;
+        if (clueboardUI)
             clueboardUI.gameObject.SetActive(false);
-        if(questionBoxUI)
+        if (questionBoxUI)
             questionBoxUI.gameObject.SetActive(true);
         trueButton.gameObject.SetActive(true);
         falseButton.gameObject.SetActive(true);
@@ -70,10 +70,10 @@ public class L8_GameManager : MonoBehaviour
 
     public void CheckSelection(bool condition)
     {
-        if(currentQuestion.isClickTrue == condition)
+        if (currentQuestion.isClickTrue == condition)
         {
             correctAnswers++;
-            if(commentaryText)
+            if (commentaryText)
                 commentaryText.text = currentQuestion.trueCommentaryStatement;
         }
         else

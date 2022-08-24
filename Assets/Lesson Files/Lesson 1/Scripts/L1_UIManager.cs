@@ -55,7 +55,7 @@ public class L1_UIManager : MonoBehaviour
         ShowQuestionUI(false, 0.0f);
         //AffirmationText.gameObject.SetActive(false);
         //point.gameObject.SetActive(false);
-        
+
     }
 
     // Update is called once per frame
@@ -68,7 +68,7 @@ public class L1_UIManager : MonoBehaviour
     {
         if (questionText && trueAnswerText && falseAnswerText)
         {
-            questionText.text = question.textQuestion;
+            questionText.text = question.questionText;
             trueAnswerText.text = question.trueAnswerText;
             falseAnswerText.text = question.falseAnswerText;
         }
@@ -97,7 +97,7 @@ public class L1_UIManager : MonoBehaviour
 
     public void ShowAffirmationText(string text)
     {
-  
+
         //Set text...
         //AffirmationText.text = text;
         //Hide AffirmationText after 2.0s...
@@ -115,7 +115,7 @@ public class L1_UIManager : MonoBehaviour
         //point.anchoredPosition += new Vector2(pointParentWidth / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions, 0);
         //point.transform.DOMoveX((point.transform.position.x-60)+pointRotation / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions,1f, false);
         point.transform.DORotate(
-            new Vector3(0,0,-68) + point.transform.rotation.eulerAngles, 1f, RotateMode.Fast);
+            new Vector3(0, 0, -68) + point.transform.rotation.eulerAngles, 1f, RotateMode.Fast);
     }
 
 
