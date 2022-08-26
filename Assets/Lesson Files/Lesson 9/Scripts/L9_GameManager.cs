@@ -48,8 +48,6 @@ public class L9_GameManager : MonoBehaviour
 
     public void CheckSelection(bool condition)
     {
-
-
         if (condition == questionObjects[questionIndex].isClickTrue)
         {
             //Execute true statement...
@@ -68,6 +66,8 @@ public class L9_GameManager : MonoBehaviour
         if (!(questionIndex < questionObjects.Length))
         {
             // Game Over
+            questionIndex = 0;
+            SetQuestionBox();
         }
         else
         {

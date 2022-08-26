@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3894180230e803542af10929de3f8696, type: 3}
   m_Name: Foreground 2
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 484818749cc488e41b77c3bb74ab4fe5, type: 3}
+  image: {fileID: 21300000, guid: 122c44528709d2c4f92d531abe871ee9, type: 3}
   imagePoint: 30
   descriptionText: 
   descriptionAudio:

@@ -1006,6 +1006,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionObjects:
   - {fileID: 11400000, guid: 16097690f117d5043ab5d037be106b40, type: 2}
+  - {fileID: 11400000, guid: 14b58996347ee57408096c0a1c13b6d5, type: 2}
+  - {fileID: 11400000, guid: 033eb870f3a3ad64aa8c1ad569d837f2, type: 2}
+  - {fileID: 11400000, guid: 8778d350fc233d14e916601e35982a19, type: 2}
+  - {fileID: 11400000, guid: aeab852cc68c87347a36a2b5e939f5ec, type: 2}
   correctAnswers: 0
   wrongAnswers: 0
   postImage: {fileID: 1088684495}

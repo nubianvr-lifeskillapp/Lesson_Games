@@ -36,13 +36,22 @@ public class TriviaSystem : MonoBehaviour
     private TMP_Text priceText;
     [SerializeField]
     private TMP_Text detailsText;
+
     private int price = 0;
 
-    private Button selectedButton;
 
-   
+
     [SerializeField]
     private TMP_Text resultPriceText;
+    [SerializeField]
+    private Sprite defaultSprite;
+
+    [SerializeField]
+    private Sprite correctSprite;
+    [SerializeField]
+    private Sprite wrongSprite;
+    private Button selectedButton;
+
 
 
     // Start is called before the first frame update
@@ -61,7 +70,7 @@ public class TriviaSystem : MonoBehaviour
     }
     private void SetUIElements()
     {
-        questionNumberText.text = (questionIndex+1) + "/" + questionObjects.Length;
+        questionNumberText.text = (questionIndex + 1) + "/" + questionObjects.Length;
         questionBoxUI.SetActive(true);
         commentaryText.gameObject.SetActive(false);
         questionText.text = questionObjects[questionIndex].question;
@@ -77,7 +86,8 @@ public class TriviaSystem : MonoBehaviour
         }
         detailsText.text = "This question is worth $" + questionObjects[questionIndex].points;
         //Set button image color to white...
-        selectedButton.GetComponent<Image>().color = Color.white;
+        //selectedButton.GetComponent<Image>().color = Color.white;
+        selectedButton.GetComponent<Image>().sprite = defaultSprite;
         SetButtonsInteractable(true);
     }
 
@@ -96,7 +106,8 @@ public class TriviaSystem : MonoBehaviour
             price = questionObjects[questionIndex].points;
             priceText.text = "$" + price;
             //Set button image color to green...
-            selectedButton.GetComponent<Image>().color = Color.green;
+            //selectedButton.GetComponent<Image>().color = Color.green;
+            selectedButton.GetComponent<Image>().sprite = correctSprite;
             //MoveToNextQuestion...
             if (questionIndex < questionObjects.Length - 1)
             {
@@ -112,6 +123,7 @@ public class TriviaSystem : MonoBehaviour
         {
             Debug.Log("Incorrect Answer!!!");
             selectedButton.GetComponent<Image>().color = Color.red;
+            selectedButton.GetComponent<Image>().sprite = wrongSprite;
             Invoke(nameof(ShowGameOverUI), 2.0f);
             commentaryText.text = "Incorrect!";
             commentaryText.color = Color.red;
@@ -120,9 +132,9 @@ public class TriviaSystem : MonoBehaviour
     }
     private void ShowGameOverUI()
     {
-        if(price <= 0)
+        if (price <= 0)
             endCommentaryText.text = "Awnn, try again!!!";
-        else if(price > 0 && price <= 5000)
+        else if (price > 0 && price <= 5000)
             endCommentaryText.text = "You can do better!!!";
         else if (price > 5000 && price <= 10000)
             endCommentaryText.text = "Good work!!!";

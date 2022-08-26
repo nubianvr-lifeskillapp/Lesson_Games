@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3894180230e803542af10929de3f8696, type: 3}
   m_Name: Background 1
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: d32b4842acab89c47b50b0aa183298f6, type: 3}
+  image: {fileID: 21300000, guid: 5f71b1aee41a97d4e80a6379a68a0289, type: 3}
   imagePoint: 10
   descriptionText: House
   descriptionAudio:
