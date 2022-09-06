@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Lesson Files/Lesson 5/Scenes/L5_GameScene.unity
     guid: b81db44aa3d49b34aac9f60e9cd32510
   - enabled: 1
+    path: Assets/Lesson Files/Lesson 6/Scenes/L6_GameScene.unity
+    guid: 9d1d400ebbee54245b0676d147051764
+  - enabled: 1
     path: Assets/Lesson Files/Lesson 7/Scenes/L7_GameSceneAltered.unity
     guid: 191e8bfc1ef6b7a4b867006fefc6cdb0
   m_configObjects: {}

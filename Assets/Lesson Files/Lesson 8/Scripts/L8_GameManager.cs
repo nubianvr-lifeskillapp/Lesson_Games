@@ -34,12 +34,23 @@ public class L8_GameManager : MonoBehaviour
     [SerializeField]
     private Button falseButton;
 
-
-
+    [SerializeField]
+    private GameObject introScreen;
+    [SerializeField]
+    private GameObject gameplayScreen;
+    [SerializeField]
+    private GameObject gameplayContinueButton;
+    [SerializeField]
+    private GameObject gameOverScreen;
+    [SerializeField]
+    private GameObject videoScreen;
+    [SerializeField]
+    private GameObject endScreen;
 
     // Start is called before the first frame update
     void Start()
     {
+        ShowScreen(introScreen);
         noOfQuestions = questionObjects.Length;
 
         clueboardUI.gameObject.SetActive(true);
@@ -87,9 +98,26 @@ public class L8_GameManager : MonoBehaviour
         falseButton.gameObject.SetActive(false);
         if (commentaryBox)
             commentaryBox.gameObject.SetActive(true);
+
+    }
+
+    public void ShowScreen(GameObject screen)
+    {
+        introScreen.SetActive(false);
+        gameplayScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
+        videoScreen.SetActive(false);
+        endScreen.SetActive(false);
+
+        screen.SetActive(true);
+    }
+
+    public void showGameplayContinueButton()
+    {
         if (noOfQuestionsAnswered >= questionObjects.Length)
         {
-
+            Debug.Log("Completed");
+            gameplayContinueButton.SetActive(true);
         }
     }
 }

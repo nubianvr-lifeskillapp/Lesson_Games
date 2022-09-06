@@ -28,6 +28,7 @@ public class Spawner : MonoBehaviour
         for (spawnIndex = 0; spawnIndex < spawnPositions.Length; spawnIndex++)
         {
             Patrol enemyRef = Instantiate(enemy, spawnPositions[spawnIndex].GetChild(0).position, Quaternion.identity);
+            enemyRef.transform.parent = spawnPositions[spawnIndex].transform;
             for (int i = 0; i < spawnPositions[spawnIndex].childCount; i++)
             {
                 enemyRef.moveSpots.Add(spawnPositions[spawnIndex].GetChild(i).GetComponent<Transform>());

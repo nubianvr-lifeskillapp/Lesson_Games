@@ -44,6 +44,8 @@ public class TriviaSystem : MonoBehaviour
     [SerializeField]
     private TMP_Text resultPriceText;
     [SerializeField]
+    private TMP_Text timerText;
+    [SerializeField]
     private Sprite defaultSprite;
 
     [SerializeField]
@@ -51,6 +53,8 @@ public class TriviaSystem : MonoBehaviour
     [SerializeField]
     private Sprite wrongSprite;
     private Button selectedButton;
+
+    private int timer = 15;
 
 
 
@@ -70,6 +74,8 @@ public class TriviaSystem : MonoBehaviour
     }
     private void SetUIElements()
     {
+        timer = 15;
+        InvokeRepeating(nameof(Countdown), 2.0f, 1.0f);
         questionNumberText.text = (questionIndex + 1) + "/" + questionObjects.Length;
         questionBoxUI.SetActive(true);
         commentaryText.gameObject.SetActive(false);
@@ -157,6 +163,35 @@ public class TriviaSystem : MonoBehaviour
         for (int i = 0; i < answerTexts.Length; i++)
         {
             answerTexts[i].transform.parent.GetComponent<Button>().interactable = condition;
+        }
+    }
+
+    private void Countdown()
+    {
+        if (timer > 0)
+        {
+            DecrementTimer();
+        }
+        else
+        {
+            timerText.text = "00:00";
+            // Disable Buttons...
+            SetButtonsInteractable(false);
+
+            Invoke(nameof(ShowGameOverUI), 1.0f);
+        }
+    }
+
+    private void DecrementTimer()
+    {
+        timer--;
+        if (timer >= 10)
+        {
+            timerText.text = "00:" + timer;
+        }
+        else
+        {
+            timerText.text = "00:0" + timer;
         }
     }
 }

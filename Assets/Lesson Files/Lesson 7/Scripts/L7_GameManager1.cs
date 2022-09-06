@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class L7_GameManager1 : MonoBehaviour
 {
     //Properties...
-    [SerializeField]
-    private L7_UIManager1 uImanager;
     private int totalCoins;
     [SerializeField]
     private RectTransform[] popups;
@@ -20,18 +19,29 @@ public class L7_GameManager1 : MonoBehaviour
     private TMP_Text countdownTimerText;
     [SerializeField]
     private TMP_Text coinText;
-    public bool isGameOver = false;
+    [SerializeField]
+    private TMP_Text scoreText;
+    private int roundCount = 0;
+    [SerializeField]
+    private GameObject introScreen;
+    [SerializeField]
+    private GameObject gameplayScreen;
+    [SerializeField]
+    private GameObject gameplayContinueButton;
+    [SerializeField]
+    private GameObject gameOverScreen;
+    [SerializeField]
+    private GameObject videoScreen;
+    [SerializeField]
+    private GameObject endScreen;
+
     // Start is called before the first frame update
     void Start()
     {
+        ShowScreen(introScreen);
         RemoveAllPopups();
-        popups[popupIndex].gameObject.SetActive(true);
-
-        if (isGameOver == false)
-        {
-            countdownTimerText.text = "00:" + countdownTimer;
-            InvokeRepeating(nameof(Countdown), 2.0f, 1.0f);
-        }
+        countdownTimerText.text = "00:" + countdownTimer;
+        //InvokeRepeating(nameof(Countdown), 3.0f, 1.0f);
     }
 
     private void RemoveAllPopups()
@@ -45,14 +55,15 @@ public class L7_GameManager1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
     public void SetTotalCoins(int coins)
     {
         totalCoins += coins;
-        Debug.Log(totalCoins);
+        //Debug.Log(totalCoins);
         //Update Coin Text...
-        if(coinText)
+        if (coinText)
             coinText.text = totalCoins.ToString();
         MoveToNextPopup();
     }
@@ -66,10 +77,8 @@ public class L7_GameManager1 : MonoBehaviour
         }
         else
         {
-            //Game Over...
-            isGameOver = true;
-            uImanager.gameplayUI.gameObject.SetActive(false);
-            uImanager.gameOverUI.gameObject.SetActive(true);
+            // Call finish gameplay function...
+            FinishedGameplay();
             //Set Countdown Timer To Zero...
             countdownTimer = 0;
             //Display Session Stats/Results...
@@ -80,12 +89,13 @@ public class L7_GameManager1 : MonoBehaviour
     private void Countdown()
     {
         countdownTimer--;
-        if(countdownTimer >= 0 && isGameOver == false)
+        //Debug.Log("Countdown: " + countdownTimer);
+        if (countdownTimer >= 0)
         {
             //Update CountdownTimer Text...
             if (countdownTimerText)
             {
-                if(countdownTimer>=10)
+                if (countdownTimer >= 10)
                     countdownTimerText.text = "00:" + countdownTimer;
                 else
                     countdownTimerText.text = "00:0" + countdownTimer;
@@ -93,8 +103,6 @@ public class L7_GameManager1 : MonoBehaviour
         }
         else
         {
-            //Game Over...
-            isGameOver = true;
             //Stop All Invoke...
             CancelInvoke();
             Debug.Log("Cancel Invoke");
@@ -103,7 +111,75 @@ public class L7_GameManager1 : MonoBehaviour
             countdownTimerText.text = "00:00";
             //Remove All popups...
             RemoveAllPopups();
-            //Display Session Stats/Results...
+            // Call finish gameplay function...
+            FinishedGameplay();
+        }
+    }
+
+    private void FinishedGameplay()
+    {
+        // Set scoreText...
+        scoreText.text = "Coins: " + totalCoins;
+        // Show continue button...
+        gameplayContinueButton.SetActive(true);
+        //ShowScreen(gameOverScreen);
+    }
+    public void ShowScreen(GameObject screen)
+    {
+        introScreen.SetActive(false);
+        gameplayScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
+        videoScreen.SetActive(false);
+        endScreen.SetActive(false);
+
+        screen.SetActive(true);
+    }
+    private void Reset()
+    {
+        //Show Popup...
+        countdownTimer = 10;
+        popupIndex = 0;
+        totalCoins = 0;
+        popups[popupIndex].gameObject.SetActive(true);
+        countdownTimerText.text = "00:" + countdownTimer;
+    }
+    public void Intro()
+    {
+        switch (roundCount)
+        {
+            case 0:
+                Reset();
+                gameplayContinueButton.SetActive(false);
+                InvokeRepeating(nameof(Countdown), 3.0f, 1.0f);
+                ShowScreen(gameplayScreen);
+                break;
+            case 1:
+                Reset();
+                gameplayContinueButton.SetActive(false);
+                InvokeRepeating(nameof(Countdown), 3.0f, 1.0f);
+                ShowScreen(gameplayScreen);
+                break;
+            case 2:
+                ShowScreen(endScreen);
+                break;
+        }
+    }
+
+    public void Over()
+    {
+        roundCount++;
+        Debug.Log("Round Count: " + roundCount);
+        switch (roundCount)
+        {
+            case 0:
+                ShowScreen(videoScreen);
+                break;
+            case 1:
+                ShowScreen(videoScreen);
+                break;
+            case 2:
+                ShowScreen(introScreen);
+                break;
         }
     }
 }

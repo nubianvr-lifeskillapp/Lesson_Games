@@ -15,9 +15,18 @@ public class L10_GameManager : MonoBehaviour
 
     [SerializeField]
     private TMP_Text scoreText;
+    [SerializeField]
+    private GameObject introScreen;
+    [SerializeField]
+    private GameObject gameplayScreen;
+    [SerializeField]
+    private GameObject videoScreen;
+    [SerializeField]
+    private GameObject endScreen;
     // Start is called before the first frame update
     void Start()
     {
+        ShowScreen(introScreen);
         scoreScreen.SetActive(false);
     }
 
@@ -48,5 +57,16 @@ public class L10_GameManager : MonoBehaviour
     {
         scoreScreen.SetActive(true);
         scoreText.text = "Score: " + score;
+    }
+
+
+    public void ShowScreen(GameObject screen)
+    {
+        introScreen.SetActive(false);
+        gameplayScreen.SetActive(false);
+        videoScreen.SetActive(false);
+        endScreen.SetActive(false);
+
+        screen.SetActive(true);
     }
 }
