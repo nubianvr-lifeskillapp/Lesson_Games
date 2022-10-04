@@ -37,7 +37,7 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
     private string username;
     public Flowchart flowchart;
     private int playerPoints;
-    
+
     //Awake Method
     private void Awake()
     {
@@ -123,6 +123,7 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
             correctAnswers++;
             playerPoints += 25;
             Debug.Log("Correct");
+            SoundManager.soundManager.PlaySFX("CorrectAccelerate");
         }
 
         //If it is the wrong selection....
@@ -130,7 +131,7 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
         {
             flowchart.ExecuteBlock("Fade Question Out");
             uIManager.ShowAffirmationText("Incorrect!");
-            
+            SoundManager.soundManager.PlaySFX("IncorrectIdle");
             wrongAnswers++;
             Debug.Log("Incorrect");
         }

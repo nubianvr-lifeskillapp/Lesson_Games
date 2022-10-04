@@ -115,7 +115,7 @@ public class L1_UIManager : MonoBehaviour
         //point.anchoredPosition += new Vector2(pointParentWidth / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions, 0);
         //point.transform.DOMoveX((point.transform.position.x-60)+pointRotation / gameManager.gameObject.GetComponent<L1_GameManager>().noOfQuestions,1f, false);
         point.transform.DORotate(
-            new Vector3(0, 0, -68) + point.transform.rotation.eulerAngles, 1f, RotateMode.Fast);
+            new Vector3(0, 0, 67.5f) + point.transform.rotation.eulerAngles, 1f, RotateMode.Fast);
     }
 
 

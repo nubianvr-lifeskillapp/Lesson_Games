@@ -10,8 +10,9 @@ public class Sound
 {
     public string name;
     public AudioClip clip;
+    
     [Range(0f, 1f)] public float volume = .75f;
-
+    public bool playOnAwake = false;
     public bool loop = false;
     [HideInInspector] 
     public AudioSource source;
@@ -50,6 +51,7 @@ public class SoundManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.loop = s.loop;
             s.source.volume = s.volume;
+            s.source.playOnAwake = s.playOnAwake;
         }
         foreach (Sound s in SFX)
         {
@@ -57,6 +59,7 @@ public class SoundManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.loop = s.loop;
             s.source.volume = s.volume;
+            s.source.playOnAwake = s.playOnAwake;
         }
         foreach (Sound s in reactionSounds)
         {
@@ -64,6 +67,7 @@ public class SoundManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.loop = s.loop;
             s.source.volume = s.volume;
+            s.source.playOnAwake = s.playOnAwake;
         }
     }
 

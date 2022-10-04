@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &56444540093892356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5729608377619350538}
+  - component: {fileID: 3951515957780663722}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5729608377619350538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56444540093892356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 561.7234, y: 256.39697, z: -615.59973}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3951515957780663722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56444540093892356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff67f338dcbbbc64bbd92861cb3bf187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  genericSounds: []
+  SFX:
+  - name: BtnClick
+    clip: {fileID: 8300000, guid: b6be0949f227f8047b5dfba600a2bd95, type: 3}
+    volume: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: CorrectAccelerate
+    clip: {fileID: 8300000, guid: fadf35e06a1b93446a62e0757dd0771c, type: 3}
+    volume: 0.4
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: IncorrectIdle
+    clip: {fileID: 8300000, guid: 368485d2a7a77ef46ae3bc7bc73b7e8c, type: 3}
+    volume: 1
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: BackgroundMusic
+    clip: {fileID: 8300000, guid: 685c4704698a8fb428f149e0fb7e8b3a, type: 3}
+    volume: 0.05
+    playOnAwake: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Swipe
+    clip: {fileID: 8300000, guid: 3322dc08c82ad274cb05f12f1aa32d08, type: 3}
+    volume: 0.943
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: ProfileButtonSelect
+    clip: {fileID: 8300000, guid: 1d79b423db0920149a99c35a873b073a, type: 3}
+    volume: 0.943
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  reactionSounds: []
