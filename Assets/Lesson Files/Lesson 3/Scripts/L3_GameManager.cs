@@ -137,7 +137,15 @@ public class L3_GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
     }
+    public void PlaySfx(string soundName)
+    {
+        SoundManager.soundManager.PlaySFX(soundName);
+    }
 
+    public void StopAllSFX()
+    {
+        SoundManager.soundManager.StopAllSFX();
+    }
 
 }
 

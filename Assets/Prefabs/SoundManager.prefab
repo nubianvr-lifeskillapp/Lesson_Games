@@ -75,6 +75,18 @@ MonoBehaviour:
     playOnAwake: 0
     loop: 0
     source: {fileID: 0}
+  - name: PowerUp
+    clip: {fileID: 8300000, guid: a21d3be1ab3252a4482196d0fe2dcf96, type: 3}
+    volume: 0.6
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: PowerDown
+    clip: {fileID: 8300000, guid: 96f1309323a0ed8428814854d50b8a81, type: 3}
+    volume: 0.6
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
   - name: ProfileButtonSelect
     clip: {fileID: 8300000, guid: 1d79b423db0920149a99c35a873b073a, type: 3}
     volume: 0.943

@@ -45,11 +45,11 @@ public class L3_UIManager : MonoBehaviour
 
     public void IncrementProgressBar(float value)
     {
+        SoundManager.soundManager.PlaySFX(value > 0 ? "PowerUp" : "PowerDown");
+
         float currentProgressBarValue = progressBar.value;
         progressBar.DOValue(currentProgressBarValue + value, 0.5f);
         StartCoroutine(value > 0 ? SetLockState(true, 0.6f) : SetLockState(false, 0.6f));
-        
-        
     }
 
     IEnumerator SetLockState(bool addoperator, float delayTime)

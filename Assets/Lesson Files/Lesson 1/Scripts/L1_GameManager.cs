@@ -202,4 +202,14 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
     {
         flowchart.ExecuteBlock("After Intro Video Game Started");
     }
+
+    public void PlayButtonSFX(string soundName)
+    {
+        SoundManager.soundManager.PlaySFX(soundName);
+    }
+
+    public void StopAllSFX()
+    {
+        SoundManager.soundManager.StopAllSFX();
+    }
 }

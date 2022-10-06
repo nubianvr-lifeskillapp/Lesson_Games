@@ -117,6 +117,16 @@ public class L2_GameManager : MonoBehaviour
             scripts[i].canvas.interactable = true;
         }
     }
+    
+    public void PlaySfx(string soundName)
+    {
+        SoundManager.soundManager.PlaySFX(soundName);
+    }
+
+    public void StopAllSFX()
+    {
+        SoundManager.soundManager.StopAllSFX();
+    }
 
 
 }
