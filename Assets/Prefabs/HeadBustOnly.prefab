@@ -567,8 +567,8 @@ MonoBehaviour:
   dialogCanvas: {fileID: 8656453936989977490}
   nameText: {fileID: 0}
   nameTextGO: {fileID: 0}
-  storyText: {fileID: 0}
-  storyTextGO: {fileID: 0}
+  storyText: {fileID: 6500637333470643000}
+  storyTextGO: {fileID: 2138250415663112372}
   characterImage: {fileID: 520924322312074985}
   fitTextWithImage: 1
   closeOtherDialogs: 0

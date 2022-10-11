@@ -8,42 +8,36 @@ using UnityEngine.EventSystems;
 public class L4_UIManager : MonoBehaviour
 {
     [Header("Tween Properties")]
-    private Vector2 currentPostFrameDefaultPosition;
-    private Vector2 currentPostFrameDefaultSize;
-    [SerializeField]
-    private Vector2 currentPostFrameAlteredPosition = new Vector2();
     [SerializeField]
     private Vector2 currentPostFrameAlteredSize = new Vector2();
     [SerializeField]
     private float tweenTime = 0.5f;
 
 
-    [Header("Layout Properties")]
-    [SerializeField]
-    private RectTransform[] postFrames;
-    [SerializeField]
-    private RectTransform[] postLayouts;
-    private int postIndex = 0;
-    [SerializeField]
-    private Image overlay;
-    [SerializeField]
-    private Image background;
 
-    private int socialFeedPoints;
+    [Header("Layout Properties")]
+
+    [SerializeField]
+    private PostFrameClass[] postFrames;
+    [SerializeField]
+    private CanvasGroup overlay;
+
+    [SerializeField] private Button continueBtn;
+    
+
+    [Header("Post Frame Prefab")] [SerializeField]
+    private GameObject postFrame;
+
+    private PostFrameClass currentPostFrame;
+
+    private GameObject newPostFrameInstance;
+
+    private int PlayerPoints = 0; 
     
     // Start is called before the first frame update
     void Start()
     {
-        foreach(RectTransform postFrame in postFrames)
-        {
-            postFrame.gameObject.SetActive(false);
-        }
-        foreach (RectTransform postLayout in postLayouts)
-        {
-            postLayout.gameObject.SetActive(false);
-        }
-        postFrames[postIndex].gameObject.SetActive(true);
-        postLayouts[postIndex].gameObject.SetActive(false);
+        continueBtn.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -51,58 +45,79 @@ public class L4_UIManager : MonoBehaviour
     {
         
     }
-    public void ScalePostFrame(Image image)
-    {
-        currentPostFrameDefaultPosition = image.rectTransform.anchoredPosition;
-        currentPostFrameDefaultSize = image.rectTransform.sizeDelta;
-        image.rectTransform.DOSizeDelta(currentPostFrameAlteredSize, tweenTime);
-        image.rectTransform.DOAnchorPos(currentPostFrameAlteredPosition, tweenTime);
-        StartCoroutine(ShowPostLayout(image, tweenTime));
-        //Invoke(nameof(ShowPostLayout), tweenTime);
-    }
 
-    IEnumerator ShowPostLayout(Image image,float delayTime)
+    private void EnableOverlay()
     {
-        yield return new WaitForSeconds(delayTime);
-        image.gameObject.SetActive(false);
-        postLayouts[postIndex].gameObject.SetActive(true);
-        background.gameObject.SetActive(true);
         overlay.gameObject.SetActive(true);
-        
+        overlay.DOFade(1, 0.5f);
+        overlay.interactable = true;
     }
-   
 
-    private void HidePostLayout()
+    private void DisableOverlay()
     {
-        postLayouts[postIndex].gameObject.SetActive(false);
-        background.gameObject.SetActive(false);
+        overlay.interactable = false;
+        overlay.DOFade(0, 0.5f);
+        
+        Invoke("HideOverLay", 0.6f);
+    }
+
+    private void HideOverLay()
+    {
         overlay.gameObject.SetActive(false);
     }
 
-    public void SelectPost(L4_BaseCarouselScript script)
+    public void ScalePostFrame(PostFrameClass @object)
     {
-        //To be changed to sprite...
-        var postImage = postFrames[postIndex].GetComponent<Image>();
-        var postLayout  = postLayouts[postIndex].GetComponent<PostLayoutImages>();
-        var postLayoutImage = postLayout.images[script.currentIndex].gameObject.GetComponent<ImagePointClass>();
-        postImage.color = script.images[script.currentIndex].color; //Remember to change this to sprites when the images are ready. 
-        postImage.gameObject.SetActive(true);
-        HidePostLayout();
-        socialFeedPoints += postLayoutImage.imageScore;
-        print("Current Social Feed Score: " + socialFeedPoints);
-        //Disable "EventTrigger" component on current post frame...
-        postFrames[postIndex].GetComponent<EventTrigger>().enabled = false;
-        postFrames[postIndex].DOSizeDelta(currentPostFrameDefaultSize, tweenTime);
-        postFrames[postIndex].DOAnchorPos(currentPostFrameDefaultPosition, tweenTime);
-        Invoke(nameof(ShowNextPostFrame), tweenTime);
+        if (@object.publicImageReviewed) return;
+        currentPostFrame = @object;
+        newPostFrameInstance = Instantiate(postFrame, @currentPostFrame.gameObject.transform.position, @currentPostFrame.gameObject.transform.rotation);
+        var postRect = newPostFrameInstance.GetComponent<RectTransform>();
+        var postManager = newPostFrameInstance.GetComponent<PostFrameClass>();
+        postManager.SetImage(@object.postFrameImage.sprite);
+        postRect.sizeDelta = new Vector2(100,100);
+        postRect.anchorMin = new Vector2(0.5f,0.61f);
+        postRect.anchorMax = new Vector2(0.5f,0.61f);
+        EnableOverlay();
+        newPostFrameInstance.transform.parent = overlay.transform;
+        postRect.DOAnchorPos(new Vector2(0,0),  tweenTime);
+        postRect.DOSizeDelta(currentPostFrameAlteredSize, tweenTime);
+        
+    }
+    
+
+    private void CheckBtnPressed()
+    {
+        PlayerPoints += currentPostFrame.postFrame.imagePoint;
+        currentPostFrame.publicImageReviewed = true;
+        DisableOverlay();
+        Destroy(newPostFrameInstance);
+        CheckAllPost();
+        
     }
 
-    private void ShowNextPostFrame()
+    private void CheckAllPost()
     {
-        if (postIndex < postFrames.Length - 1)
+        for (int i = 0; i < postFrames.Length; i++)
         {
-            postIndex++;
-            postFrames[postIndex].gameObject.SetActive(true);
+            if (!postFrames[i].publicImageReviewed)
+            {
+                return;
+            }
+            
         }
+        continueBtn.gameObject.SetActive(true);
+        
+    }
+
+    public void KeepBtnPressed()
+    {
+        CheckBtnPressed();
+        currentPostFrame.gameObject.GetComponent<Image>().DOColor(new Color(0.2f, 0.2f, 0.2f, 255.0f), 0.75f);
+    }
+
+    public void RemoveBtnPressed()
+    {
+        CheckBtnPressed();
+        currentPostFrame.gameObject.SetActive(false);
     }
 }
