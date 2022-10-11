@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Fungus;
 using UnityEngine.EventSystems;
 
 public class L4_UIManager : MonoBehaviour
@@ -32,7 +34,10 @@ public class L4_UIManager : MonoBehaviour
 
     private GameObject newPostFrameInstance;
 
-    private int PlayerPoints = 0; 
+    private int PlayerPoints = 0;
+
+    [Header("Other Properties")] [SerializeField]
+    private Flowchart _flowchart;
     
     // Start is called before the first frame update
     void Start()
@@ -61,6 +66,11 @@ public class L4_UIManager : MonoBehaviour
         Invoke("HideOverLay", 0.6f);
     }
 
+    public void ExecuteAfterVideo()
+    {
+        _flowchart.ExecuteBlock("ExecuteAfterVideo");
+    }
+
     private void HideOverLay()
     {
         overlay.gameObject.SetActive(false);
@@ -87,30 +97,26 @@ public class L4_UIManager : MonoBehaviour
 
     private void CheckBtnPressed()
     {
-        PlayerPoints += currentPostFrame.postFrame.imagePoint;
         currentPostFrame.publicImageReviewed = true;
         DisableOverlay();
         Destroy(newPostFrameInstance);
         CheckAllPost();
-        
     }
 
     private void CheckAllPost()
     {
-        for (int i = 0; i < postFrames.Length; i++)
+        if (postFrames.Any(frame => !frame.publicImageReviewed))
         {
-            if (!postFrames[i].publicImageReviewed)
-            {
-                return;
-            }
-            
+            return;
         }
+
         continueBtn.gameObject.SetActive(true);
-        
     }
 
     public void KeepBtnPressed()
     {
+        PlayerPoints += currentPostFrame.postFrame.imagePoint;
+        _flowchart.SetIntegerVariable("PlayerPoint", PlayerPoints);
         CheckBtnPressed();
         currentPostFrame.gameObject.GetComponent<Image>().DOColor(new Color(0.2f, 0.2f, 0.2f, 255.0f), 0.75f);
     }
@@ -119,5 +125,34 @@ public class L4_UIManager : MonoBehaviour
     {
         CheckBtnPressed();
         currentPostFrame.gameObject.SetActive(false);
+    }
+    
+    public void LoadNextScene(int scene)
+    {
+        OverallGameManager.overallGameManager.LoadNextScene(scene);
+    }
+    
+    public void RetryLesson()
+    {
+        OverallGameManager.overallGameManager.ReloadScene();
+    }
+    
+    public void PlaySfx(string soundName)
+    {
+        SoundManager.soundManager.PlaySFX(soundName);
+    }
+
+    public void StopAllSFX()
+    {
+        SoundManager.soundManager.StopAllSFX();
+    }
+
+    public void ResetGamePlay()
+    {
+        foreach (var frame in postFrames)
+        {
+            frame.gameObject.SetActive(true);
+            frame.gameObject.GetComponent<Image>().DOColor(new Color(255f, 255f, 255f, 255f), 0.1f);
+        }
     }
 }
