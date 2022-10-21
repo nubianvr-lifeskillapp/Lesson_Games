@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private SpriteRenderer bag;
 
+    public Animator PlayerAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +29,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (rb2D.velocity.y < 0)
         {
-            if (rb)
-                rb.AddForce(Vector3.up * jumpForce);
-            if (rb2D)
-                rb2D.AddForce(Vector3.up * jumpForce);
+            PlayerAnimator.CrossFade("FallAnimation",0,0);
         }
     }
 
@@ -53,19 +52,31 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
+        {
             isGrounded = true;
+            PlayerAnimator.CrossFade("RunningAnimation",0,0);
+        }
+
+        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
+        {
             isGrounded = false;
+            PlayerAnimator.CrossFade("JumpAnimation",0,0);
+        }
+
+        
+            
     }
 
     public void Jump()
     {
         if(isGrounded)
         {
+           
             if(rb)
                 rb.AddForce(Vector3.up * jumpForce);
             if (rb2D)

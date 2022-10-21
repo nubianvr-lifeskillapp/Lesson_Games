@@ -2013,8 +2013,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 433110943}
-  selectedCommands:
-  - {fileID: 433110957}
+  selectedCommands: []
   variables:
   - {fileID: 433110972}
   description: 
@@ -3350,7 +3349,7 @@ MonoBehaviour:
   suppressAllAutoSelections: 0
 --- !u!114 &433110995
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3367,7 +3366,7 @@ MonoBehaviour:
   delay: 0
 --- !u!114 &433110996
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3397,7 +3396,7 @@ MonoBehaviour:
     floatVal: 1
 --- !u!114 &433110997
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3418,7 +3417,7 @@ MonoBehaviour:
   targetGameObjectOLD: {fileID: 0}
 --- !u!114 &433110998
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3439,7 +3438,7 @@ MonoBehaviour:
   targetGameObjectOLD: {fileID: 0}
 --- !u!114 &433110999
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3635,7 +3634,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0.444, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.014465332, y: 0.0010986328}
+  m_AnchoredPosition: {x: -0.014404297, y: 0.0010986328}
   m_SizeDelta: {x: -123.400024, y: -91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &447580526
@@ -6163,7 +6162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0.444, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.014465332, y: 0.0010986328}
+  m_AnchoredPosition: {x: -0.014404297, y: 0.0010986328}
   m_SizeDelta: {x: -123.400024, y: -91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1575607550
