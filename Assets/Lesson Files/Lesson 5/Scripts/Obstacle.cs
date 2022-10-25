@@ -35,7 +35,7 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move();
     }
 
     private void OnTriggerEnter(Collider other)

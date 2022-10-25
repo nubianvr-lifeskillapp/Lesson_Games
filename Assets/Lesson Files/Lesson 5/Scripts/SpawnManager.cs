@@ -13,6 +13,8 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField]
     private float yPosition = 1.0f;
+
+    public GameObject Player;
     
     public GameObject levelManager;
     private L5_GameManager levelManagerScript;
@@ -27,7 +29,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         //existingObstacle = FindObjectOfType<Obstacle>();
-        existingObstacle = Instantiate(obstacle, new Vector3(25.0f, yPosition, 0.0f), new Quaternion());
+        existingObstacle = Instantiate(obstacle, new Vector3(Player.transform.position.x + 55.0f, yPosition, 0.0f), new Quaternion());
     }
 
     // Update is called once per frame
@@ -42,29 +44,22 @@ public class SpawnManager : MonoBehaviour
         {
             if (!levelManagerScript.isLevelFinished)
             {
-                existingObstacle = Instantiate(obstacle, new Vector3(25.0f, yPosition, 0.0f), new Quaternion());
+                existingObstacle = Instantiate(obstacle, new Vector3(Player.transform.position.x + 55.0f, yPosition, 0.0f), new Quaternion());
             }
             return;
         }
             
 
-        if (existingObstacle.transform.position.x <= -25.0f)
+        if (Player.transform.position.x > existingObstacle.transform.position.x + 50.0f)
         {
             Debug.Log("Obstacle is at destroy point...");
-            GameObject.Destroy(existingObstacle);
+            Destroy(existingObstacle);
             if (!levelManagerScript.isLevelFinished)
             {
-                existingObstacle = Instantiate(obstacle, new Vector3(25.0f, yPosition, 0.0f), new Quaternion());
+                existingObstacle = Instantiate(obstacle, new Vector3(Player.transform.position.x + 55.0f, yPosition, 0.0f), new Quaternion());
             }
         }
-        ////////////
-        //else if (existingObstacle == null)
-        //{
-        //    if (!L5_GameManager.gameManager.isLevelFinished)
-        //    {
-        //        existingObstacle = Instantiate(obstacle, new Vector3(25.0f, yPosition, 0.0f), new Quaternion());
-        //    }
-        //}
+
 
     }
 }

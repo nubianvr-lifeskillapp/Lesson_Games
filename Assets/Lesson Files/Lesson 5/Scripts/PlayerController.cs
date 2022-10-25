@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,21 +18,52 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private SpriteRenderer bag;
 
+    [SerializeField] private float characterRunSpeed;
+    [SerializeField] private bool isRunning;
+    private Vector3 currentTempPosition;
+
     public Animator PlayerAnimator;
+    private float YAxisJumpCheck;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         rb2D = gameObject.GetComponent<Rigidbody2D>();
+        YAxisJumpCheck = transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (rb2D.velocity.y < 0)
+        currentTempPosition  = transform.position;
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     print("space key was pressed");
+        //     Jump();
+        // }
+        
+        
+        if (isGrounded)
         {
-            PlayerAnimator.CrossFade("FallAnimation",0,0);
+            PlayerAnimator.CrossFade(isRunning ? "RunningAnimation" : "IdleAnimation", 0, 0);
+        }
+        else
+        {
+            PlayerAnimator.CrossFade(rb2D.velocity.y < 0 ? "FallAnimation" : "JumpAnimation", 0, 0);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        
+        if (isRunning)
+        {
+            transform.Translate(Vector3.right * (characterRunSpeed * Time.deltaTime));
+        }
+        else
+        {
+            transform.position = currentTempPosition;
         }
     }
 
@@ -54,7 +86,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
-            PlayerAnimator.CrossFade("RunningAnimation",0,0);
         }
 
         
@@ -64,8 +95,12 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
-            isGrounded = false;
-            PlayerAnimator.CrossFade("JumpAnimation",0,0);
+            
+            if (transform.position.y > YAxisJumpCheck)
+            {
+                isGrounded = false;
+            }
+            
         }
 
         
@@ -74,14 +109,14 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if(isGrounded)
+        if (!isGrounded) return;
+        if(rb)
+            rb.AddForce(Vector3.up * jumpForce);
+        if (rb2D)
         {
-           
-            if(rb)
-                rb.AddForce(Vector3.up * jumpForce);
-            if (rb2D)
-                rb2D.AddForce(Vector3.up * jumpForce);
+            rb2D.AddForce(Vector3.up * jumpForce);
         }
+            
     }
 
     public void AddDamage()
