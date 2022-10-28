@@ -48,7 +48,11 @@ public class SpawnManager : MonoBehaviour
             }
             return;
         }
-            
+
+        if (levelManagerScript.questionAnswered)
+        {
+            existingObstacle.GetComponent<BoxCollider2D>().enabled = false;
+        }
 
         if (Player.transform.position.x > existingObstacle.transform.position.x + 50.0f)
         {

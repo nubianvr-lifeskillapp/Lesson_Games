@@ -9,15 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ae0b10ca4cbe5045b957832690afbda, type: 3}
+  m_Script: {fileID: 11500000, guid: d824e814485a64d499c994a84c648c20, type: 3}
   m_Name: Question 2
   m_EditorClassIdentifier: 
-  questionImage: {fileID: 0}
-  isClickTrue: 0
-  questionText: What school do I attend?
-  trueAnswerText: OUI
-  falseAnswerText: OAU
-  trueCommentaryStatement: 
-  falseCommentaryStatement: 
-  senderName: 
-  senderProfileImage: {fileID: 0}
+  answers:
+  - Fake News
+  - Violent Crimes
+  - Self-Harm Content
+  questionImage: {fileID: 21300000, guid: 4c555eaeed6265d44956cb6b03971dbe, type: 3}
+  questionText: Koalas found roaming the streets of Accra
+  correctAnswer: 0

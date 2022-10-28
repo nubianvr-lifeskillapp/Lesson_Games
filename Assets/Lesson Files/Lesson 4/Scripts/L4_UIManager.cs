@@ -149,9 +149,11 @@ public class L4_UIManager : MonoBehaviour
 
     public void ResetGamePlay()
     {
+        continueBtn.gameObject.SetActive(false);
         foreach (var frame in postFrames)
         {
             frame.gameObject.SetActive(true);
+            frame.publicImageReviewed = false;
             frame.gameObject.GetComponent<Image>().DOColor(new Color(255f, 255f, 255f, 255f), 0.1f);
         }
     }

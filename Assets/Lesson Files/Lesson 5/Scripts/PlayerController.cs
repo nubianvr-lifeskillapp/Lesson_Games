@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce = 300.0f;
     [SerializeField]
-    private bool isGrounded = true;
+    private bool isGrounded = false;
     [SerializeField]
     private int playerLife = 3;
     public bool playerIsDead = false;
@@ -19,11 +19,12 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer bag;
 
     [SerializeField] private float characterRunSpeed;
-    [SerializeField] private bool isRunning;
+    public bool isRunning;
     private Vector3 currentTempPosition;
 
     public Animator PlayerAnimator;
     private float YAxisJumpCheck;
+    private bool AllowJump;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +38,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         currentTempPosition  = transform.position;
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     print("space key was pressed");
-        //     Jump();
-        // }
         
+        AllowJump = transform.position.y > YAxisJumpCheck;
         
         if (isGrounded)
         {
@@ -67,45 +64,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //For 3D...
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Floor"))
-            isGrounded = true;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Floor"))
-            isGrounded = false;
-    }
-
-    //For 2D...
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
         }
-
-        
     }
-
+    
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Floor"))
-        {
-            
-            if (transform.position.y > YAxisJumpCheck)
-            {
-                isGrounded = false;
-            }
-            
-        }
-
-        
-            
+        if (!collision.gameObject.CompareTag("Floor")) return;
+        if(AllowJump)
+            isGrounded = false;
     }
+    
 
     public void Jump()
     {
@@ -115,6 +89,7 @@ public class PlayerController : MonoBehaviour
         if (rb2D)
         {
             rb2D.AddForce(Vector3.up * jumpForce);
+            isGrounded = false;
         }
             
     }

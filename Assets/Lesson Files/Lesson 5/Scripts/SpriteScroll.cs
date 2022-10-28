@@ -28,7 +28,6 @@ public class SpriteScroll : MonoBehaviour
     {
         startPos = gameObject.transform.position.x;
         lengthOfSprite = GetComponent<SpriteRenderer>().bounds.size.x;
-        Debug.Log(startPos);
     }
 
     // Update is called once per frame

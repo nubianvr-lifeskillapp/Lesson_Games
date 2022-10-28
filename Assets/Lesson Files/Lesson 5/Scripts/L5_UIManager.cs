@@ -15,10 +15,9 @@ public class L5_UIManager : MonoBehaviour
     private Transform ResultsMenuUI;
 
     public TMP_Text questionText;
-    public TMP_Text trueAnswerText;
-    public TMP_Text falseAnswerText;
-    public Button TrueAnswerButton;
-    public Button FalseAnswerButton;
+    public TMP_Text[] textOptions;
+    public Button[] buttonOptions;
+    public Image questionImage;
     public TMP_Text AffirmationText;
     public TMP_Text QuestionsAskedText;
     public TMP_Text QuestionsAnsweredText;
@@ -46,14 +45,16 @@ public class L5_UIManager : MonoBehaviour
 
     }
 
-    public void SetQuizElements(Questions question)
+    public void SetQuizElements(Question5Objects question)
     {
-        if (questionText && trueAnswerText && falseAnswerText)
-        {
+        
             questionText.text = question.questionText;
-            trueAnswerText.text = question.trueAnswerText;
-            falseAnswerText.text = question.falseAnswerText;
-        }
+            questionImage.sprite = question.questionImage;
+            for (int i = 0; i < textOptions.Length; i++)
+            {
+                textOptions[i].text = question.answers[i];
+            }
+
     }
 
     public void ShowQuestionUI(bool condition)
