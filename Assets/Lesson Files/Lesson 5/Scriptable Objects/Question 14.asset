@@ -16,6 +16,6 @@ MonoBehaviour:
   - Fake News
   - Violent Crimes
   - Self-Harm Content
-  questionImage: {fileID: 21300000, guid: 0f11f736e73e9d5468581df9cd9bee56, type: 3}
-  questionText: Does jumping off a building really hurt?
+  questionImage: {fileID: 21300000, guid: fc55267cb9f7d044ab51fde9aa13c63a, type: 3}
+  questionText: Learn to enjoy the delicious taste of Dettol
   correctAnswer: 2

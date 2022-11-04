@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,8 @@ public class Obstacle : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         if(player)
             print("Obstacle Found: Player Controller");
+
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 
     // Update is called once per frame
@@ -38,46 +41,61 @@ public class Obstacle : MonoBehaviour
         //Move();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnEnable()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Hit Player");
-            if(player.playerIsDead)
-            {
-                timeManager.bCanScaleUp = true;
-            }
-            else
-            {
-                player.AddDamage();
-                timeManager.bCanScaleUp = true;
-                L5_GameManager.gameManager.MoveToNextQuestion();
-                uIManager.ShowQuestionUI(false);
-            }
-        }
+        PlayerController.OnCollisionWithEnemY += HandleHitPlayer;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnDisable()
     {
-        Debug.Log("Trigger Entered");
+        PlayerController.OnCollisionWithEnemY -= HandleHitPlayer;
+    }
 
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Hit Player");
-            if (player.playerIsDead)
-            {
-                timeManager.bCanScaleUp = true;
-            }
-            else
-            {
-                player.AddDamage();
-                print("Damage to player");
-                timeManager.bCanScaleUp = true;
-                //L5_GameManager.gameManager.MoveToNextQuestion();
-                uIManager.ShowQuestionUI(false);
-                Destroy(gameObject);
-            }
-        }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Player"))
+    //     {
+    //         Debug.Log("Hit Player");
+    //         if(player.playerIsDead)
+    //         {
+    //             timeManager.bCanScaleUp = true;
+    //         }
+    //         else
+    //         {
+    //             player.AddDamage();
+    //             timeManager.bCanScaleUp = true;
+    //             L5_GameManager.gameManager.MoveToNextQuestion();
+    //             uIManager.ShowQuestionUI(false);
+    //         }
+    //     }
+    // }
+    //
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     Debug.Log("Trigger Entered");
+    //
+    //     if (!collision.gameObject.CompareTag("Player")) return;
+    //     Debug.Log("Hit Player");
+    //     if (player.playerIsDead)
+    //     {
+    //         timeManager.bCanScaleUp = true;
+    //     }
+    //     else
+    //     {
+    //         player.AddDamage();
+    //         print("Damage to player");
+    //         timeManager.bCanScaleUp = true;
+    //         //L5_GameManager.gameManager.MoveToNextQuestion();
+    //         
+    //         
+    //     }
+    // }
+
+    public void HandleHitPlayer()
+    {
+        uIManager.ShowQuestionUI(false);
+        timeManager.bCanScaleUp = true;   
+        Destroy(gameObject);
     }
 
     private void Move()

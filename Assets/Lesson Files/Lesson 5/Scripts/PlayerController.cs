@@ -25,13 +25,18 @@ public class PlayerController : MonoBehaviour
     public Animator PlayerAnimator;
     private float YAxisJumpCheck;
     private bool AllowJump;
+    public L5_GameManager gameManager;
 
+    public static event Action OnCollisionWithEnemY;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         YAxisJumpCheck = transform.position.y;
+        OnCollisionWithEnemY += AddDamage;
     }
 
     // Update is called once per frame
@@ -40,19 +45,29 @@ public class PlayerController : MonoBehaviour
         currentTempPosition  = transform.position;
         
         AllowJump = transform.position.y > YAxisJumpCheck;
-        
-        if (isGrounded)
+
+        if (playerIsDead)
         {
-            PlayerAnimator.CrossFade(isRunning ? "RunningAnimation" : "IdleAnimation", 0, 0);
+            PlayerAnimator.Play("CharacterDeadAnimation");
         }
         else
         {
-            PlayerAnimator.CrossFade(rb2D.velocity.y < 0 ? "FallAnimation" : "JumpAnimation", 0, 0);
+             if (isGrounded)
+             {
+                 PlayerAnimator.CrossFade(isRunning ? "RunningAnimation" : "IdleAnimation", 0, 0);
+             }
+             else
+             {
+                 PlayerAnimator.CrossFade(rb2D.velocity.y < 0 ? "FallAnimation" : "JumpAnimation", 0, 0);
+             }
         }
+
+       
     }
 
     private void FixedUpdate()
     {
+        if (playerIsDead) return;
         
         if (isRunning)
         {
@@ -67,10 +82,17 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            print("Hit Enemy");
+            OnCollisionWithEnemY?.Invoke();
+        }
+        
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
         }
+        
     }
     
     private void OnCollisionExit2D(Collision2D collision)
@@ -93,7 +115,6 @@ public class PlayerController : MonoBehaviour
         }
             
     }
-
     public void AddDamage()
     {
         playerLife--;
@@ -101,7 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             playerLife = 0;
             playerIsDead = true;
-            L5_GameManager.gameManager.OnLevelFinshed();
+            gameManager.OnPlayerDead();
         }
         else if(playerLife == 1)
         {

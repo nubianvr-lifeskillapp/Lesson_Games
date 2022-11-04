@@ -37,15 +37,13 @@ public class TimeManager : MonoBehaviour
 
     private void ScaleUpTime()
     {
-        if (bCanScaleUp)
+        if (!bCanScaleUp) return;
+        Time.timeScale += (1.0f / slowdownLength) * Time.unscaledDeltaTime;
+        Time.timeScale = Mathf.Clamp(Time.timeScale, 0.0f, 1.0f);
+        //If the timeScale is evaluated to be 1.0f then set bCanScaleUp to false because we don't want this operation to be carried out once it is...
+        if (Time.timeScale >= 1.0f)
         {
-            Time.timeScale += (1.0f / slowdownLength) * Time.unscaledDeltaTime;
-            Time.timeScale = Mathf.Clamp(Time.timeScale, 0.0f, 1.0f);
-            //If the timeScale is evaluated to be 1.0f then set bCanScaleUp to false because we don't want this operation to be carried out once it is...
-            if (Time.timeScale >= 1.0f)
-            {
-                bCanScaleUp = false;
-            }
+            bCanScaleUp = false;
         }
     }
 }

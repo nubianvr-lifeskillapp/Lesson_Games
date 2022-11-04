@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Fungus;
 using UnityEngine;
 using UnityEngine.UI;
@@ -92,6 +93,7 @@ public class L5_GameManager : MonoBehaviour
             //uIManager.SetQuizElements(allQuestions[questionIndex]);
             //questionAnswered = false;
             SetQuestion();
+            StartCoroutine(WaitForJump());
         }
           
         //Reset to first question index...
@@ -113,17 +115,39 @@ public class L5_GameManager : MonoBehaviour
         player.isRunning = false;
     }
 
+    private IEnumerator ShowLevelFailed()
+    {
+        yield return new WaitForSeconds(3.0f);
+        uIManager.ShowFailedScreen();
+        player.isRunning = false;
+    }
+
+    IEnumerator WaitForJump()
+    {
+        yield return new WaitForSeconds(1.75f);
+        questionAnswered = false;
+    }
+
     public void ResetGame()
     {
         unansweredQuestion.Clear();
         unansweredQuestion = allQuestions.ToList();
         player.isRunning = true;
         noOfQuestionsAnswered = 0;
+        player.playerIsDead = false;
         correctAnswers = 0;
         wrongAnswers = 0;
         uIManager.ShowResultsMenu(false);
+        uIManager.FailedMenuUI.DOFade(0, 0.75f);
+        uIManager.FailedMenuUI.gameObject.SetActive(false);
         isLevelFinished = false;
         SetQuestion();
+    }
+
+    public void OnPlayerDead()
+    {
+        isLevelFinished = true;
+        StartCoroutine(ShowLevelFailed());
     }
 
     public void OnLevelFinshed()
@@ -152,5 +176,14 @@ public class L5_GameManager : MonoBehaviour
         player.isRunning = true;
     }
 
+    public void Restart()
+    {
+        OverallGameManager.overallGameManager.ReloadScene();
+    }
+
+    public void NextLesson(int buildIndex)
+    {
+        OverallGameManager.overallGameManager.LoadNextScene(buildIndex);
+    }
 }
 

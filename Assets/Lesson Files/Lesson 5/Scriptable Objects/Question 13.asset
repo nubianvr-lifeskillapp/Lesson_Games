@@ -16,6 +16,7 @@ MonoBehaviour:
   - Fake News
   - Violent Crimes
   - Self-Harm Content
-  questionImage: {fileID: 21300000, guid: 0f11f736e73e9d5468581df9cd9bee56, type: 3}
-  questionText: Does jumping off a building really hurt?
+  questionImage: {fileID: 21300000, guid: 5c5cf2b691180704a8f5483970e27547, type: 3}
+  questionText: "Getting electrocuted doesn\u2019t hurt that much. Join me to have
+    an electrifying time"
   correctAnswer: 2

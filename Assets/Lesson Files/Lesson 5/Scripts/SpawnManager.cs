@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.MPE;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -53,6 +54,10 @@ public class SpawnManager : MonoBehaviour
         {
             existingObstacle.GetComponent<BoxCollider2D>().enabled = false;
         }
+        // else
+        // {
+        //     existingObstacle.GetComponent<BoxCollider2D>().enabled = true;
+        // }
 
         if (Player.transform.position.x > existingObstacle.transform.position.x + 50.0f)
         {

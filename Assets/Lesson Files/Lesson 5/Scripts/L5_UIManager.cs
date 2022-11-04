@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class L5_UIManager : MonoBehaviour
 {
@@ -13,17 +14,15 @@ public class L5_UIManager : MonoBehaviour
     private Transform questionBoxUI;
     [SerializeField]
     private Transform ResultsMenuUI;
-
+    
+    public CanvasGroup FailedMenuUI;
+    public GameObject FakeFade;
     public TMP_Text questionText;
     public TMP_Text[] textOptions;
     public Button[] buttonOptions;
     public Image questionImage;
     public TMP_Text AffirmationText;
-    public TMP_Text QuestionsAskedText;
-    public TMP_Text QuestionsAnsweredText;
-    public TMP_Text CorrectAnswersText;
-    public TMP_Text WrongAnswersText;
-
+    public Image threeStarsImage;
     public GameObject levelManager;
     public L5_GameManager levelManagerScript;
 
@@ -37,6 +36,8 @@ public class L5_UIManager : MonoBehaviour
     {
         ShowQuestionUI(false);
         ShowResultsMenu(false);
+        FakeFade.gameObject.SetActive(true);
+        threeStarsImage.fillAmount = 0;
     }
 
     // Update is called once per frame
@@ -80,10 +81,15 @@ public class L5_UIManager : MonoBehaviour
 
     public void ShowResultsMenu(bool condition)
     {
+        threeStarsImage.fillAmount = 0;
         ResultsMenuUI.gameObject.SetActive(condition);
-        QuestionsAskedText.text = "Number Of Questions Asked : " + levelManagerScript.noOfQuestions;
-        QuestionsAnsweredText.text = "Number Of Questions Answered : " + levelManagerScript.noOfQuestionsAnswered;
-        CorrectAnswersText.text = "Correct Answers : " + levelManagerScript.correctAnswers;
-        WrongAnswersText.text = "Wrong Answers : " + (levelManagerScript.wrongAnswers + (levelManagerScript.noOfQuestions - levelManagerScript.noOfQuestionsAnswered));
+        threeStarsImage.DOFillAmount((float)levelManagerScript.correctAnswers / levelManagerScript.NumberOfQuestionsToAnswer,
+            2.0f);
+    }
+
+    public void ShowFailedScreen()
+    {
+        FailedMenuUI.gameObject.SetActive(true);
+        FailedMenuUI.DOFade(1.0f, 1.0f);
     }
 }
