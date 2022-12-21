@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Q3
   m_EditorClassIdentifier: 
   questionImage: {fileID: 0}
-  isClickTrue: 1
+  isClickTrue: 0
   questionText: What your parents do?
   trueAnswerText: They are both buisness owners.
   falseAnswerText: I'm not comfortable sharing this with you.

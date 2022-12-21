@@ -12,18 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae0b10ca4cbe5045b957832690afbda, type: 3}
   m_Name: Question 5
   m_EditorClassIdentifier: 
-  questionImage: {fileID: 0}
-  isClickTrue: 1
-  questionText: 'You agree to grant this app permission to all media stored on your
-    device. '
+  questionImage: {fileID: 21300000, guid: 92db20787f06bce4eb8f3732ce482831, type: 3}
+  isClickTrue: 0
+  questionText: "You agree to grant this app permission to all media stored on your
+    device. \n\nIs this Term/Condition responsible for Sarah's devices listening
+    to her?"
   trueAnswerText: Yes
   falseAnswerText: No
-  trueCommentaryStatement: Correct! This term allows your computer to listen to you.
-    This condition talks about allowing your computer to fix your timer every 10
-    minutes. It is a very safe condition and does not infringe on your privacy.
-  falseCommentaryStatement: Incorrect! This isnt the term that allows your computer
-    to listen to you. This condition talks about allowing your computer to fix your
-    timer every 10 minutes. It is a very safe condition and does not infringe on
-    your privacy.
+  trueCommentaryStatement: "Incorrect! \n\nThis term is safe and is not contributing
+    to Sarah's devices listening to her. This term is asking for permission to access
+    storage on her device which is required by some websites and apps to save data
+    on the device and is perfectly safe."
+  falseCommentaryStatement: "Correct! \n\nThis term is safe and is not contributing
+    to Sarah's devices listening to her. This term is asking for permission to access
+    storage on her device which is required by some websites and apps to save data
+    on the device and is perfectly safe."
   senderName: 
   senderProfileImage: {fileID: 0}

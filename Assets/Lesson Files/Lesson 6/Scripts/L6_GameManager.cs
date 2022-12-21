@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Fungus;
+using Sirenix.Utilities;
 using TMPro;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -37,16 +39,24 @@ public class L6_GameManager : MonoBehaviour
     private Button dontShareButton;
 
     private bool messageFromSender = true;
+    public Flowchart Flowchart;
+    public Button continueButton;
 
     //NB: These variables must be set before using the SetSendMessage function....
     Vector2 setPosition = Vector2.zero;
     string question = "Hello \n. Test";
 
-    //NB: This variable must be set before using ActivateShareButtos function...
+    //NB: This variable must be set before using ActivateShareButtons function...
     bool showButtons = false;
 
     // Start is called before the first frame update
     void Start()
+    {
+        SoundManager.soundManager.PlaySFX("BackgroundMusic");
+        StartLesson();
+    }
+
+    private void StartLesson()
     {
         //Sender sends...
         setPosition = senderSpawnLocation;
@@ -56,6 +66,7 @@ public class L6_GameManager : MonoBehaviour
         //Activate Buttons...
         showButtons = true;
         ActivateShareButtons();
+        continueButton.gameObject.SetActive(false);
     }
 
     private void SetSendMessage()
@@ -111,13 +122,40 @@ public class L6_GameManager : MonoBehaviour
         }
     }
 
-    private void MoveAllBubbles()
+    IEnumerator DestroyAllBubbles()
     {
-        foreach (Bubble bubbleRef in bubbles)
+        yield return new WaitForSeconds(0.5f);
+        Flowchart.ExecuteBlock(Flowchart.GetBooleanVariable("firstTime") ? "WatchVideo" : "CheckPoints");
+
+
+        foreach (Transform child in ScrollRect.content.transform)
         {
-            bubbleRef.upValue += 100.0f;
-            bubbleRef.MoveBubbleUp(bubbleRef.upValue);
+            Destroy(child.gameObject);
         }
+        
+        questionIndex = 0;
+        bubbleIndex = 0;
+        correctPoints = 0;
+        messageFromSender = true;
+        ScrollRect.content.sizeDelta = new Vector2(ScrollRect.content.sizeDelta.x,150);
+        StartLesson();
+    }
+
+    public void OnContinueButtonPressed()
+    {
+        continueButton.gameObject.SetActive(false);
+        StartCoroutine(DestroyAllBubbles());
+        bubbles.Clear();
+    }
+
+    public void CheckPlayerPointScore()
+    {
+        Flowchart.ExecuteBlock(Flowchart.GetIntegerVariable("playerPoint") < 4 ? "ScoreBelow4" : "ScoreAbove4");
+    }
+
+    public void ExecuteAfterVideo()
+    {
+        Flowchart.ExecuteBlock("AfterVideo");
     }
 
     public void CheckResponse(bool condition)
@@ -145,11 +183,14 @@ public class L6_GameManager : MonoBehaviour
         // Check if selection is correct....
         if (condition == questions[questionIndex].isClickTrue)
             correctPoints++;
+        
+        Flowchart.SetIntegerVariable("playerPoint",correctPoints);
 
         Debug.Log("Correct Points: " + correctPoints);
 
         // Move to next question object...
         questionIndex++;
+        Debug.Log(questionIndex);
 
         if (questionIndex < questions.Length)
         {
@@ -166,5 +207,30 @@ public class L6_GameManager : MonoBehaviour
             showButtons = true;
             Invoke(nameof(ActivateShareButtons), 4.0f);
         }
+        else
+        {
+            Flowchart.ExecuteBlock("ShowContinueBtn");
+        }
+    }
+
+
+    public void RestartLesson()
+    {
+        OverallGameManager.overallGameManager.ReloadScene();
+    }
+
+    public void NextLesson(int sceneNumber)
+    {
+        OverallGameManager.overallGameManager.LoadNextScene(sceneNumber);
+    }
+
+    public void PlaySFX(string soundName)
+    {
+        SoundManager.soundManager.PlaySFX(soundName);
+    }
+
+    public void StopAllSFX()
+    {
+        SoundManager.soundManager.StopAllSFX();
     }
 }

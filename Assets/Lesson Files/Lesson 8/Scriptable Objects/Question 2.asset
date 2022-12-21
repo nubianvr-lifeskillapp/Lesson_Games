@@ -12,18 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae0b10ca4cbe5045b957832690afbda, type: 3}
   m_Name: Question 2
   m_EditorClassIdentifier: 
-  questionImage: {fileID: 0}
+  questionImage: {fileID: 21300000, guid: 557333d5416d2f742823fc6cd46f8b7b, type: 3}
   isClickTrue: 1
-  questionText: You acknowledge and consent to the website collecting your IP address,
+  questionText: 'You acknowledge and consent to the website collecting your IP address,
     and selling your whereabouts to third party companies for advertising.
+
+
+    Is
+    this Term/Condition responsible for Sarah''s devices listening to her?'
   trueAnswerText: Yes
   falseAnswerText: No
-  trueCommentaryStatement: Correct! This term allows your computer to listen to you.
-    This condition talks about allowing your computer to fix your timer every 10
-    minutes. It is a very safe condition and does not infringe on your privacy.
-  falseCommentaryStatement: Incorrect! This isnt the term that allows your computer
-    to listen to you. This condition talks about allowing your computer to fix your
-    timer every 10 minutes. It is a very safe condition and does not infringe on
-    your privacy.
+  trueCommentaryStatement: "Correct! \n\nThis term allows your devices to keep track
+    of your location every second and sell that information to third party companies
+    for advertisements. It is a very unsafe condition and is a contributing factor
+    to not Sarah's devices infringing on her privacy."
+  falseCommentaryStatement: "Incorrect!\n \nThis term allows your devices to keep
+    track of your location every second and sell that information to third party
+    companies for advertisements. It is a very unsafe condition and is a contributing
+    factor to not Sarah's devices infringing on her privacy."
   senderName: 
   senderProfileImage: {fileID: 0}

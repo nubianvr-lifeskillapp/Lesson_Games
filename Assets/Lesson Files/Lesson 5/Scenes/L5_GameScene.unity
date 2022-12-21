@@ -3128,7 +3128,6 @@ GameObject:
   - component: {fileID: 603623382}
   - component: {fileID: 603623411}
   - component: {fileID: 603623374}
-  - component: {fileID: 603623399}
   - component: {fileID: 603623412}
   - component: {fileID: 603623419}
   - component: {fileID: 603623413}
@@ -3145,6 +3144,7 @@ GameObject:
   - component: {fileID: 603623371}
   - component: {fileID: 603623370}
   - component: {fileID: 603623372}
+  - component: {fileID: 603623386}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -3549,7 +3549,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 362.10895
     y: 81.55054
-    width: 99.1803
+    width: 101.89873
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3647,9 +3647,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 60.99405
-    y: 122.04537
-    width: 218.85237
+    x: 62.259872
+    y: 119.513725
+    width: 228.48099
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4036,7 +4036,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 64.3629
     y: 221.6249
-    width: 148.3606
+    width: 157.59491
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4053,6 +4053,21 @@ MonoBehaviour:
   - {fileID: 603623381}
   - {fileID: 603623409}
   suppressAllAutoSelections: 0
+--- !u!114 &603623386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603623344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentBlock: {fileID: 603623400}
+  suppressBlockAutoSelect: 0
+  waitForFrames: 1
 --- !u!114 &603623390
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4082,9 +4097,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 63.267242
-    y: 276.79303
-    width: 115.57374
+    x: 62.00142
+    y: 275.52722
+    width: 122.151886
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4258,21 +4273,6 @@ MonoBehaviour:
   itemId: 1
   indentLevel: 0
   sayDialog: {fileID: 418059088}
---- !u!114 &603623399
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 603623344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f6487d21a03404cb21b245f0242e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentBlock: {fileID: 603623410}
-  suppressBlockAutoSelect: 0
-  waitForFrames: 1
 --- !u!114 &603623400
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4287,16 +4287,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 61.432144
-    y: 72.63742
-    width: 109.016365
+    x: 69.027084
+    y: 49.8526
+    width: 113.29112
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 0
   blockName: Game Start
   description: 
-  eventHandler: {fileID: 0}
+  eventHandler: {fileID: 603623386}
   commandList:
   - {fileID: 603623378}
   - {fileID: 603623403}
@@ -4327,11 +4327,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -25.333252, y: -55.72897}
+  scrollPos: {x: 21.05353, y: 34.749332}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 576
-  zoom: 0.6100003
+  zoom: 0.79000014
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -4339,9 +4339,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 603623391}
+  - {fileID: 603623368}
   selectedCommands:
-  - {fileID: 603623372}
+  - {fileID: 603623364}
   variables:
   - {fileID: 603623373}
   - {fileID: 603623404}
@@ -4788,14 +4788,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 348.67743
     y: 219.07933
-    width: 140.16388
+    width: 143.67087
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
   itemId: 63
   blockName: Game View Start
   description: 
-  eventHandler: {fileID: 603623399}
+  eventHandler: {fileID: 0}
   commandList:
   - {fileID: 603623408}
   - {fileID: 603623382}
@@ -4946,7 +4946,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 62.961273
     y: 169.58633
-    width: 233.60646
+    width: 240
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0

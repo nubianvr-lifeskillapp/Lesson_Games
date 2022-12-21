@@ -12,18 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae0b10ca4cbe5045b957832690afbda, type: 3}
   m_Name: Question 1
   m_EditorClassIdentifier: 
-  questionImage: {fileID: 0}
-  isClickTrue: 1
-  questionText: You agree that we have the right to access your account and read
+  questionImage: {fileID: 21300000, guid: f8a5f9bfe7646804ba7ddea9c8b4b7ab, type: 3}
+  isClickTrue: 0
+  questionText: 'You agree that we have the right to access your account and read
     your personal information as and when we want.
+
+
+    Is this Term/Condition responsible
+    for Sarah''s devices listening to her?
+
+'
   trueAnswerText: Yes
   falseAnswerText: No
-  trueCommentaryStatement: Correct! This term allows your computer to listen to you.
-    This condition talks about allowing your computer to fix your timer every 10
-    minutes. It is a very safe condition and does not infringe on your privacy.
-  falseCommentaryStatement: Incorrect! This isnt the term that allows your computer
-    to listen to you. This condition talks about allowing your computer to fix your
-    timer every 10 minutes. It is a very safe condition and does not infringe on
-    your privacy.
+  trueCommentaryStatement: "Incorrect! \n\nThis term is safe and is sometimes required
+    by some websites. For example to check your age to see of the content on that
+    site is appropriate for you."
+  falseCommentaryStatement: 'Correct!
+
+
+    This term is safe and is sometimes required
+    by some websites. For example to check your age to see of the content on that
+    site is appropriate for you.'
   senderName: 
   senderProfileImage: {fileID: 0}
