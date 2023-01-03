@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae0b10ca4cbe5045b957832690afbda, type: 3}
   m_Name: Question 2
   m_EditorClassIdentifier: 
-  questionImage: {fileID: 21300000, guid: 7ff40aeadf10eb94592d7d766244a3e2, type: 3}
+  questionImage: {fileID: 21300000, guid: 8a990cb22537b944b9187afee2a96985, type: 3}
   isClickTrue: 1
-  questionText: "What a nerd. You\u2019re so boring."
+  questionText: Thats why you are getting fatter fatso
   trueAnswerText: 
   falseAnswerText: 
   trueCommentaryStatement: 
   falseCommentaryStatement: 
-  senderName: Chisom
-  senderProfileImage: {fileID: 21300000, guid: 5622c4aafcb06d54bb83994cd88ee55e, type: 3}
+  senderName: Evelyn
+  senderProfileImage: {fileID: 21300000, guid: 85fb1ec4b40f2d0408bbd6ddd4170194, type: 3}

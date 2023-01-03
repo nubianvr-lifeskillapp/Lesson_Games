@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -10,8 +11,7 @@ public class L9_GameManager : MonoBehaviour
     [SerializeField]
     private Questions[] questionObjects;
     int questionIndex = 0;
-    public int correctAnswers = 0;
-    public int wrongAnswers = 0;
+    private int correctAnswers = 0;
     // Question Image is Post Image...
     // Question Text is SenderCommentText...
 
@@ -24,29 +24,19 @@ public class L9_GameManager : MonoBehaviour
     [SerializeField]
     private TMP_Text senderUsernameText;
 
-    [SerializeField]
-    private GameObject introScreen;
-    [SerializeField]
-    private GameObject gameplayScreen;
-    [SerializeField]
-    private GameObject gameplayContinueButton;
-    [SerializeField]
-    private GameObject gameOverScreen;
-    [SerializeField]
-    private GameObject videoScreen;
-    [SerializeField]
-    private GameObject endScreen;
-
-    public int noOfQuestionsAnswered = 0;
+    [SerializeField] private TMP_Text evidenceCollectedText;
+    
+    private int noOfQuestionsAnswered = 0;
 
     private bool isCorrectAnalysis = false;
+
+    public Flowchart Flowchart;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameplayContinueButton.SetActive(false);
-        ShowScreen(introScreen);
         SetQuestionBox();
+        PlaySfx("BackgroundMusic");
     }
 
     // Update is called once per frame
@@ -55,7 +45,7 @@ public class L9_GameManager : MonoBehaviour
 
     }
 
-    public void SetQuestionBox()
+    private void SetQuestionBox()
     {
         postImage.sprite = questionObjects[questionIndex].questionImage;
         senderProfileImage.sprite = questionObjects[questionIndex].senderProfileImage;
@@ -69,13 +59,12 @@ public class L9_GameManager : MonoBehaviour
         if (condition == questionObjects[questionIndex].isClickTrue)
         {
             //Execute true statement...
-            correctAnswers++;
+            correctAnswers += 1;
+            evidenceCollectedText.text = $"Evidence Collected: {correctAnswers}";
             Debug.Log("Correct!");
         }
         else
         {
-            //Execute false statement...
-            wrongAnswers++;
             Debug.Log("Incorrect!");
         }
 
@@ -83,45 +72,63 @@ public class L9_GameManager : MonoBehaviour
         questionIndex++;
         if (!(questionIndex < questionObjects.Length))
         {
-            // Game Over
-            questionIndex = 0;
-            SetQuestionBox();
+            
         }
         else
         {
             // Set new question set...
             SetQuestionBox();
         }
-        ShowGameplayContinueButton();
-
-        // Set isCorrectAnalysis when at last question...
-        if (noOfQuestionsAnswered >= questionObjects.Length)
-        {
-            if (condition == questionObjects[(questionObjects.Length - 1)].isClickTrue)
-            {
-                isCorrectAnalysis = true;
-                Debug.Log("Spot On!");
-            }
-        }
+        CheckQuestionsFinished();
     }
-
-    public void ShowScreen(GameObject screen)
+    
+    private void CheckQuestionsFinished()
     {
-        introScreen.SetActive(false);
-        gameplayScreen.SetActive(false);
-        gameOverScreen.SetActive(false);
-        videoScreen.SetActive(false);
-        endScreen.SetActive(false);
-
-        screen.SetActive(true);
+        if (noOfQuestionsAnswered < questionObjects.Length) return;
+        Debug.Log("Completed");
+        StartCoroutine(QuestionsEnded(0.25f));
     }
 
-    public void ShowGameplayContinueButton()
+    IEnumerator QuestionsEnded(float waitTime)
     {
-        if (noOfQuestionsAnswered >= questionObjects.Length)
-        {
-            Debug.Log("Completed");
-            gameplayContinueButton.SetActive(true);
-        }
+        yield return new WaitForSeconds(waitTime);
+        Flowchart.ExecuteBlock(correctAnswers > 3 ? "ScoredAbove3" : "ScoredBelow3");
     }
+
+    public void ResetGameValues()
+    {
+        // Reset Game Values
+        questionIndex = 0;
+        correctAnswers = 0;
+        noOfQuestionsAnswered = 0;
+        evidenceCollectedText.text = $"Evidence Collected: {correctAnswers}";
+        SetQuestionBox();
+    }
+
+    public void ExecuteAfterVideo()
+    {
+        Flowchart.ExecuteBlock("ExecuteAfterVideo");
+    }
+
+    public void RestartLevel()
+    {
+        OverallGameManager.overallGameManager.ReloadScene();
+    }
+
+    public void LoadNextLevel(int sceneNumber)
+    {
+        OverallGameManager.overallGameManager.LoadNextScene(sceneNumber);
+    }
+
+    public void PlaySfx(string soundName)
+    {
+        SoundManager.soundManager.PlaySFX(soundName);
+    }
+
+    public void StopAllSfx()
+    {
+      SoundManager.soundManager.StopAllSFX();  
+    }
+    
+
 }

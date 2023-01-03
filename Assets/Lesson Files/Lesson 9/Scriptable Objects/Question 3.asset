@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae0b10ca4cbe5045b957832690afbda, type: 3}
   m_Name: Question 3
   m_EditorClassIdentifier: 
-  questionImage: {fileID: 21300000, guid: 7ff40aeadf10eb94592d7d766244a3e2, type: 3}
-  isClickTrue: 1
-  questionText: "What a nerd. You\u2019re so boring."
+  questionImage: {fileID: 21300000, guid: 8bc7e06cc7cbff14eac60501fa740e03, type: 3}
+  isClickTrue: 0
+  questionText: Great post, I love how good you are at this game.
   trueAnswerText: 
   falseAnswerText: 
   trueCommentaryStatement: 
   falseCommentaryStatement: 
   senderName: Kabiru
-  senderProfileImage: {fileID: 21300000, guid: 5622c4aafcb06d54bb83994cd88ee55e, type: 3}
+  senderProfileImage: {fileID: 21300000, guid: ad232e3cec3fcc2478d5185cae4d218d, type: 3}

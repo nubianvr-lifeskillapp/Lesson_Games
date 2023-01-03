@@ -167,5 +167,9 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 72.599976
       objectReference: {fileID: 0}
+    - target: {fileID: 6879785635286097837, guid: f4b847e6be9c96e4cad2e28eaf569b98, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4b847e6be9c96e4cad2e28eaf569b98, type: 3}
