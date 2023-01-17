@@ -50,6 +50,7 @@ public class L2_GameManager : MonoBehaviour
     private void Start()
     {
         scripts = new L2_BaseCarouselScript[3] {background,middleground,foreground};
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -122,6 +123,7 @@ public class L2_GameManager : MonoBehaviour
     {
         SoundManager.soundManager.PlaySFX(soundName);
     }
+    
 
     public void StopAllSFX()
     {

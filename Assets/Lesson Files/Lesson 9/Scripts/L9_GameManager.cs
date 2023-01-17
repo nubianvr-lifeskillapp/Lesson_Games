@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Fungus;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class L9_GameManager : MonoBehaviour
@@ -36,6 +37,7 @@ public class L9_GameManager : MonoBehaviour
     void Start()
     {
         SetQuestionBox();
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
         PlaySfx("BackgroundMusic");
     }
 

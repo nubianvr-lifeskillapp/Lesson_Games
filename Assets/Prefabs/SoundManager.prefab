@@ -93,4 +93,10 @@ MonoBehaviour:
     playOnAwake: 0
     loop: 0
     source: {fileID: 0}
+  - name: LoseSound
+    clip: {fileID: 8300000, guid: 8357cf48488075b45a2c36cf1cfcaf04, type: 3}
+    volume: 0.598
+    playOnAwake: 0
+    loop: 0
+    source: {fileID: 0}
   reactionSounds: []

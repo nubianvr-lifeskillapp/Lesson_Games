@@ -327,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_Volume
-      value: 0.499
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_AutoStart
@@ -335,7 +335,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_VideoPath
-      value: https://lsa-games.s3.eu-central-1.amazonaws.com/LessonVideos/Game+introduction.mp4
+      value: Videos/Game introduction.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: m_VideoLocation
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: _pauseMediaOnAppPause
@@ -396,6 +400,14 @@ PrefabInstance:
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_events.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063614398824, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: _location
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063614398824, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: _videoFiles.Array.data[0]
+      value: Videos/Game introduction.mp4
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063774065152, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_RootOrder
@@ -1261,11 +1273,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -53.418667, y: 67.62088}
+  scrollPos: {x: -260.62534, y: 119.04608}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 753
-  zoom: 0.7300002
+  zoom: 0.6400003
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -1273,9 +1285,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 407232194}
-  selectedCommands:
-  - {fileID: 407232215}
+  - {fileID: 407232203}
+  selectedCommands: []
   variables:
   - {fileID: 407232208}
   - {fileID: 407232206}
@@ -1330,7 +1341,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 67
     y: 70
-    width: 218.4931
+    width: 217.18742
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1557,7 +1568,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 408.9785
     y: 201.02353
-    width: 126.71231
+    width: 124.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2033,7 +2044,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 755.3949
     y: 76.26973
-    width: 152.7397
+    width: 149.99995
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2090,7 +2101,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 756.3655
     y: 9.066492
-    width: 141.78079
+    width: 139.06247
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2117,7 +2128,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 691.7779
     y: 385.33066
-    width: 162.32874
+    width: 159.37495
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2213,7 +2224,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 693.49805
     y: 240.55467
-    width: 165.06845
+    width: 162.49994
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2338,7 +2349,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 65.95569
     y: 156.09174
-    width: 152.7397
+    width: 148.43745
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2635,7 +2646,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 875.5729
     y: 476.74548
-    width: 100.68492
+    width: 98.43748
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2700,7 +2711,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 576.838
     y: 472.43982
-    width: 102.05478
+    width: 98.43748
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2727,9 +2738,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 282.12894
-    y: 458.5347
-    width: 85.616425
+    x: 100.87894
+    y: 296.0347
+    width: 84.374985
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3110,7 +3121,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 699.22406
     y: 589.84406
-    width: 145.89038
+    width: 143.74997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3466,7 +3477,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 69.708786
     y: -35.082573
-    width: 111.643814
+    width: 110.93747
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5094,6 +5105,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -257
       objectReference: {fileID: 0}
+    - target: {fileID: 6879785635286097837, guid: 24f1d74f35c1b00468513717152a3fe7, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f1d74f35c1b00468513717152a3fe7, type: 3}
 --- !u!1 &978865957
@@ -5234,7 +5249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1006160460
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8903,7 +8918,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_VideoPath
-      value: https://lsa-games.s3.eu-central-1.amazonaws.com/LessonVideos/Game+1.mp4
+      value: Videos/Lesson 1.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: m_VideoLocation
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_events.m_PersistentCalls.m_Calls.Array.size
@@ -8960,6 +8979,14 @@ PrefabInstance:
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_events.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063614398824, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: _location
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063614398824, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: _videoFiles.Array.data[0]
+      value: Videos/Lesson 1.mp4
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063774065152, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_RootOrder

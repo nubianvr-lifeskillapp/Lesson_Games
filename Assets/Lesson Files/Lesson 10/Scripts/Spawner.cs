@@ -17,10 +17,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnWaitTime = 0f;
-        SpawnEnemies();
-        // isEnemyPresent = true;
-        spawnWaitTime = 2f;
+     initSpawnEnemies();
     }
 
     private void SpawnEnemies()
@@ -37,6 +34,13 @@ public class Spawner : MonoBehaviour
             enemyRef.startWaitTime = Random.Range(1, 3);
             //Debug.Log("SpawnIndex: " + spawnIndex);
         }
+    }
+
+    private void initSpawnEnemies()
+    {
+        spawnWaitTime = 0f;
+        SpawnEnemies();
+        spawnWaitTime = 2f;
     }
 
 

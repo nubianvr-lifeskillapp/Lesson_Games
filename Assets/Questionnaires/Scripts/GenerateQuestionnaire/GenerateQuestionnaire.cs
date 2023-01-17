@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEngine;
 using SimpleJSON;
+using Sirenix.OdinInspector;
 
 /// <summary>
 /// GenerateQuestionnaire.class
@@ -15,9 +16,13 @@ namespace VRQuestionnaireToolkit
 {
     public class GenerateQuestionnaire : MonoBehaviour
     {
+        [MultiLineProperty(5)]
         public string JsonInputPath_1;
+        [MultiLineProperty(5)]
         public string JsonInputPath_2;
+        [MultiLineProperty(5)]
         public string JsonInputPath_3;
+        [MultiLineProperty(5)]
         public string JsonInputPath_4;
         public string JsonInputPath_5;
         public string JsonInputPath_6;
@@ -107,7 +112,23 @@ namespace VRQuestionnaireToolkit
             for (int i = 1; i < Questionnaires.Count; i++)
                 Questionnaires[i].SetActive(false);
 
-            Questionnaires[0].SetActive(true);
+            var playerData = DataPersistanceManager.instance.GetGameData();
+            
+            switch (playerData.educationalLevel)
+            {
+                case "primary":
+                    Questionnaires[0].SetActive(true);
+                    break;
+                case "juniorhigh":
+                    Questionnaires[1].SetActive(true);
+                    break;
+                case "seniorhigh":
+                    Questionnaires[2].SetActive(true);
+                    break;
+                default:
+                    break;
+            }
+            
 
         }
 

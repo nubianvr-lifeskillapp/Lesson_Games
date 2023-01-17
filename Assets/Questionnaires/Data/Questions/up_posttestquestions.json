@@ -1,0 +1,257 @@
+{
+    "qTitle":"LSA POST-QUIZ for UPPER PRIMARY STUDENTS (P4, P5, P6)",
+    "qInstructions":"Please answer all questions....",
+    "qId":"up-post_questions",
+    "questions":[
+      {
+         "pId":"page1",
+         "qType":"radio",
+         "qInstructions":"Choose one option for each question",
+         "qData":[
+            {
+               "qId":"q1",
+               "qText":"Information shared on the Internet is always true and can be trusted.",
+               "qMandatory":"true",
+               "qOptions":[
+                  "",
+                  "",
+                  "True",  
+                  "False",			                    
+                  "Don't know",
+                  "",
+                  ""
+               ]
+            },
+            {
+               "qId":"q2",
+               "qText":"Others can see anything I put online. ",
+               "qMandatory":"true",
+               "qOptions":[
+                 "",
+                 "",
+                 "True",  
+                 "False",			                    
+                 "Don't know",
+                 "",
+                 ""
+              ]
+            }
+         ]
+      },
+      {
+        "pId":"page2",
+        "qType":"radio",
+        "qInstructions":"Choose one option for each question",
+        "qData":[
+           {
+              "qId":"q3",
+              "qText":"Using a computer for too long will affect your eyes.",
+              "qMandatory":"true",
+              "qOptions":[
+                "",
+                "",
+                "True",  
+                "False",			                    
+                "Don't know",
+                "",
+                ""
+             ]
+           },
+           {
+             "qId":"q4",
+             "qText":"Spreading rumors about a friend on social media is a form of cyberbullying.",
+             "qMandatory":"true",
+             "qOptions":[
+               "",
+               "",
+               "True",  
+               "False",			                    
+               "Don't know",
+               "",
+               ""
+            ]
+          }
+        ]
+     },
+      {
+        "pId":"page3",
+        "qType":"checkbox",
+        "qInstructions":"Choose one option",
+        "qOptions":[
+           "My friends",
+           "Nobody – I should keep them to yourself",
+           "My teacher"
+        ],
+        "qData":[
+           {
+              "qId":"q5",
+              "qText":"Who can you share your passwords with?",
+              "qMandatory":"true"
+           }
+        ]
+     },
+     {
+        "pId":"page4",
+        "qType":"checkbox",
+        "qInstructions":"Choose one option",
+        "qOptions":[
+           "Ignore it, tell a trusted adult (parent, teacher) straight away",
+           "Send the picture if I think I know them",
+           "Ask them what they need my picture for"
+        ],
+        "qData":[
+           {
+              "qId":"q6",
+              "qText":"What should you do if a stranger asks you to send a picture of yourself to them? ",
+              "qMandatory":"true"
+           }
+        ]
+     },
+     {
+        "pId":"page5",
+        "qType":"checkbox",
+        "qInstructions":"Choose one option",
+        "qOptions":[
+           "A friend of a friend",
+           "Someone I think I have met before",
+           "People I personally know, and even that, I have to be careful"
+        ],
+        "qData":[
+           {
+              "qId":"q7",
+              "qText":"Who should you accept as a friend from online?",
+              "qMandatory":"true"
+           }
+        ]
+     },
+     {
+        "pId":"page6",
+        "qType":"checkbox",
+        "qInstructions":"Choose one option",
+        "qOptions":[
+           "Show it to my teacher or Guidance and Counselling Officer or a trusted adult",
+           "Forward the photo to other students or friends",
+           "Laugh at the photo with my friends"
+        ],
+        "qData":[
+           {
+              "qId":"q8",
+              "qText":"An embarrassing photo of a classmate has been sent by someone. What should you do with it?",
+              "qMandatory":"true"
+           }
+        ]
+     },
+     {
+        "pId":"page7",
+        "qType":"checkbox",
+        "qInstructions":"Choose one option",
+        "qOptions":[
+           "Using the internet every day or all the time",
+           "Not using the internet at all",
+           "Limiting the amount of time spent online daily"
+        ],
+        "qData":[
+           {
+              "qId":"q9",
+              "qText":"Which of the following is a way to ensure living a balanced life while having access to the internet? ",
+              "qMandatory":"true"
+           }
+        ]
+     },
+     {
+        "pId":"page8",
+        "qType":"checkbox",
+        "qInstructions":"Choose one option",
+        "qOptions":[
+           "Fight with them",
+           "Leave them and report them to a trusted adult (parent, teacher, Guidance & Counselling Officer)",
+           "Make them my friend"
+        ],
+        "qData":[
+           {
+              "qId":"q10",
+              "qText":"What action should you take against online friends who always make you angry?",
+              "qMandatory":"true"
+           }
+        ]
+     },
+     {
+      "pId":"page9",
+      "qType":"radio",
+      "qInstructions":"Choose one option for each question",
+      "qData":[
+         {
+            "qId":"q11",
+            "qText":"The Life Skills App was easy to use",
+            "qMandatory":"true",
+            "qOptions":[
+              "",
+              "Strongly Agree",
+              "Agree",
+              "Neutral",  
+              "Disagree",			                    
+              "Strongly Disagree",
+              ""
+           ]
+         }
+      ]
+     },
+     {
+      "pId":"page10",
+      "qType":"radio",
+      "qInstructions":"Choose one option for each question",
+      "qData":[
+         {
+            "qId":"q12",
+            "qText":"The Life Skills App helped me better understand how to be safe when I am online",
+            "qMandatory":"true",
+            "qOptions":[
+              "",
+              "Strongly Agree",
+              "Agree",
+              "Neutral",  
+              "Disagree",			                    
+              "Strongly Disagree",
+              ""
+           ]
+         }
+      ]
+     },
+     {
+      "pId":"page11",
+      "qType":"radio",
+      "qInstructions":"Choose one option for each question",
+      "qData":[
+         {
+            "qId":"q13",
+            "qText":"I will recommend the Life Skills App to my peers/friends",
+            "qMandatory":"true",
+            "qOptions":[
+              "",
+              "Strongly Agree",
+              "Agree",
+              "Neutral",  
+              "Disagree",			                    
+              "Strongly Disagree",
+              ""
+           ]
+         }
+      ]
+     },
+     {
+        "pId":"page12",
+        "qType":"textInput",
+        "qInstructions":"Enter Message",
+        "qData":[
+           {
+              "qId":"q14",
+              "qText":"Please share any comments you have about your experience with the Life Skills App.",
+              "qMandatory":"false"
+           }
+        ]
+     }
+     
+   ],
+    "qMessage":"Congratulations!",
+    "qAcknowledgments":"You have finished the Life Skills App programme.\n Thank you for completing all the lessons on the Life Skills App and all the questions on the quizzes.\n Please continue to stay safe on the internet!"
+ }

@@ -5,6 +5,7 @@ using Fungus;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class L7_GameManager1 : MonoBehaviour
@@ -49,6 +50,7 @@ public class L7_GameManager1 : MonoBehaviour
         popUpsList = popups.ToList();
         popupIndex = Random.Range(0, popUpsList.Count);
         popUpsList[popupIndex].gameObject.SetActive(true);
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
     }
 
     private void RemoveAllPopups()

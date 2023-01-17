@@ -236,7 +236,7 @@ namespace VRQuestionnaireToolkit
                         SetRec(radioHorizontalRec);
                         SetRec(radioGridHorizontalRec);
 
-                        QuestionList.Add(temp.GetComponent<Checkbox>().CreateCheckboxQuestion(qId, qType, qInstructions, _qData[i][0], _qData[i][1], qOptions, i, radioHorizontalRec));
+                        QuestionList.Add(temp.GetComponent<Checkbox>().CreateCheckboxQuestion(qId, qType, qInstructions, _qData[i][0], _qData[i][1], _qData[i][2].AsBool, qOptions, i, radioHorizontalRec));
                     }
                     break;
                 case "checkboxGrid":
@@ -309,7 +309,25 @@ namespace VRQuestionnaireToolkit
                     }
                     break;
                 case "textInput":
-                    Debug.LogError("TextInput is not supported ATM");
+                    for (int i = 0; i < _qData.Count; i++)
+                    {
+                        temp = Instantiate(TextInput) as GameObject;
+                        temp.name = "textinput_" + i;
+                        radioHorizontalRec = temp.GetComponent<RectTransform>();
+                        q_main = GameObject.Find("Q_Main");
+                        radioHorizontalRec.SetParent(q_main.GetComponent<RectTransform>());
+                        
+                        //ensuring correct placement and scaling in the UI
+                        text = temp.GetComponentInChildren<TextMeshProUGUI>();
+                        text.text = _qData[i][1];
+                        text.transform.localPosition = new Vector3(0, 200 - (i * 90), text.transform.localPosition.z);
+                        SetRec(radioHorizontalRec);
+                        
+                        
+
+                        QuestionList.Add(temp.GetComponent<TextInput>().CreateTextInputQuestion(qId, qType, qInstructions, _qData[i][0], _qData[i][1], _qData[i][2].AsBool, radioHorizontalRec));
+                    }
+                    //Debug.LogError("TextInput is not supported ATM");
                     break;
                 default:
                     Debug.LogError("We do not support this questiontype");
@@ -371,7 +389,7 @@ namespace VRQuestionnaireToolkit
 
             //display instruction on page
             GameObject q_header = GameObject.Find("Q_Header");
-            TextMeshProUGUI descriptionText = q_header.GetComponentInChildren<TextMeshProUGUI>();
+            TextMeshProUGUI descriptionText = q_header.transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>();
             descriptionText.text = qInstructions;
 
             if (!firstPage)
@@ -379,6 +397,7 @@ namespace VRQuestionnaireToolkit
                 GameObject q_footer = GameObject.Find("Q_Footer");
                 q_footer.SetActive(false);
             }
+           
 
             PageList.Add(_newPage);
             NumPages++;

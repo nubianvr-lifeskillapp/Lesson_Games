@@ -1586,19 +1586,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 268944157}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 414087868}
-        m_TargetAssemblyTypeName: L5_GameManager, Assembly-CSharp
-        m_MethodName: ResetGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &268944157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2170,7 +2158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_VideoPath
-      value: https://lsa-games.s3.eu-central-1.amazonaws.com/LessonVideos/Lesson+5_1.mp4
+      value: Videos/Lesson 5_1.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: m_VideoLocation
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063506644150, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_events.m_PersistentCalls.m_Calls.Array.size
@@ -2257,8 +2249,12 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063614398824, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
+      propertyPath: _location
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221923063614398824, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: _videoFiles.Array.data[0]
-      value: https://lsa-games.s3.eu-central-1.amazonaws.com/LessonVideos/Lesson+5_1.mp4
+      value: Videos/Lesson 5_1.mp4
       objectReference: {fileID: 0}
     - target: {fileID: 4221923063774065152, guid: 33601cf8b90e29b41969e335ee488ed6, type: 3}
       propertyPath: m_RootOrder
@@ -4082,7 +4078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentBlock: {fileID: 603623391}
   suppressBlockAutoSelect: 0
-  targetButton: {fileID: 0}
+  targetButton: {fileID: 268944156}
 --- !u!114 &603623391
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4339,9 +4335,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 603623368}
-  selectedCommands:
-  - {fileID: 603623364}
+  - {fileID: 603623391}
+  selectedCommands: []
   variables:
   - {fileID: 603623373}
   - {fileID: 603623404}
@@ -11764,7 +11759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionBoxUI: {fileID: 1099913749}
   ResultsMenuUI: {fileID: 1484381972}
-  FailedMenuUI: {fileID: 0}
+  FailedMenuUI: {fileID: 1695639351}
   FakeFade: {fileID: 1989611771}
   questionText: {fileID: 2051501218}
   textOptions:

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using Fungus;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class L4_UIManager : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class L4_UIManager : MonoBehaviour
     void Start()
     {
         continueBtn.gameObject.SetActive(false);
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame

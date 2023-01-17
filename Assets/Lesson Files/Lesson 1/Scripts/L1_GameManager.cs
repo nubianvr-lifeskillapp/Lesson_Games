@@ -37,6 +37,7 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
     private string username;
     public Flowchart flowchart;
     private int playerPoints;
+    
 
     //Awake Method
     private void Awake()
@@ -48,6 +49,8 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
     // Start is called before the first frame update
     void Start()
     {
+        
+        
         errorText.gameObject.SetActive(false);
         //Set question on scene start...
         uIManager.SetQuestionElements(allQuestions[questionIndex]);
@@ -55,6 +58,7 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
         noOfQuestions = allQuestions.Length;
         Debug.Log("No of Questions: " + noOfQuestions);
         playerPoints = 0;
+        //DataPersistanceManager.instance.SaveStudentGame();
     }
 
     // Update is called once per frame
@@ -200,6 +204,7 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
 
     public void IntroVideoPlayEnded()
     {
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
         flowchart.ExecuteBlock("After Intro Video Game Started");
     }
 
@@ -212,4 +217,5 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
     {
         SoundManager.soundManager.StopAllSFX();
     }
+    
 }

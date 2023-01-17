@@ -10956,7 +10956,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 73617988}
         m_TargetAssemblyTypeName: OfflineLoginManager, Assembly-CSharp
-        m_MethodName: VerifyUser
+        m_MethodName: StartGameBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11876,7 +11876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   username: {fileID: 913884399}
-  schoolText: {fileID: 0}
+  schoolText: {fileID: 571654318}
   classText: {fileID: 1369016408}
   currentLessonText: {fileID: 2096332868}
 --- !u!1 &1520086753
@@ -14496,7 +14496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Lessons Completed
+  m_text: Current Lesson
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce317738e324fe944a6efeeb8b5a7a9e, type: 2}
   m_sharedMaterial: {fileID: -5420873811968408027, guid: ce317738e324fe944a6efeeb8b5a7a9e, type: 2}

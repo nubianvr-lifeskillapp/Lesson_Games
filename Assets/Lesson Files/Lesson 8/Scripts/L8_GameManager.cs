@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Fungus;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class L8_GameManager : MonoBehaviour
@@ -49,6 +50,7 @@ public class L8_GameManager : MonoBehaviour
     void Start()
     {
         PlaySFX("BackgroundMusic");
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
         playerScore = 0;
         cluesSolvedNumberText.text = $"{playerScore}/{questionObjects.Length}";
 

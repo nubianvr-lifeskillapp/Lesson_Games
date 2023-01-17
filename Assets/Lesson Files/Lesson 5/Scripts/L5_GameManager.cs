@@ -18,7 +18,7 @@ public class L5_GameManager : MonoBehaviour
     private TimeManager timeManager;
     [SerializeField]
     private L5_UIManager uIManager;
-
+    
     [Header("Question Properties")]
     [SerializeField]
     private Question5Objects[] allQuestions;
@@ -43,6 +43,7 @@ public class L5_GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
         unansweredQuestion = allQuestions.ToList();
         SetQuestion();
     }
@@ -135,6 +136,7 @@ public class L5_GameManager : MonoBehaviour
         player.isRunning = true;
         noOfQuestionsAnswered = 0;
         player.playerIsDead = false;
+        player.playerLife = 3;
         correctAnswers = 0;
         wrongAnswers = 0;
         uIManager.ShowResultsMenu(false);

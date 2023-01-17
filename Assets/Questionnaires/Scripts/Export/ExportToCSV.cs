@@ -5,10 +5,8 @@ using System.Text;
 using System.IO;
 using System;
 using TMPro;
-using UnityEditor.Build.Content;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using UnityEngine.WSA;
 using Application = UnityEngine.Application;
 using UnityEngine.Networking;
 
@@ -36,8 +34,8 @@ namespace VRQuestionnaireToolkit
         [Header("Configure if you want to save the results to local storage:")]
         [Tooltip("Save results locally on this device.")]
         public bool SaveToLocal = true;
-        public string StorePath;
-        public bool UseGlobalPath;
+        //public string StorePath;
+        //public bool UseGlobalPath;
 
         [Header("Configure if you want to save the results to remote server:")]
         public bool SaveToServer = false;
@@ -60,7 +58,7 @@ namespace VRQuestionnaireToolkit
         {
             _vrQuestionnaireToolkit = GameObject.FindGameObjectWithTag("VRQuestionnaireToolkit");
             _studySetup = _vrQuestionnaireToolkit.GetComponent<StudySetup>();
-            _folderPath = UseGlobalPath ? StorePath : Application.dataPath + StorePath;
+            _folderPath = Application.persistentDataPath;
 
             if (QuestionnaireFinishedEvent == null)
                 QuestionnaireFinishedEvent = new UnityEvent();
@@ -254,6 +252,24 @@ namespace VRQuestionnaireToolkit
                         }
                         _csvRows.Add(csvTemp);
                     }
+                    
+                    else if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<TextInput>() != null)
+                    {
+                        _questionnaireID = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<TextInput>().QuestionnaireId;
+                        csvTemp[0] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<TextInput>().QType;
+                        csvTemp[1] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<TextInput>().QText;
+                        csvTemp[2] = _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<TextInput>().QId;
+
+
+                        for (int j = 0;
+                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<TextInput>()
+                                .TextInputList.Count;
+                            j++)
+                        {
+                            csvTemp[3] = "" + _pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<TMP_InputField>().text;
+                        }
+                        _csvRows.Add(csvTemp);
+                    }
                 }
             }
             #endregion
@@ -265,10 +281,10 @@ namespace VRQuestionnaireToolkit
 
             //-----Processing responses into the specified data format-----//
 
-            string _completeFileName = "questionnaireID_" + _questionnaireID + "_participantID_" + _studySetup.ParticipantId + "_condition_" + _studySetup.Condition + "_" + FileName + "." + _fileType;
+            string _completeFileName = "questionnaireID_" + _questionnaireID + "_participantID_" + OverallGameManager.overallGameManager.playerData.username +  "_" + FileName + "." + _fileType;
             string _completeFileName_allResults = "questionnaireID_" + _questionnaireID + "_ALL_" + FileName + "." + _fileType;
-            string _path = _folderPath + _completeFileName;
-            string _path_allResults = _folderPath + _completeFileName_allResults;
+            string _path = Path.Combine(_folderPath + _completeFileName);
+            string _path_allResults = Path.Combine(_folderPath + _completeFileName_allResults);
 
 
             string[][] output = new string[_csvRows.Count][];
@@ -323,7 +339,7 @@ namespace VRQuestionnaireToolkit
         {
             StringBuilder sb_all_content = new StringBuilder();
 
-            string header = "Answer_Participant_" + _studySetup.ParticipantId + "_condition_" + _studySetup.Condition; // header for this current participant
+            string header = "Answer_Participant_" + OverallGameManager.overallGameManager.playerData.username; // header for this current participant
 
             try
             {
@@ -363,7 +379,9 @@ namespace VRQuestionnaireToolkit
             print("Answers stored in path: " + localPath);
             try
             {
-                StreamWriter outStream = System.IO.File.CreateText(localPath);
+                Directory.CreateDirectory(Path.GetDirectoryName(localPath)!);
+                FileStream stream = new FileStream(localPath, FileMode.Create);
+                StreamWriter outStream = new StreamWriter(stream);
                 outStream.WriteLine(content);
                 outStream.Close();
             }

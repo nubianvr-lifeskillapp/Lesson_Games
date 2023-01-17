@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 public class TriviaSystem : MonoBehaviour
 {
@@ -24,7 +27,8 @@ public class TriviaSystem : MonoBehaviour
     private TMP_Text questionNumberText;
     // Array holding reference to all buttons on the trivia layout...
     [SerializeField]
-    private TMP_Text[] answerTexts;
+    private TriviaButtons[] answerBtns;
+    
 
     // Array holding reference to question text ui...
     [SerializeField] TMP_Text questionText;
@@ -36,6 +40,8 @@ public class TriviaSystem : MonoBehaviour
     private TMP_Text priceText;
     [SerializeField]
     private TMP_Text detailsText;
+
+    public TMP_Text endScreenBtnText;
 
     private int price = 0;
 
@@ -52,48 +58,75 @@ public class TriviaSystem : MonoBehaviour
     private Sprite correctSprite;
     [SerializeField]
     private Sprite wrongSprite;
-    private Button selectedButton;
+    private TriviaButtons selectedButton;
 
-    private int timer = 15;
+    public float timer = 30;
+    public bool timerIsRunning;
+    public Flowchart Flowchart;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        PlaySfx("BackgroundMusic");
         gameOverUI.SetActive(false);
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
         noOfQuestions = questionObjects.Length;
-        selectedButton = answerTexts[0].transform.parent.GetComponent<Button>();
-        SetUIElements();
+        SetSelectedButton(answerBtns[0]);
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        timerIsRunning = Flowchart.GetBooleanVariable("timerRunning");
+        if (!timerIsRunning) return;
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            DisplayTime(timer);
+        }
+        else
+        {
+            Debug.Log("Time has run out!");
+            timer = 0;
+            PlaySfx("LoseSound");
+            Flowchart.SetBooleanVariable("timerRunning", false);
+            timerIsRunning = false;
+            SetButtonsInteractable(false);
+            Invoke("ShowGameOverUI",2.0f);
+        }
+    }
+    
+    private void DisplayTime(float timeToDisplay)
+    {
+        timeToDisplay += 1;
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60); 
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
     private void SetUIElements()
     {
-        timer = 15;
-        InvokeRepeating(nameof(Countdown), 2.0f, 1.0f);
+        timer = 30;
         questionNumberText.text = (questionIndex + 1) + "/" + questionObjects.Length;
         questionBoxUI.SetActive(true);
         commentaryText.gameObject.SetActive(false);
         questionText.text = questionObjects[questionIndex].question;
         // Set answer text elements...
-        for (int i = 0; i < answerTexts.Length; i++)
+        for (int i = 0; i < answerBtns.Length; i++)
         {
-            answerTexts[i].transform.parent.gameObject.SetActive(false);
+            answerBtns[i].SetButtonActive(false);
         }
         for (int i = 0; i < questionObjects[questionIndex].answers.Length; i++)
         {
-            answerTexts[i].transform.parent.gameObject.SetActive(true);
-            answerTexts[i].text = questionObjects[questionIndex].answers[i];
+            answerBtns[i].SetButtonActive(true);
+            answerBtns[i].textComponent.text = questionObjects[questionIndex].answers[i];
         }
         detailsText.text = "This question is worth $" + questionObjects[questionIndex].points;
         //Set button image color to white...
         //selectedButton.GetComponent<Image>().color = Color.white;
-        selectedButton.GetComponent<Image>().sprite = defaultSprite;
+        selectedButton.btnImage.sprite = defaultSprite;
         SetButtonsInteractable(true);
     }
 
@@ -109,11 +142,12 @@ public class TriviaSystem : MonoBehaviour
             commentaryText.text = "Correct!";
             commentaryText.color = Color.green;
             noOfCorrectAnswers++;
+            PlaySfx("PowerUp");
             price = questionObjects[questionIndex].points;
             priceText.text = "$" + price;
             //Set button image color to green...
             //selectedButton.GetComponent<Image>().color = Color.green;
-            selectedButton.GetComponent<Image>().sprite = correctSprite;
+            selectedButton.btnImage.sprite = correctSprite;
             //MoveToNextQuestion...
             if (questionIndex < questionObjects.Length - 1)
             {
@@ -128,9 +162,12 @@ public class TriviaSystem : MonoBehaviour
         else
         {
             Debug.Log("Incorrect Answer!!!");
-            selectedButton.GetComponent<Image>().color = Color.red;
-            selectedButton.GetComponent<Image>().sprite = wrongSprite;
+            PlaySfx("LoseSound");
+            selectedButton.btnImage.color = Color.red;
+            selectedButton.btnImage.sprite = wrongSprite;
+            Flowchart.SetBooleanVariable("timerRunning", false);
             Invoke(nameof(ShowGameOverUI), 2.0f);
+            
             commentaryText.text = "Incorrect!";
             commentaryText.color = Color.red;
             noOfWrongAnswers++;
@@ -146,52 +183,64 @@ public class TriviaSystem : MonoBehaviour
             endCommentaryText.text = "Good work!!!";
         else if (price > 10000 && price <= 20000)
             endCommentaryText.text = "Great job!!!";
+        
         else
             endCommentaryText.text = "Excellent Performance!!!";
 
         resultPriceText.text = priceText.text;
         questionBoxUI.SetActive(false);
         gameOverUI.SetActive(true);
+        SetButtonTextOnScreen();
     }
-    public void SetSelectedButton(Button button)
+    public void SetSelectedButton(TriviaButtons button)
     {
         selectedButton = button;
     }
 
+    public void SetButtonTextOnScreen()
+    {
+        endScreenBtnText.text = price >= 10000 ? "Continue" : "Retry";
+    }
+
+    public void OnEndButtonPressed()
+    {
+        if (price >= 10000)
+        {
+            LoadNextScene(14);
+        }
+        else
+        {
+            ResetScene();
+        }
+    }
+
     private void SetButtonsInteractable(bool condition)
     {
-        for (int i = 0; i < answerTexts.Length; i++)
+        for (int i = 0; i < answerBtns.Length; i++)
         {
-            answerTexts[i].transform.parent.GetComponent<Button>().interactable = condition;
+            answerBtns[i].btn.interactable = condition;
         }
     }
 
-    private void Countdown()
+    public void PlaySfx(string soundName)
     {
-        if (timer > 0)
-        {
-            DecrementTimer();
-        }
-        else
-        {
-            timerText.text = "00:00";
-            // Disable Buttons...
-            SetButtonsInteractable(false);
-
-            Invoke(nameof(ShowGameOverUI), 1.0f);
-        }
+        SoundManager.soundManager.PlaySFX(soundName);
     }
 
-    private void DecrementTimer()
+    private void StopAllSfx()
     {
-        timer--;
-        if (timer >= 10)
-        {
-            timerText.text = "00:" + timer;
-        }
-        else
-        {
-            timerText.text = "00:0" + timer;
-        }
+        SoundManager.soundManager.StopAllSFX();
     }
+
+    public void LoadNextScene(int buildIndex)
+    {
+        OverallGameManager.overallGameManager.LoadNextScene(buildIndex);
+    }
+
+    public void ResetScene()
+    {
+        OverallGameManager.overallGameManager.ReloadScene();
+    }
+
+
 }

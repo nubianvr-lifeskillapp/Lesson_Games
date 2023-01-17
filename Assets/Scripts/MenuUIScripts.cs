@@ -15,6 +15,7 @@ public class MenuUIScripts : MonoBehaviour, IDataPersistance
         username.text = "Welcome " + data.username;
         classText.text = data.className;
         currentLessonText.text = data.currentLesson.ToString();
+        schoolText.text = data.schoolName;
     }
 
     public void LoadData(GameData data)

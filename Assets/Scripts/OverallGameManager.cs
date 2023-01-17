@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OverallGameManager : MonoBehaviour
+public class OverallGameManager : MonoBehaviour, IDataPersistance
 {
 
     public static OverallGameManager overallGameManager;
@@ -15,6 +15,8 @@ public class OverallGameManager : MonoBehaviour
     
     [DllImport("__Internal")]
     private static extern void loadLevel();
+
+    public GameData playerData;
 
     private void Awake()
     {
@@ -65,9 +67,31 @@ public class OverallGameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void UpdateCurrentLessonProgress()
+    {
+        playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
+    }
+
     public void LoadScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
         Debug.Log ($"Loading Scene: {sceneIndex}");
+    }
+
+    public void LoadData(GameData data)
+    {
+        playerData = data;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.sex = playerData.sex;
+        data.username = playerData.username;
+        data.className = playerData.className;
+        data.currentLesson = playerData.currentLesson;
+        data.educationalLevel = playerData.educationalLevel;
+        data.firstTime = playerData.firstTime;
+        data.postTestDone = playerData.postTestDone;
+        data.preTestDone = playerData.preTestDone;
     }
 }

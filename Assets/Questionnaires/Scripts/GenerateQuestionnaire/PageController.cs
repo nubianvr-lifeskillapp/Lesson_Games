@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -86,7 +88,7 @@ namespace VRQuestionnaireToolkit
                         }
                         if (!isAnswered) // If this question is not answered yet.
                         {
-                      
+                            //Debug.Log(_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].transform.parent.gameObject.name);
                             unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].transform.parent.Find("ConditionName").gameObject);
                         }
                     }
@@ -114,7 +116,8 @@ namespace VRQuestionnaireToolkit
                             }
                             if (!isAnswered) // If this question is not answered yet.
                             {
-                                unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].transform.parent.Find("QuestionText").gameObject);
+                                //Debug.Log(_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].transform.parent.GetChild(0).Find("QuestionText").gameObject.name);
+                                unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].transform.parent.GetChild(0).Find("QuestionText").gameObject);
                             }
                         }
                     }
@@ -133,6 +136,31 @@ namespace VRQuestionnaireToolkit
                             j++)
                         {
                             if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<Toggle>().isOn)
+                            {
+                                isAnswered = true;
+                                answeredMandatory++;
+                            }
+                        }
+                        if (!isAnswered) // If this question is not answered yet.
+                        {
+                            unansweredMandatoryQuestions.Add(_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].transform.parent.Find("QuestionText").gameObject);
+                        }
+                    }
+                }
+                else if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<TextInput>() != null)
+                {
+                    if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<TextInput>()
+                        .QMandatory)
+                    {
+                        countMandatory++;
+
+                        bool isAnswered = false;
+                        for (int j = 0;
+                            j < _pageFactory.GetComponent<PageFactory>().QuestionList[i][0].GetComponentInParent<TextInput>()
+                                .TextInputList.Count;
+                            j++)
+                        {
+                            if (_pageFactory.GetComponent<PageFactory>().QuestionList[i][j].GetComponentInChildren<TMP_InputField>().text.Length > 0)
                             {
                                 isAnswered = true;
                                 answeredMandatory++;
@@ -165,15 +193,17 @@ namespace VRQuestionnaireToolkit
             if (CheckMandatoryQuestionsAnswered() || _pageFactory.CurrentPage == 0)
             {
                 // _pageFactory.GetComponentInChildren<TextMeshProUGUI>().gameObject.SetActive(false);
-                _pageFactory.PageList[_pageFactory.CurrentPage].SetActive(false);
-                ++_pageFactory.CurrentPage;
-                _pageFactory.PageList[_pageFactory.CurrentPage].SetActive(true);
-
-                //reached second-last page
+            
+                    _pageFactory.PageList[_pageFactory.CurrentPage].SetActive(false);
+                    ++_pageFactory.CurrentPage;
+                    _pageFactory.PageList[_pageFactory.CurrentPage].SetActive(true);
+                    
+                    
+                    //reached second-last page
                 if (_pageFactory.PageList.Count - 2 == _pageFactory.CurrentPage)
                 {
                     GameObject q_footer = GameObject.Find("Q_Footer");
-                    TextMeshProUGUI nextButton = q_footer.GetComponentInChildren<TextMeshProUGUI>();
+                    TextMeshProUGUI nextButton = q_footer.transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>();
                     nextButton.text = "Submit";
                 }
 
@@ -181,6 +211,7 @@ namespace VRQuestionnaireToolkit
                 {
                     _export.GetComponent<ExportToCSV>().Save();
                 }
+                
             }
             else
             {
@@ -189,7 +220,7 @@ namespace VRQuestionnaireToolkit
                     StartCoroutine(ChangeTextColor(obj));
                 }
                 unansweredMandatoryQuestions.Clear();
-                //   _pageFactory.GetComponentInChildren<TextMeshProUGUI>().gameObject.SetActive(true);
+                //_pageFactory.GetComponentInChildren<TextMeshProUGUI>().gameObject.SetActive(true);
             }
         }
 
@@ -217,5 +248,6 @@ namespace VRQuestionnaireToolkit
                 yield return new WaitForSeconds(increment);
             }
         }
+        
     }
 }

@@ -1782,7 +1782,7 @@ MonoBehaviour:
   m_AutoOpen: 0
   m_AutoStart: 1
   m_Loop: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Balance: 0
   m_Muted: 0
   m_PlaybackRate: 1

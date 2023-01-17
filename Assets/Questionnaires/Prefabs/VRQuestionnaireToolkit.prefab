@@ -55,8 +55,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de41a7e30bb47a94fbabd5a537794de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticipantId: id2
-  Condition: AB
   ControllerTactileFeedbackOnOff: 0
   SoundOnOff: 0
   ConfigurationMode: 1
@@ -277,7 +275,7 @@ GameObject:
   - component: {fileID: 7169877670425557813}
   - component: {fileID: 8697000388396706263}
   - component: {fileID: 6997389595665072460}
-  - component: {fileID: 1434577478699320326}
+  - component: {fileID: 2914400137453067973}
   m_Layer: 0
   m_Name: ExportToCSV
   m_TagString: ExportToCSV
@@ -320,8 +318,6 @@ MonoBehaviour:
   Delimiter: ','
   Filetype: 0
   SaveToLocal: 1
-  StorePath: /Questionnaires/Data/Answers/
-  UseGlobalPath: 0
   SaveToServer: 0
   TargetURI: http://www.example-server.com/survey-results.php
   QuestionnaireFinishedEvent:
@@ -335,7 +331,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8697000388396706261}
   m_CullTransparentMesh: 1
---- !u!114 &1434577478699320326
+--- !u!114 &2914400137453067973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -344,24 +340,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8697000388396706261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f1bdea052c9ebb4c85a7e58bdb16732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.24313726}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1

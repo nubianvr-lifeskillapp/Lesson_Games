@@ -1,0 +1,24 @@
+QuestionType;Question;QuestionID;Answer_Participant_id1_condition_A;Answer_Participant_id1_condition_A;Answer_Participant_id1_condition_A;Answer_Participant_id1_condition_A;Answer_Participant_id1_condition_A;Answer_Participant_id1_condition_A;Answer_Participant_id1_condition_A;Answer_Participant_id1_condition_A;Answer_Participant_id1_condition_A;Answer_Participant_id1_condition_A;Answer_Participant_id1_condition_A
+radio;Information shared on the Internet is always true and can be trusted.;q1;2;2;2;2;2;2;2;2;2;2;2
+radio;Others can see anything I put online. ;q2;2;2;2;2;2;2;2;2;2;2;2
+radio;Using a computer for too long will affect your eyes.;q3;2;1;2;2;2;2;2;2;2;2;2
+radio;Spreading rumors about a friend on social media is a form of cyberbullying.;q4;3;1;2;2;2;2;2;2;2;1;2
+checkbox;Who can you share your passwords with? -My friends;q5;;;;;;;;;;;
+checkbox;Who can you share your passwords with? -Nobody – I should keep them to yourself;q5;;;;;;;;;;;
+checkbox;Who can you share your passwords with? -My teacher;q5;1;1;1;1;1;1;1;1;1;1;1
+checkbox;What should you do if a stranger asks you to send a picture of yourself to them?  -Ignore it, tell a trusted adult (parent, teacher) straight away;q6;;;;;;;;;;;
+checkbox;What should you do if a stranger asks you to send a picture of yourself to them?  -Send the picture if I think I know them;q6;1;1;;1;;;;;;;
+checkbox;What should you do if a stranger asks you to send a picture of yourself to them?  -Ask them what they need my picture for;q6;;;1;;1;1;1;1;1;1;1
+checkbox;Who should you accept as a friend from online? -A friend of a friend;q7;1;;;;;;;;;;
+checkbox;Who should you accept as a friend from online? -Someone I think I have met before;q7;;1;;;1;;;;;;
+checkbox;Who should you accept as a friend from online? -People I personally know, and even that, I have to be careful;q7;;;1;1;;1;1;1;1;1;1
+checkbox;An embarrassing photo of a classmate has been sent by someone. What should you do with it? -Show it to my teacher or Guidance and Counselling Officer or a trusted adult;q8;;;;1;;;;;;;
+checkbox;An embarrassing photo of a classmate has been sent by someone. What should you do with it? -Forward the photo to other students or friends;q8;1;;;;;;;;;;
+checkbox;An embarrassing photo of a classmate has been sent by someone. What should you do with it? -Laugh at the photo with my friends;q8;;1;1;;1;1;1;1;1;1;1
+checkbox;Which of the following is a way to ensure living a balanced life while having access to the internet?  -Using the internet every day or all the time;q9;;;;;;;;;;;
+checkbox;Which of the following is a way to ensure living a balanced life while having access to the internet?  -Not using the internet at all;q9;;1;;1;;;;;;;
+checkbox;Which of the following is a way to ensure living a balanced life while having access to the internet?  -Limiting the amount of time spent online daily;q9;1;;1;;1;1;1;1;1;1;1
+checkbox;What action should you take against online friends who always make you angry? -Fight with them;q10;;;;;;;;;;;
+checkbox;What action should you take against online friends who always make you angry? -Leave them and report them to a trusted adult (parent, teacher, Guidance & Counselling Officer);q10;1;;;;;;;;;;
+checkbox;What action should you take against online friends who always make you angry? -Make them my friend;q10;;1;1;1;1;1;1;1;1;1;1
+

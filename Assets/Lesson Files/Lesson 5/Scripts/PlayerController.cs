@@ -12,11 +12,10 @@ public class PlayerController : MonoBehaviour
     private float jumpForce = 300.0f;
     [SerializeField]
     private bool isGrounded = false;
-    [SerializeField]
-    private int playerLife = 3;
+    public int playerLife = 3;
     public bool playerIsDead = false;
     [SerializeField]
-    private SpriteRenderer bag;
+    public SpriteRenderer bag;
 
     [SerializeField] private float characterRunSpeed;
     public bool isRunning;
@@ -42,6 +41,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        switch (playerLife)
+        {
+            case 0:
+                bag.color = Color.clear;
+                break;
+            case 1:
+                bag.color = Color.red;
+                break;
+            case 2:
+                bag.color = Color.yellow;
+                break;
+            case 3: 
+                bag.color = Color.green;
+                break;
+            default:
+                break;
+        }
+        
         currentTempPosition  = transform.position;
         
         AllowJump = transform.position.y > YAxisJumpCheck;
@@ -123,14 +140,6 @@ public class PlayerController : MonoBehaviour
             playerLife = 0;
             playerIsDead = true;
             gameManager.OnPlayerDead();
-        }
-        else if(playerLife == 1)
-        {
-            bag.color = Color.red;
-        }
-        else if (playerLife == 2)
-        {
-            bag.color = Color.yellow;
         }
     }
 }

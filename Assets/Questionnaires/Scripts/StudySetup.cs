@@ -18,9 +18,6 @@ namespace VRQuestionnaireToolkit
 {
     public class StudySetup : MonoBehaviour
     {
-        public string ParticipantId;
-        public string Condition;
-
         [Tooltip("Switch on/off tactile feedback.")]
         public bool ControllerTactileFeedbackOnOff = true;
         [Tooltip("Switch on/off sound feedback.")]

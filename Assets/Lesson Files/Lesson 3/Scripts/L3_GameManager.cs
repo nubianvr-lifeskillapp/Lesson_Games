@@ -33,6 +33,7 @@ public class L3_GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
         endScreenUI.SetActive(false);
 
         Debug.Log("Start");

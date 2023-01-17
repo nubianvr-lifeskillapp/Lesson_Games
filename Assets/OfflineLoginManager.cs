@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using DG.Tweening;
-using Fungus.EditorUtils;
 using NubianVR.UI;
 using TMPro;
 using UnityEngine.UI;
@@ -22,6 +21,8 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
     private string _educationalLevel;
     private string _className;
     private bool _firstTime = true;
+    private int _currentLesson;
+    private string _schoolName;
     
     [Header("UI Screens")]
     public UI_System uiManager;
@@ -90,7 +91,10 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
         _educationalLevel = data.educationalLevel;
         _className = data.className;
         _firstTime = data.firstTime;
+        _currentLesson = data.currentLesson;
+        _schoolName = data.schoolName;
         ChangeScreen(data.firstTime ? selectGenderScreen : menuScreen);
+        
     }
 
     public void SaveData(GameData data)
@@ -100,6 +104,7 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
         data.educationalLevel = _educationalLevel;
         data.className = _className;
         data.firstTime = _firstTime;
+        //data.currentLesson = _currentLesson;
     }
 
     private void ChangeScreen(UI_Screen screen)
@@ -198,5 +203,10 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
         }
         _firstTime = false;
         ChangeScreen(menuScreen);
+    }
+
+    public void StartGameBtn()
+    {
+        OverallGameManager.overallGameManager.LoadNextScene(_currentLesson > 0 ? _currentLesson : 12);
     }
 }

@@ -32,7 +32,7 @@ namespace VRQuestionnaireToolkit
         public List<GameObject> CheckboxList; //contains all radiobuttons which correspond to one question
 
         //qText look how many q in one file >4 deny
-        public List<GameObject> CreateCheckboxQuestion(string questionnaireId, string qType, string qInstructions, string qId, string qText, JSONArray qOptions, int numberQuestion, RectTransform questionRec)
+        public List<GameObject> CreateCheckboxQuestion(string questionnaireId, string qType, string qInstructions, string qId, string qText, bool qMandatory, JSONArray qOptions, int numberQuestion, RectTransform questionRec)
         {
             this.QuestionnaireId = questionnaireId;
             this.QId = qId;
@@ -42,6 +42,7 @@ namespace VRQuestionnaireToolkit
             this.QOptions = qOptions;
             this.NumCheckboxButtons = qOptions.Count;
             this._questionRecTest = questionRec;
+            this.QMandatory = qMandatory;
 
             CheckboxList = new List<GameObject>();
 

@@ -5,6 +5,7 @@ using DG.Tweening;
 using Fungus;
 using Sirenix.Utilities;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -53,6 +54,7 @@ public class L6_GameManager : MonoBehaviour
     void Start()
     {
         SoundManager.soundManager.PlaySFX("BackgroundMusic");
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
         StartLesson();
     }
 

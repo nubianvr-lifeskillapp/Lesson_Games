@@ -1,8 +1,10 @@
 andy,password
+kabiru,password
 james,pride
 bob,clet
 amirr,password
 jordan,nike
 kabs,ama
-nana,christmas
+nana,password100
 bean,corn
+albert,hello
