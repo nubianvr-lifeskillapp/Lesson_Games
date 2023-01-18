@@ -1,0 +1,264 @@
+{
+    "qTitle":"LSA PRE-QUIZ for JHS Students (JHS 1, JHS 2, JHS 3)",
+    "qInstructions":"Please answer all questions....",
+    "qId":"jhs-pre_questions",
+    "questions":[
+       {
+          "pId":"page1",
+          "qType":"radio",
+          "qInstructions":"Choose one option for each question",
+          "qData":[
+             {
+                "qId":"q1",
+                "qText":"Is it right to send your picture to someone you met online? ",
+                "qMandatory":"true",
+                "qOptions":[
+                   "",
+                   "",
+                   "True",  
+                   "False",			                    
+                   "Don't know",
+                   "",
+                   ""
+                ]
+             },
+             {
+                "qId":"q2",
+                "qText":"Is it always safe to download information, music, videos from an unknown website?",
+                "qMandatory":"true",
+                "qOptions":[
+                  "",
+                  "",
+                  "True",  
+                  "False",			                    
+                  "Don't know",
+                  "",
+                  ""
+               ]
+             },
+             {
+                "qId":"q3",
+                "qText":"I have a digital picture of myself and someone I met online wants to see it.  Is it right to send it to that person?",
+                "qMandatory":"true",
+                "qOptions":[
+                  "",
+                  "",
+                  "True",  
+                  "False",			                    
+                  "Don't know",
+                  "",
+                  ""
+               ]
+             }
+          ]
+       },
+       {
+         "pId":"page2",
+         "qType":"radio",
+         "qInstructions":"Choose one option for each question",
+         "qData":[
+            {
+               "qId":"q4",
+               "qText":"I received a message from my internet service provider asking for my password. Should I give it to them? ",
+               "qMandatory":"true",
+               "qOptions":[
+                 "",
+                 "",
+                 "True",  
+                 "False",			                    
+                 "Don't know",
+                 "",
+                 ""
+              ]
+            },
+            {
+              "qId":"q5",
+              "qText":"You created an Instagram account with a nickname (fake name), but an online friend is asking for your personal information such as your name, date of birth, etc. Should you give it out?",
+              "qMandatory":"true",
+              "qOptions":[
+                "",
+                "",
+                "True",  
+                "False",			                    
+                "Don't know",
+                "",
+                ""
+             ]
+           },
+           {
+            "qId":"q6",
+            "qText":"Visiting illegal websites can expose you to attacks from scammers.",
+            "qMandatory":"true",
+            "qOptions":[
+              "",
+              "",
+              "True",  
+              "False",			                    
+              "Don't know",
+              "",
+              ""
+           ]
+         }
+         ]
+      },
+      {
+        "pId":"page3",
+        "qType":"radio",
+        "qInstructions":"Choose one option for each question",
+        "qData":[
+           {
+              "qId":"q7",
+              "qText":"Using a computer for too long will affect your eyes.",
+              "qMandatory":"true",
+              "qOptions":[
+                "",
+                "",
+                "True",  
+                "False",			                    
+                "Don't know",
+                "",
+                ""
+             ]
+           }
+        ]
+     },
+       {
+         "pId":"page4",
+         "qType":"checkbox",
+         "qInstructions":"Choose one option",
+         "qOptions":[
+            "Using a combination of figures, characters, letters, etc.",
+            "It is long and usually consists of your name or personal information.",
+            "It is written in all capital letters"
+         ],
+         "qData":[
+            {
+               "qId":"q8",
+               "qText":"What makes a strong password?",
+               "qMandatory":"true"
+            }
+         ]
+      },
+      {
+         "pId":"page5",
+         "qType":"checkbox",
+         "qInstructions":"Choose one option",
+         "qOptions":[
+            "Only my friends",
+            "Just myself",
+            "Anyone"
+         ],
+         "qData":[
+            {
+               "qId":"q9",
+               "qText":" If you post something on the internet, who may be able to see it?",
+               "qMandatory":"true"
+            }
+         ]
+      },
+      {
+         "pId":"page6",
+         "qType":"checkbox",
+         "qInstructions":"Choose one option",
+         "qOptions":[
+            "Text him/her back",
+            "Ignore him/her for some time",
+            "Do not respond, inform a trusted adult."
+         ],
+         "qData":[
+            {
+               "qId":"q10",
+               "qText":"What should you do if you receive an email from someone you don't know?",
+               "qMandatory":"true"
+            }
+         ]
+      },
+      {
+         "pId":"page7",
+         "qType":"checkbox",
+         "qInstructions":"Choose one option",
+         "qOptions":[
+            "Keep it secret, maybe it will stop!",
+            "Inform a trusted adult (parent or teacher).",
+            "Confront the person right away"
+         ],
+         "qData":[
+            {
+               "qId":"q11",
+               "qText":"What should you do if someone is sending you rude messages?",
+               "qMandatory":"true"
+            }
+         ]
+      },
+      {
+         "pId":"page8",
+         "qType":"checkbox",
+         "qInstructions":"Choose one option",
+         "qOptions":[
+            "Send a rude reply",
+            "Ask them to apologize",
+            "Don't respond"
+         ],
+         "qData":[
+            {
+               "qId":"q12",
+               "qText":"While in the middle of a Facebook chat session, someone sent you a nasty message. What should you do?",
+               "qMandatory":"true"
+            }
+         ]
+      },
+      {
+         "pId":"page9",
+         "qType":"checkbox",
+         "qInstructions":"Choose one option",
+         "qOptions":[
+            "Cyberbullying",
+            "Digital friendship",
+            "Bullying"
+         ],
+         "qData":[
+            {
+               "qId":"q13",
+               "qText":"You accepted the friend request of someone on Facebook who later has being threatening to expose some secrets they know about you. This is known as ___",
+               "qMandatory":"true"
+            }
+         ]
+      },
+      {
+        "pId":"page10",
+        "qType":"checkbox",
+        "qInstructions":"Choose one option",
+        "qOptions":[
+           "My best friend",
+           "Another online friend",
+           "Parents, teachers or a trusted adult"
+        ],
+        "qData":[
+           {
+              "qId":"q14",
+              "qText":"Who will you report to if an online friend starts to harass you?",
+              "qMandatory":"true"
+           }
+        ]
+     },
+     {
+        "pId":"page11",
+        "qType":"checkbox",
+        "qInstructions":"Choose one option",
+        "qOptions":[
+           "Destroy the computer",
+           "Get a new computer",
+           "Install an antivirus software"
+        ],
+        "qData":[
+           {
+              "qId":"q15",
+              "qText":"After visiting an unreliable website, your computer was exposed to a computer virus. What should you do?",
+              "qMandatory":"true"
+           }
+        ]
+     } 
+    ],
+    "qMessage":"Well done! You have completed the Pre Test Questionnaire",
+    "qAcknowledgments":"Thank you very much for taking part!\n Now, you can start using the Life Skills App!"
+ }
