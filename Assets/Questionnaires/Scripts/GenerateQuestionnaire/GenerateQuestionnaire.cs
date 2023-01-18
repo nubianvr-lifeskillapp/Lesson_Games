@@ -151,8 +151,8 @@ namespace VRQuestionnaireToolkit
 
             Questionnaires.Add(currentQuestionnaire);
             numberQuestionnaires++;
-
-            ReadJson(inputPath);
+            var filePath = Path.Combine(Application.streamingAssetsPath, inputPath);
+            ReadJson(filePath);
         }
 
         void ReadJson(string jsonPath)

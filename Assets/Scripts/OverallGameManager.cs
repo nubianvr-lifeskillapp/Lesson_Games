@@ -93,5 +93,6 @@ public class OverallGameManager : MonoBehaviour, IDataPersistance
         data.firstTime = playerData.firstTime;
         data.postTestDone = playerData.postTestDone;
         data.preTestDone = playerData.preTestDone;
+        data.currentPlayThroughNumber = playerData.currentPlayThroughNumber;
     }
 }

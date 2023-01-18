@@ -209,4 +209,9 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
     {
         OverallGameManager.overallGameManager.LoadNextScene(_currentLesson > 0 ? _currentLesson : 12);
     }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
 }
