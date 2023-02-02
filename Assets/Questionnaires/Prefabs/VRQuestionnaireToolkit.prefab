@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8697000387260259619}
-  - component: {fileID: 8697000387260259616}
   - component: {fileID: 8697000387260259645}
   - component: {fileID: 8697000387260259646}
   - component: {fileID: 8697000387260259618}
   - component: {fileID: 8697000387260259647}
   - component: {fileID: 8697000387260259644}
   - component: {fileID: 3864459995664010785}
+  - component: {fileID: 6572144452267946100}
   m_Layer: 0
   m_Name: VRQuestionnaireToolkit
   m_TagString: VRQuestionnaireToolkit
@@ -43,32 +43,6 @@ RectTransform:
   m_AnchoredPosition: {x: -6, y: -3}
   m_SizeDelta: {x: 600, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8697000387260259616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8697000387260259617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de41a7e30bb47a94fbabd5a537794de9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ControllerTactileFeedbackOnOff: 0
-  SoundOnOff: 0
-  ConfigurationMode: 1
-  AlsoConsolidateResults: 1
-  VibratingDurationForHovering: 0.05
-  VibratingFrequencyForHovering: 1
-  VibratingAmplitudeForHovering: 5
-  SoundClipForHovering: {fileID: 0}
-  HoveringVolume: 1
-  VibratingDurationForSelecting: 0.05
-  VibratingFrequencyForSelecting: 200
-  VibratingAmplitudeForSelecting: 1
-  SoundClipForSelecting: {fileID: 0}
-  SelectingVolume: 1
 --- !u!114 &8697000387260259645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +238,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6572144452267946100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697000387260259617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de41a7e30bb47a94fbabd5a537794de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ControllerTactileFeedbackOnOff: 1
+  SoundOnOff: 1
+  ConfigurationMode: 1
+  AlsoConsolidateResults: 1
+  VibratingDurationForHovering: 0.05
+  VibratingFrequencyForHovering: 1
+  VibratingAmplitudeForHovering: 5
+  SoundClipForHovering: {fileID: 0}
+  HoveringVolume: 1
+  VibratingDurationForSelecting: 0.05
+  VibratingFrequencyForSelecting: 200
+  VibratingAmplitudeForSelecting: 1
+  SoundClipForSelecting: {fileID: 0}
+  SelectingVolume: 1
 --- !u!1 &8697000388396706261
 GameObject:
   m_ObjectHideFlags: 0

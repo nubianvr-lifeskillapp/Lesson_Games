@@ -55,24 +55,24 @@ namespace VRQuestionnaireToolkit
 
         void Start()
         {
-            _path = Application.dataPath + "/Resources/saved_transform_values";
-
-            if (ConfigurationMode & File.Exists(_path))
-                SetTransformToSavedValues();
-            else
-                SetTransformToDefault();
+            // _path = Application.dataPath + "/Resources/saved_transform_values";
+            //
+            // if (ConfigurationMode & File.Exists(_path))
+            //     SetTransformToSavedValues();
+            // else
+            SetTransformToDefault();
         }
 
-        void Update()
-        {
-            if (ConfigurationMode) AdjustTransform();
-        }
-
-        void OnApplicationQuit()
-        {
-            if (ConfigurationMode)
-                SaveCurrentValues();
-        }
+        // void Update()
+        // {
+        //     if (ConfigurationMode) AdjustTransform();
+        // }
+        //
+        // void OnApplicationQuit()
+        // {
+        //     if (ConfigurationMode)
+        //         SaveCurrentValues();
+        // }
 
         /// <summary>
         /// Resize the questionnaire panel by hitting keys + and -.
@@ -159,7 +159,7 @@ namespace VRQuestionnaireToolkit
         {
             this.transform.localPosition = new Vector3(0.0f, 1.0f, 6.0f);
             this.transform.localRotation = Quaternion.identity;
-            this.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            this.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
         }
     }
 }

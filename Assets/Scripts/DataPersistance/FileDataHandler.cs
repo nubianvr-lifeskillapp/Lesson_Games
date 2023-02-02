@@ -14,12 +14,12 @@ public class FileDataHandler
   public FileDataHandler(string dataDirPath, string dataFileName)
   {
     this.dataDirPath = dataDirPath;
-    this.dataFileName = dataFileName;
+    this.dataFileName = dataFileName + ".json";
   }
 
   public GameData Load(string fileName)
   {
-    var fullPath = Path.Combine(dataDirPath, fileName);
+    var fullPath = Path.Combine(dataDirPath, fileName + ".json");
     GameData loadedData = null;
     if (File.Exists(fullPath))
     {
@@ -47,7 +47,7 @@ public class FileDataHandler
 
   public void Save(GameData data, string fileName)
   {
-    var fullPath = Path.Combine(dataDirPath, fileName);
+    var fullPath = Path.Combine(dataDirPath, fileName + ".json");
     {
       try
       {

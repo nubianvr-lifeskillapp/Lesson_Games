@@ -142,7 +142,9 @@ public class L10_GameManager : MonoBehaviour
 
     public void LoadNextScene(int sceneNumber)
     {
-        OverallGameManager.overallGameManager.LoadNextScene(sceneNumber);
+        if (sceneNumber != 13) return;
+        OverallGameManager.overallGameManager.LoadNextScene(
+            OverallGameManager.overallGameManager.playerData.postTestDone ? 11 : sceneNumber);
     }
 
     public void ReloadScene()

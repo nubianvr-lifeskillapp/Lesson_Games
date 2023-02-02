@@ -17,12 +17,22 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
     public CanvasGroup panelOverlay;
     
     //User Game Data 
+
     private string _sex;
+  
     private string _educationalLevel;
+    
     private string _className;
+  
     private bool _firstTime = true;
+    
     private int _currentLesson;
+    
+    private string _username;
+    
     private string _schoolName;
+
+    private bool _preTestDone;
     
     [Header("UI Screens")]
     public UI_System uiManager;
@@ -87,23 +97,33 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
 
     public void LoadData(GameData data)
     {
+        OverallGameManager.overallGameManager.playerData = data;
+        DataPersistanceManager.instance.SetGameData(data);
         _sex = data.sex;
         _educationalLevel = data.educationalLevel;
         _className = data.className;
         _firstTime = data.firstTime;
         _currentLesson = data.currentLesson;
         _schoolName = data.schoolName;
+        _username = data.username;
+        _preTestDone = data.preTestDone;
         ChangeScreen(data.firstTime ? selectGenderScreen : menuScreen);
-        
+        Debug.Log("Offline Login Manager: Sex " +_sex + " " + DateTime.Now);
+        Debug.Log("Offline Login Manager: Education Level " +_educationalLevel + " " + DateTime.Now);
+        Debug.Log("Offline Login Manager: Current Lesson " +_currentLesson + " " + DateTime.Now);
+        Debug.Log("Offline Login Manager: Username " + _username + " " + DateTime.Now);
+
+
     }
 
     public void SaveData(GameData data)
     {
-        data.username = usernameTextBox.text;
+        data.username = _username;
         data.sex = _sex;
         data.educationalLevel = _educationalLevel;
         data.className = _className;
         data.firstTime = _firstTime;
+        
         //data.currentLesson = _currentLesson;
     }
 
@@ -207,7 +227,16 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
 
     public void StartGameBtn()
     {
-        OverallGameManager.overallGameManager.LoadNextScene(_currentLesson > 0 ? _currentLesson : 12);
+        if (_preTestDone)
+        {
+            OverallGameManager.overallGameManager.LoadNextScene(_currentLesson);
+        }
+        else
+        {
+            OverallGameManager.overallGameManager.LoadNextScene(_currentLesson > 0 ? _currentLesson : 12);
+        }
+
+        
     }
 
     public void QuitApplication()

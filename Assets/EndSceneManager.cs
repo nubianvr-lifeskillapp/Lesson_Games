@@ -9,6 +9,6 @@ public class EndSceneManager : MonoBehaviour
         OverallGameManager.overallGameManager.playerData.currentLesson = 1;
         OverallGameManager.overallGameManager.playerData.currentPlayThroughNumber += 1;
         DataPersistanceManager.instance.SaveStudentGame();
-        OverallGameManager.overallGameManager.LoadNextScene(1);
+        OverallGameManager.overallGameManager.LoadNextScene(0);
     }
 }

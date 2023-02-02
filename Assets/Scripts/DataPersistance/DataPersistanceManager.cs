@@ -23,6 +23,11 @@ public class DataPersistanceManager : MonoBehaviour
         return gameData;
     }
 
+    public void SetGameData(GameData data)
+    {
+        gameData = data;
+    }
+
     private void Awake()
     {
         if (instance != null)
@@ -49,7 +54,7 @@ public class DataPersistanceManager : MonoBehaviour
     public void playerLogin(string playerFileName)
     {
         fileName = playerFileName;
-        _dataHandler = new FileDataHandler(Application.persistentDataPath, playerFileName );
+        _dataHandler = new FileDataHandler(Application.persistentDataPath, playerFileName);
         _dataPersistancesObjects = FindAllDataPersistanceObjects();
         
         LoadStudentGame();
