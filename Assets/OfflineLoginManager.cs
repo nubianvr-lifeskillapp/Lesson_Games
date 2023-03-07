@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Runtime.CompilerServices;
 using DG.Tweening;
 using NubianVR.UI;
 using TMPro;
@@ -29,6 +30,10 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
     private int _currentLesson;
     
     private string _username;
+
+    private string uniquePCID;
+
+    private string pcName;
     
     private string _schoolName;
 
@@ -80,6 +85,7 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
                     panelOverlay.gameObject.SetActive(true);
                     panelOverlay.DOFade(1, 0.1f);
                     DataPersistanceManager.instance.playerLogin(username);
+                    _username = username;
                     print(true);
                     return;
                 }
@@ -105,8 +111,10 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
         _firstTime = data.firstTime;
         _currentLesson = data.currentLesson;
         _schoolName = data.schoolName;
-        _username = data.username;
+        //_username = data.username;
         _preTestDone = data.preTestDone;
+        uniquePCID = SystemInfo.deviceUniqueIdentifier;
+        pcName = SystemInfo.deviceName;
         ChangeScreen(data.firstTime ? selectGenderScreen : menuScreen);
         Debug.Log("Offline Login Manager: Sex " +_sex + " " + DateTime.Now);
         Debug.Log("Offline Login Manager: Education Level " +_educationalLevel + " " + DateTime.Now);
@@ -123,7 +131,9 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
         data.educationalLevel = _educationalLevel;
         data.className = _className;
         data.firstTime = _firstTime;
-        
+        data.uniquePCID = uniquePCID;
+        data.pcName = pcName;
+
         //data.currentLesson = _currentLesson;
     }
 

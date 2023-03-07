@@ -12,6 +12,8 @@ public class GameData
     public string className;
     public string educationalLevel;
     public string sex;
+    public string uniquePCID;
+    public string pcName;
     public bool firstTime;
     public bool preTestDone;
     public bool postTestDone;
@@ -25,6 +27,8 @@ public class GameData
         //School name default value changes according to the build being made
         schoolName = "Nubian Academy";
         sex = "";
+        uniquePCID = "";
+        pcName = "";
         firstTime = true;
         preTestDone = false;
         postTestDone = false;
