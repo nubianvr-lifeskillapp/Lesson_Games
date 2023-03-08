@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using DG.Tweening;
 using NubianVR.UI;
 using TMPro;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class OfflineLoginManager : MonoBehaviour, IDataPersistance
@@ -36,6 +37,8 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
     private string pcName;
     
     private string _schoolName;
+    
+    string result;
 
     private bool _preTestDone;
     
@@ -73,9 +76,20 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
             var username = tempUsername.Replace(" ", string.Empty);
             var tempPassword = passwordTextBox.text;
             var password = tempPassword.Replace(" ", string.Empty);
-                    
-                   
-            string[] lines = File.ReadAllLines(Path.Combine(Application.streamingAssetsPath, "login.txt"));
+
+            var path = Path.Combine(Application.streamingAssetsPath, "login.txt");
+            
+            var reader = new WWW(path);
+
+            while (!reader.isDone)
+            {
+            }
+            var realPath = Application.persistentDataPath + "/login";
+            File.WriteAllBytes(realPath, reader.bytes);
+  
+            var ObjPath = realPath;
+
+            string[] lines = File.ReadAllLines(ObjPath);
             
             for (var i = 0; i < lines.Length; i++)
             {
@@ -131,8 +145,8 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
         data.educationalLevel = _educationalLevel;
         data.className = _className;
         data.firstTime = _firstTime;
-        data.uniquePCID = uniquePCID;
-        data.pcName = pcName;
+        //data.uniquePCID = uniquePCID;
+        //data.pcName = pcName;
 
         //data.currentLesson = _currentLesson;
     }

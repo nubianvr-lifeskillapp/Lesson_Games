@@ -157,8 +157,19 @@ namespace VRQuestionnaireToolkit
 
         void ReadJson(string jsonPath)
         {
+            var reader = new WWW(jsonPath);
+
+            while (!reader.isDone)
+            {
+            }
+            var realPath = Application.persistentDataPath + "/login";
+            
+            File.WriteAllBytes(realPath, reader.bytes);
+  
+            var ObjPath = realPath;
+            
             // reads and parses .json input file
-            string JSONString = File.ReadAllText(jsonPath);
+            string JSONString = File.ReadAllText(ObjPath);
             var N = JSON.Parse(JSONString);
 
             //----------- Read metadata from .JSON file ----------//
