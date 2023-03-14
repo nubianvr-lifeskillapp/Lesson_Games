@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using Fungus;
 using UnityEngine.Scripting;
 
 public class FileDataHandler
@@ -11,15 +12,18 @@ public class FileDataHandler
 
   private string dataFileName;
 
-  public FileDataHandler(string dataDirPath, string dataFileName)
+  private string dataEncasingFolder;
+
+  public FileDataHandler(string dataDirPath, string dataFileName, string dataEncasingFolder)
   {
     this.dataDirPath = dataDirPath;
     this.dataFileName = dataFileName + ".json";
+    this.dataEncasingFolder = dataEncasingFolder;
   }
 
   public GameData Load(string fileName)
   {
-    var fullPath = Path.Combine(dataDirPath, fileName + ".json");
+    var fullPath = Path.Combine(dataDirPath, dataEncasingFolder, fileName + ".json");
     GameData loadedData = null;
     if (File.Exists(fullPath))
     {
@@ -47,7 +51,7 @@ public class FileDataHandler
 
   public void Save(GameData data, string fileName)
   {
-    var fullPath = Path.Combine(dataDirPath, fileName + ".json");
+    var fullPath = Path.Combine(dataDirPath, dataEncasingFolder, fileName + ".json");
     {
       try
       {
@@ -72,7 +76,7 @@ public class FileDataHandler
   
   public void SaveIncidentReport(IncidentReportingData data, string fileName)
   {
-    var fullPath = Path.Combine(dataDirPath, fileName);
+    var fullPath = Path.Combine(dataDirPath, dataEncasingFolder,fileName);
     {
       try
       {

@@ -25,7 +25,7 @@ public class GameData
         className = "";
         educationalLevel = "";
         //School name default value changes according to the build being made
-        schoolName = "Nubian Academy";
+        schoolName = "";
         sex = "";
         uniquePCID = "";
         pcName = "";

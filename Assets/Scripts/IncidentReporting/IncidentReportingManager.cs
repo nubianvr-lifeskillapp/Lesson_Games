@@ -38,7 +38,7 @@ public class IncidentReportingManager : MonoBehaviour
         {
             _incidentReportString = incidentReportInputField.text;
                      
-            _dataHandler = new FileDataHandler(Application.persistentDataPath, CreateFileDirectoryName());
+            _dataHandler = new FileDataHandler(Application.persistentDataPath, CreateFileDirectoryName(), OverallGameManager.overallGameManager.playerData.schoolName);
                    
             _incidentReportingData = new IncidentReportingData(DataPersistanceManager.instance.GetGameData().username,_incidentReportString,DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss"));
                     

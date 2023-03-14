@@ -90,9 +90,9 @@ public class OverallGameManager : MonoBehaviour, IDataPersistance
          // playerData.preTestDone = data.preTestDone;
          // playerData.currentPlayThroughNumber = data.currentPlayThroughNumber;
          
-         Debug.Log("Overall Game Manager: Sex " + data.sex + " " + DateTime.Now);
-         Debug.Log("Overall Game Manager: Education Level " + data.educationalLevel + " " + DateTime.Now);
-         Debug.Log("Overall Game Manager: Current Lesson " + data.currentLesson + " " + DateTime.Now);
+         // Debug.Log("Overall Game Manager: Sex " + data.sex + " " + DateTime.Now);
+         // Debug.Log("Overall Game Manager: Education Level " + data.educationalLevel + " " + DateTime.Now);
+         // Debug.Log("Overall Game Manager: Current Lesson " + data.currentLesson + " " + DateTime.Now);
     }
 
     public void SaveData(GameData data)

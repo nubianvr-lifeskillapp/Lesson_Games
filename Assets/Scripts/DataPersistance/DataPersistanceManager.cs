@@ -51,10 +51,10 @@ public class DataPersistanceManager : MonoBehaviour
         
     }
 
-    public void playerLogin(string playerFileName)
+    public void playerLogin(string playerFileName, string playerSchoolName)
     {
         fileName = playerFileName;
-        _dataHandler = new FileDataHandler(Application.persistentDataPath, playerFileName);
+        _dataHandler = new FileDataHandler(Application.persistentDataPath, playerFileName, playerSchoolName);
         _dataPersistancesObjects = FindAllDataPersistanceObjects();
         
         LoadStudentGame();

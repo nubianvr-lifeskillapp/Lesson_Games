@@ -36,9 +36,12 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
 
     private string pcName;
     
-    private string _schoolName;
+    [HideInInspector]
+    public string _schoolName;
     
     string result;
+
+    private string loginPath;
 
     private bool _preTestDone;
     
@@ -77,7 +80,7 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
             var tempPassword = passwordTextBox.text;
             var password = tempPassword.Replace(" ", string.Empty);
 
-            var path = Path.Combine(Application.streamingAssetsPath, "login.txt");
+            var path = Path.Combine(Application.streamingAssetsPath, $"login-{_schoolName}.txt");
             
             var reader = new WWW(path);
 
@@ -98,9 +101,10 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
                 {
                     panelOverlay.gameObject.SetActive(true);
                     panelOverlay.DOFade(1, 0.1f);
-                    DataPersistanceManager.instance.playerLogin(username);
+                    DataPersistanceManager.instance.playerLogin(username, _schoolName);
                     _username = username;
-                    print(true);
+                    OverallGameManager.overallGameManager.playerData.username = username;
+                    print(_username);
                     return;
                 }
             }
@@ -118,6 +122,8 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
     public void LoadData(GameData data)
     {
         OverallGameManager.overallGameManager.playerData = data;
+        OverallGameManager.overallGameManager.playerData.username = _username;
+        OverallGameManager.overallGameManager.playerData.schoolName = _schoolName;
         DataPersistanceManager.instance.SetGameData(data);
         _sex = data.sex;
         _educationalLevel = data.educationalLevel;
@@ -130,10 +136,10 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
         uniquePCID = SystemInfo.deviceUniqueIdentifier;
         pcName = SystemInfo.deviceName;
         ChangeScreen(data.firstTime ? selectGenderScreen : menuScreen);
-        Debug.Log("Offline Login Manager: Sex " +_sex + " " + DateTime.Now);
-        Debug.Log("Offline Login Manager: Education Level " +_educationalLevel + " " + DateTime.Now);
-        Debug.Log("Offline Login Manager: Current Lesson " +_currentLesson + " " + DateTime.Now);
-        Debug.Log("Offline Login Manager: Username " + _username + " " + DateTime.Now);
+        // Debug.Log("Offline Login Manager: Sex " +_sex + " " + DateTime.Now);
+        // Debug.Log("Offline Login Manager: Education Level " +_educationalLevel + " " + DateTime.Now);
+        // Debug.Log("Offline Login Manager: Current Lesson " +_currentLesson + " " + DateTime.Now);
+        // Debug.Log("Offline Login Manager: Username " + OverallGameManager.overallGameManager.playerData.username + " " + DateTime.Now);
 
 
     }
@@ -145,6 +151,7 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
         data.educationalLevel = _educationalLevel;
         data.className = _className;
         data.firstTime = _firstTime;
+        data.schoolName = _schoolName;
         //data.uniquePCID = uniquePCID;
         //data.pcName = pcName;
 

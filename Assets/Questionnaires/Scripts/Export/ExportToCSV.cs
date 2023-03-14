@@ -283,8 +283,8 @@ namespace VRQuestionnaireToolkit
 
             string _completeFileName = "questionnaireID_" + _questionnaireID + "_participantID_" + OverallGameManager.overallGameManager.playerData.username +  "_" + FileName + "." + _fileType;
             string _completeFileName_allResults = "questionnaireID_" + _questionnaireID + "_ALL_" + FileName + "." + _fileType;
-            string _path = Path.Combine(_folderPath + _completeFileName);
-            string _path_allResults = Path.Combine(_folderPath + _completeFileName_allResults);
+            string _path = Path.Combine(_folderPath,OverallGameManager.overallGameManager.playerData.schoolName,"Surveys" ,_completeFileName);
+            string _path_allResults = Path.Combine(_folderPath,OverallGameManager.overallGameManager.playerData.schoolName, "Surveys", _completeFileName_allResults);
 
 
             string[][] output = new string[_csvRows.Count][];
