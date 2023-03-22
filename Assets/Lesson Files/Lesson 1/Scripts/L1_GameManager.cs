@@ -37,6 +37,7 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
     private string username;
     public Flowchart flowchart;
     private int playerPoints;
+    public MediaPlayer mediaPlayer;
     
 
     //Awake Method

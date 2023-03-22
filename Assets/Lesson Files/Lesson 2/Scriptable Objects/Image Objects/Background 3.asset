@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Background 3
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 8935faaf84663164dbcc1ed8c7fd130f, type: 3}
-  imagePoint: 20
+  imagePoint: 10
   descriptionText: Club
   descriptionAudio:
     name: Three
     clip: {fileID: 8300000, guid: d4b225060138b3647b83e7808e1e1d6e, type: 3}
     volume: 1
+    playOnAwake: 0
     loop: 0
     source: {fileID: 0}
