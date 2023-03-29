@@ -74,12 +74,14 @@ public class L3_GameManager : MonoBehaviour
             //StartCoroutine(nameof(LevelFinished));
             if (!remakePassword)
             {
+                SetButtonInteractivity(false);
                 flowchart.ExecuteBlock("Lesson 3 SegueToVideoView");
                 flowchart.SetFloatVariable("lockStrength", totalScore);
             }
             else
 
             {
+                SetButtonInteractivity(false);
                 StartCoroutine(Delay(1));
                 
                 flowchart.SetFloatVariable("lockStrength", totalScore);
@@ -89,6 +91,17 @@ public class L3_GameManager : MonoBehaviour
             }
 
             
+        }
+    }
+
+    public void SetButtonInteractivity(bool interactive)
+    {
+        foreach (var btn in uIManager.optionButtons)
+        {
+            if (btn.interactable)
+            {
+                btn.enabled = interactive;
+            }
         }
     }
 
@@ -113,6 +126,7 @@ public class L3_GameManager : MonoBehaviour
         totalScore = 0;
         selectedAnswersCount = 0;
         EnableButtonsInteractable(true);
+        SetButtonInteractivity(true);
     }
 
     public void EnableButtonsInteractable(bool interactable)

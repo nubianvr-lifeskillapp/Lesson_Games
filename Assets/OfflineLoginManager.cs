@@ -260,11 +260,11 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
     {
         if (_preTestDone)
         {
-            OverallGameManager.overallGameManager.LoadNextScene(_currentLesson);
+            OverallGameManager.overallGameManager.LoadNextScene(_currentLesson == 0 ? 1: _currentLesson);
         }
         else
         {
-            OverallGameManager.overallGameManager.LoadNextScene(_currentLesson > 0 ? _currentLesson : 12);
+            OverallGameManager.overallGameManager.LoadNextScene(_currentLesson > 0 ? _currentLesson : 13);
         }
 
         

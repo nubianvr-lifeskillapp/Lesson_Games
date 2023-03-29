@@ -537,7 +537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8697000387260259618, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
       propertyPath: m_MatchWidthOrHeight
-      value: 0.32
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8697000387260259618, guid: 93494b0f3d397d74ba1458871f004384, type: 3}
       propertyPath: m_ReferenceResolution.x
@@ -865,7 +865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9072690246175136365, guid: bdda32fbaed10514da9cd12d7065f237, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 0
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdda32fbaed10514da9cd12d7065f237, type: 3}

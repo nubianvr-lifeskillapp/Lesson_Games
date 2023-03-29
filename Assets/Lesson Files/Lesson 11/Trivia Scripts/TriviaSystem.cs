@@ -206,7 +206,7 @@ public class TriviaSystem : MonoBehaviour
     {
         if (price >= 10000)
         {
-            LoadNextScene(14);
+            LoadNextScene(15);
         }
         else
         {

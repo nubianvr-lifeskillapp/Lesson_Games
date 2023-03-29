@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public int playerLife = 3;
     public bool playerIsDead = false;
     [SerializeField]
-    public SpriteRenderer bag;
+    public GameObject bag;
 
     [SerializeField] private float characterRunSpeed;
     public bool isRunning;
@@ -41,24 +41,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (playerLife)
-        {
-            case 0:
-                bag.color = Color.clear;
-                break;
-            case 1:
-                bag.color = Color.red;
-                break;
-            case 2:
-                bag.color = Color.yellow;
-                break;
-            case 3: 
-                bag.color = Color.green;
-                break;
-            default:
-                break;
-        }
-        
         currentTempPosition  = transform.position;
         
         AllowJump = transform.position.y > YAxisJumpCheck;
@@ -107,6 +89,7 @@ public class PlayerController : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Floor"))
         {
+            //SoundManager.soundManager.PlaySFX("MaleLand");
             isGrounded = true;
         }
         
@@ -115,8 +98,11 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Floor")) return;
-        if(AllowJump)
+        if (AllowJump)
+        {
             isGrounded = false;
+        }
+
     }
     
 
@@ -135,11 +121,26 @@ public class PlayerController : MonoBehaviour
     public void AddDamage()
     {
         playerLife--;
+        RemoveHeart(playerLife);
+        SoundManager.soundManager.PlaySFX("MaleHurt");;
         if (playerLife<=0)
         {
             playerLife = 0;
             playerIsDead = true;
             gameManager.OnPlayerDead();
+        }
+    }
+
+    private void RemoveHeart(int childIndex)
+    {
+        bag.transform.GetChild(childIndex).gameObject.SetActive(false);
+    }
+
+    public void ResetAllLives()
+    {
+        for (int i = 0; i < bag.transform.childCount; i++)
+        {
+            bag.transform.GetChild(i).gameObject.SetActive(true);   
         }
     }
 }

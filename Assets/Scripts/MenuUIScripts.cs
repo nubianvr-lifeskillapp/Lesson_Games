@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Fungus;
 using TMPro;
 using UnityEngine;
 
@@ -17,8 +18,8 @@ public class MenuUIScripts : MonoBehaviour
         username.text = "Welcome " + OverallGameManager.overallGameManager.playerData.username;
         classText.text = OverallGameManager.overallGameManager.playerData.className;
         //Debug.Log("Menu UI Scripts: " + data.className);
-        currentLessonText.text = OverallGameManager.overallGameManager.playerData.currentLesson.ToString();
         schoolText.text = OverallGameManager.overallGameManager.playerData.schoolName;
+        currentLessonText.text = OverallGameManager.overallGameManager.playerData.currentLesson == 0 ? 0.ToString() : (OverallGameManager.overallGameManager.playerData.currentLesson-1).ToString();
     }
     
 }

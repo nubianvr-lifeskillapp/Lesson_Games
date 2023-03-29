@@ -13,17 +13,17 @@ public class AfterSurveyHandler : MonoBehaviour
     IEnumerator SurveyCompleteWaitTask()
     {
         yield return new WaitForSeconds(2.5f);
-        if (SceneManager.GetActiveScene().buildIndex == 12)
+        if (SceneManager.GetActiveScene().buildIndex == 13)
         {
             OverallGameManager.overallGameManager.playerData.preTestDone = true;
             DataPersistanceManager.instance.SaveStudentGame();
             OverallGameManager.overallGameManager.LoadNextScene(1);
         }
-        else if(SceneManager.GetActiveScene().buildIndex == 13)
+        else if(SceneManager.GetActiveScene().buildIndex == 14)
         {
             OverallGameManager.overallGameManager.playerData.postTestDone = true;
             DataPersistanceManager.instance.SaveStudentGame();
-            OverallGameManager.overallGameManager.LoadNextScene(11);
+            OverallGameManager.overallGameManager.LoadNextScene(12);
         }
     }
 }

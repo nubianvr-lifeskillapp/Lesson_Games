@@ -37,7 +37,7 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
     private string username;
     public Flowchart flowchart;
     private int playerPoints;
-    public MediaPlayer mediaPlayer;
+    
     
 
     //Awake Method
@@ -50,8 +50,8 @@ public class L1_GameManager : MonoBehaviour,ICustomMessengerScript
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+        OverallGameManager.overallGameManager.playerData.currentLesson = SceneManager.GetActiveScene().buildIndex;
+        SoundManager.soundManager.PlaySFX("BackgroundMusic");
         errorText.gameObject.SetActive(false);
         //Set question on scene start...
         uIManager.SetQuestionElements(allQuestions[questionIndex]);

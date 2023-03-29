@@ -66,6 +66,7 @@ public class L5_GameManager : MonoBehaviour
             uIManager.ShowAffirmationText("Correct!");
             uIManager.ShowQuestionUI(false);
             player.Jump();
+            SoundManager.soundManager.PlaySFX("MaleJump");
             correctAnswers++;
             questionAnswered = true;
         }
@@ -73,6 +74,7 @@ public class L5_GameManager : MonoBehaviour
         //If it is the wrong selection....
         else
         {
+            questionAnswered = false;
             uIManager.ShowAffirmationText("Incorrect!");
             uIManager.ShowQuestionUI(false);
             wrongAnswers++;
@@ -137,11 +139,13 @@ public class L5_GameManager : MonoBehaviour
         noOfQuestionsAnswered = 0;
         player.playerIsDead = false;
         player.playerLife = 3;
+        player.ResetAllLives();
         correctAnswers = 0;
         wrongAnswers = 0;
         uIManager.ShowResultsMenu(false);
         uIManager.FailedMenuUI.DOFade(0, 0.75f);
         uIManager.FailedMenuUI.gameObject.SetActive(false);
+        SoundManager.soundManager.PlaySFX("GameTensionAudio");
         isLevelFinished = false;
         SetQuestion();
     }

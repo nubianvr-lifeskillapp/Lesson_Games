@@ -50,10 +50,12 @@ public class L3_UIManager : MonoBehaviour
         float currentProgressBarValue = progressBar.value;
         progressBar.DOValue(currentProgressBarValue + value, 0.5f);
         StartCoroutine(value > 0 ? SetLockState(true, 0.6f) : SetLockState(false, 0.6f));
+        canSelect = true;
     }
 
     IEnumerator SetLockState(bool addoperator, float delayTime)
     {
+        canSelect = false;
         yield return new WaitForSeconds(delayTime);
         print("Progress Bar Value: " + progressBar.value);
         switch (progressBar.value)
