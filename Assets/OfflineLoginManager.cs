@@ -44,6 +44,8 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
     private string loginPath;
 
     private bool _preTestDone;
+
+    private string _userNamePrefix = "lsa-";
     
     [Header("UI Screens")]
     public UI_System uiManager;
@@ -76,7 +78,7 @@ public class OfflineLoginManager : MonoBehaviour, IDataPersistance
         if ((usernameTextBox.text.Length > 0))
         {
             var tempUsername = usernameTextBox.text;
-            var username = tempUsername.Replace(" ", string.Empty);
+            var username = _userNamePrefix + tempUsername.Replace(" ", string.Empty);
             var tempPassword = passwordTextBox.text;
             var password = tempPassword.Replace(" ", string.Empty);
 
