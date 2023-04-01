@@ -32,7 +32,8 @@ public class SchoolSelectionScript : MonoBehaviour
         "Kwabenya Senior High School",
         "Labone Senior High School",
         "Kaneshie Senior High School",
-        "Achimota Senior High School"
+        "Achimota Senior High School",
+        ""
     };
 
     public TMP_Dropdown dropDown;
@@ -48,6 +49,8 @@ public class SchoolSelectionScript : MonoBehaviour
         dropDown.onValueChanged.AddListener(delegate { SchoolValueNameChanged(dropDown); });
         
         goBtn.SetActive(false);
+        
+        print(schoolNamesList.Count);
     }
 
     // Update is called once per frame
@@ -63,7 +66,7 @@ public class SchoolSelectionScript : MonoBehaviour
 
     private void SchoolValueNameChanged(TMP_Dropdown changeDropdown)
     {
-        if (changeDropdown.value == 0)
+        if (changeDropdown.value == 0 || changeDropdown.value == schoolNamesList.Count-1)
         {
             goBtn.SetActive(false);
         }
