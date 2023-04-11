@@ -23,14 +23,10 @@ public class Obstacle : MonoBehaviour
     void Start()
     {
         timeManager = FindObjectOfType<TimeManager>();
-       if(timeManager)
-            print("Obstacle Found: Time Manager");
+       
         uIManager = FindObjectOfType<L5_UIManager>();
-        if(uIManager)
-            print("Obstacle Found: UI Manager");
+        
         player = FindObjectOfType<PlayerController>();
-        if(player)
-            print("Obstacle Found: Player Controller");
 
         GetComponent<BoxCollider2D>().enabled = true;
     }

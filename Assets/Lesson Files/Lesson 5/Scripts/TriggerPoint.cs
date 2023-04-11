@@ -21,12 +21,8 @@ public class TriggerPoint : MonoBehaviour
     void Start()
     {
         timeManager = FindObjectOfType<TimeManager>();
-        if (timeManager)
-            print("Trigger Found: Time Manager");
+        
         uIManager = FindObjectOfType<L5_UIManager>();
-        if (uIManager)
-            print("Trigger Found: UI Manager");
-
     }
 
     //Making changes to the parameter here....
@@ -36,11 +32,11 @@ public class TriggerPoint : MonoBehaviour
         //On collision with object of tag "Player"...
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Hit Player");
+            //Debug.Log("Hit Player");
             //If time manager is valid and exists...
             if (timeManager)
             {
-                Debug.Log("Triggered Slowmotion...");
+                //Debug.Log("Triggered Slowmotion...");
                 //Time can slow down...
                 timeManager.bCanSlowdown = true;
             }
@@ -58,11 +54,11 @@ public class TriggerPoint : MonoBehaviour
         //On collision with object of tag "Player"...
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Hit Player");
+            //Debug.Log("Hit Player");
             //If time manager is valid and exists...
             if (timeManager)
             {
-                Debug.Log("Triggered Slowmotion...");
+                //Debug.Log("Triggered Slowmotion...");
                 //Time can slow down...
                 timeManager.bCanSlowdown = true;
             }

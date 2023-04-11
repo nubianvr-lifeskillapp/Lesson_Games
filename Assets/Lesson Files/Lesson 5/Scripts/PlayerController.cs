@@ -83,11 +83,11 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            print("Hit Enemy");
+            //print("Hit Enemy");
             OnCollisionWithEnemY?.Invoke();
         }
         
-        if (collision.gameObject.CompareTag("Floor"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             //SoundManager.soundManager.PlaySFX("MaleLand");
             isGrounded = true;
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Floor")) return;
+        if (!collision.gameObject.CompareTag("Ground")) return;
         if (AllowJump)
         {
             isGrounded = false;

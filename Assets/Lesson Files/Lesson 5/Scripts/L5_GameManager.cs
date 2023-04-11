@@ -51,9 +51,9 @@ public class L5_GameManager : MonoBehaviour
     public void SetQuestion()
     {
         RandomInt = Random.Range(0, unansweredQuestion.Count);
-        print(RandomInt);
+        //print(RandomInt);
         uIManager.SetQuizElements(unansweredQuestion[RandomInt]);
-        Debug.Log("No of Questions: " + allQuestions.Length);
+        //Debug.Log("No of Questions: " + allQuestions.Length);
         questionCount = allQuestions.Length;
         noOfQuestions = allQuestions.Length;
     }
