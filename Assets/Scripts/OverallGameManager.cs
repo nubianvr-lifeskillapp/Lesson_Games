@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OverallGameManager : MonoBehaviour, IDataPersistance
+public class OverallGameManager : MonoBehaviour
 {
 
     public static OverallGameManager overallGameManager;
@@ -77,34 +77,5 @@ public class OverallGameManager : MonoBehaviour, IDataPersistance
         SceneManager.LoadScene(sceneIndex);
         Debug.Log ($"Loading Scene: {sceneIndex}");
     }
-
-    public void LoadData(GameData data)
-    {
-         // playerData.sex = data.sex;
-         // playerData.username = data.username;
-         // playerData.className = data.className;
-         // playerData.currentLesson = data.currentLesson;
-         // playerData.educationalLevel = data.educationalLevel;
-         // playerData.firstTime = data.firstTime;
-         // playerData.postTestDone = data.postTestDone;
-         // playerData.preTestDone = data.preTestDone;
-         // playerData.currentPlayThroughNumber = data.currentPlayThroughNumber;
-         
-         Debug.Log("Overall Game Manager: Sex " + data.sex + " " + DateTime.Now);
-         Debug.Log("Overall Game Manager: Education Level " + data.educationalLevel + " " + DateTime.Now);
-         Debug.Log("Overall Game Manager: Current Lesson " + data.currentLesson + " " + DateTime.Now);
-    }
-
-    public void SaveData(GameData data)
-    {
-        data.sex = playerData.sex;
-        data.username = playerData.username;
-        data.className = playerData.className;
-        data.currentLesson = playerData.currentLesson;
-        data.educationalLevel = playerData.educationalLevel;
-        data.firstTime = playerData.firstTime;
-        data.postTestDone = playerData.postTestDone;
-        data.preTestDone = playerData.preTestDone;
-        data.currentPlayThroughNumber = playerData.currentPlayThroughNumber;
-    }
+    
 }
