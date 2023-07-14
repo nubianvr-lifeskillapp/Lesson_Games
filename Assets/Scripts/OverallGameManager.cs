@@ -55,7 +55,8 @@ public class OverallGameManager : MonoBehaviour
     
     public void LoadNextScene(int buildIndex)
     {
-        SceneManager.LoadScene(buildIndex);
+        if(buildIndex != 13)
+            SceneManager.LoadScene(buildIndex);
 #if UNITY_WEBGL == true && UNITY_EDITOR == false
     sendLevelComplete(buildIndex);
            
